@@ -8,32 +8,19 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Refresh market data
         run: python scripts/refresh.py
-
-      - name: Commit updated data
+      - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "🔄 Auto-refresh market data"
-          commit_user_name: "Market Bot"
-          commit_user_email: "bot@market-dashboard.local"
-
-      - name: Trigger Pages rebuild
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: .
