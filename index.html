@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>2026年07月01日 市场数据看板 | 呆呆</title>
+<title>2026年7月1日 市场数据看板 | 呆呆</title>
 <style>
   :root {
     --bg: #f5f6f8;
@@ -499,49 +499,6 @@
     .fund-row td { font-size: 9px !important; }
   }
 
-  /* Live indicator */
-  .status-badge {
-    display: inline-block;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-left: 6px;
-    vertical-align: middle;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  .status-badge.live {
-    background: #ffe8e5;
-    color: #c0392b;
-    animation: livePulse 1.8s infinite;
-  }
-  .status-badge.frozen {
-    background: #f0f2f5;
-    color: #999;
-  }
-  .status-badge.pending {
-    background: #fff8e5;
-    color: #b8860b;
-  }
-  @keyframes livePulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  .index-time {
-    font-size: 10px;
-    color: #999;
-    margin-top: 2px;
-  }
-  .index-change { font-size: 14px; font-weight: 600; }
-  .index-change.up { color: var(--red); }
-  .index-change.down { color: var(--green); }
-  .index-change.neutral { color: #999; }
-
-  /* Mobile: live badge */
-  @media (max-width: 768px) {
-    .status-badge { font-size: 9px; padding: 1px 6px; }
-    .index-time { font-size: 8px; }
-  }
 </style>
 </head>
 <body>
@@ -550,235 +507,370 @@
   <!-- Header -->
   <div class="header">
     <h1>📊 市场数据看板</h1>
-    <div class="subtitle">A股 · 港股 — 交易日数据总结</div>
+    <div class="subtitle">A股 — 交易日数据总结（港股七一休市）</div>
     <div class="meta">
-      <span>📅 2026年07月01日（星期三）</span>
+      <span>📅 2026年7月1日（星期三）</span>
       <span>📈 数据来源：腾讯自选股</span>
       <span>🤖 呆呆·智能助理</span>
     </div>
   </div>
 
   <!-- Summary Banner -->
-  <div class="summary-banner">
-    <span class="tag">🔥 全面普涨</span>
-    <span class="summary-text">📉 午后跳水：上证+0.44%、深证-0.53%、科创50-2.48%。综合+6.83%全天领涨，通信-3.55%垫底。数据更新：2026年07月01日（星期三） 17:02</span>
-    <div class="detail-text">全日收盘数据已刷新。行业排名为收盘时刻快照，完整分析由自动化在15:10/16:10产出。</div>
+      <div class="summary-banner">
+    <span class="tag">🔄 风格大切换</span>
+    <span class="summary-text">A股指数分化！上证+0.44%收4112点独涨，深证-0.53%、创业板-1.89%、科创50-2.48%回调。综合+6.83%、农林牧渔+4.89%、非银金融+4.63%领涨；港股因香港回归纪念日休市。全市场4329只上涨、221只涨停，成交放量至3.66万亿</span>
+    <div class="detail-text">核心驱动：科技获利回吐（通信-3.55%/电子-1.99%）→ 资金大迁移至金融+消费+周期板块 → 非银金融证券保险领涨4.63% → 农林牧渔养殖业爆发+4.89% → 综合板块+6.83%异动。典型的"高低切换"交易日，昨日领涨的科技全面回落，昨日重挫的金融/周期强势反攻。</div>
   </div>
 
   <!-- Tabs -->
   <div class="tabs">
-    <button class="tab-btn" onclick="switchTab('fullday', this)">☀️ 全日市场总结</button>
-    <button class="tab-btn active" onclick="switchTab('morning', this)">🌅 午盘市场总结</button>
+    <button class="tab-btn active" onclick="switchTab('fullday', this)">☀️ 全日市场总结</button>
+    <button class="tab-btn" onclick="switchTab('morning', this)">🌅 午盘市场总结</button>
     <button class="tab-btn" onclick="switchTab('guide', this)">📋 看板说明</button>
   </div>
 
-  <!-- ==================== 全日市场总结 ==================== -->
-  <div class="tab-content" id="tab-fullday">
+  <!-- ==================== 当日完整总结 ==================== -->
+  <div class="tab-content active" id="tab-fullday">
 
-    <div class="card" style="margin-bottom:20px;text-align:center;padding:30px;background:linear-gradient(135deg,#fff8e5,#fff3e0);" id="fullday-wait-card">
-      <h3 style="color:#e67e22;">⏳ 全日分析将于A股收盘后（15:10）更新</h3>
-      <p style="font-size:13px;color:#999;margin-top:6px;">以下是截至午盘(11:30)的行业排名快照 + 盘中实时指数数据。收盘后自动化产出完整分析。</p>
+    <!-- Daily Causes - Top -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>🔍 全日市场驱动因素深度拆解</h3>
+      <ol class="cause-list">
+        <li><strong>科技主线全面回调（最强反转）：</strong>昨日领涨的通信(-3.55%)和电子(-1.99%)今日分别成为跌幅TOP1和TOP2，科创50大跌-2.48%从历史新高2255回落至2153。半导体(-1.90%)、通信设备(-3.43%)、CPO概念全线走弱。昨日通信+4.89%的涨幅被今日回吐近四分之三，电子成交额12.64万亿仍居全市场首位，放量下跌暗示分歧加大。</li>
+        <li><strong>非银金融证券保险爆发（资金新主线）：</strong>非银金融全日+4.63%领涨权重板块，证券Ⅱ+4.65%、保险Ⅱ+4.88%双引擎驱动。天风证券、国盛证券涨停，中国人寿+9.70%、招商证券+8.72%领涨。非银板块成交额11815亿较上日大幅放量，主力资金净流入显著。半年末考核结束后保险/券商资金回流+半年报预期催化。</li>
+        <li><strong>农林牧渔养殖业强势崛起（防御+通胀逻辑）：</strong>农林牧渔全日+4.89%，养殖业子板块+6.41%领涨全市场。牧原股份+5.69%、益生股份涨停、湘佳股份涨停。猪价回暖预期+CPI温和回升逻辑驱动，资金从高估值科技向低位的农业板块迁移。但板块年内仍跌-21.61%，资金更多是"填坑式"回补而非趋势性做多。</li>
+        <li><strong>银行煤炭石油石化集体反弹（高股息触底回补）：</strong>银行+0.64%止住两日连跌（此前两日累计-4.69%），煤炭+2.49%从连续大跌中反弹，石油石化+2.18%同步走强。经历两日大幅出逃后，高股息板块开始出现抄底资金入场。但银行年内-11.71%、煤炭20日-16.81%仍在深度调整通道中，反弹持续性待观察。</li>
+        <li><strong>成交放量3862亿但结构巨变（量能信号积极）：</strong>两市成交3.66万亿较上日放量约3862亿。上涨4329只（79.09%）vs下跌1145只，涨停221只，呈"放量普涨+科技独跌"格局。昨日3.27万亿缩量是科技单边，今日3.66万亿放量是全面开花——资金从科技"一拖N"变为"百花齐放"，市场广度大幅改善。</li>
+        <li><strong>港股七一休市（香港回归纪念日）：</strong>7月1日为香港特别行政区成立纪念日，港股休市一天。恒生指数维持上一交易日（6月30日）收盘22881.02点（-0.63%），恒生科技4472.23点（+1.80%）。港股明日恢复交易后将补涨/补跌反映A股今日走势，需关注恒科对A股科技回调的反应。</li>
+      </ol>
     </div>
 
-    <!-- Indices: 交易时段内 JS 实时刷新，收盘后冻结 -->
+    <!-- 呆呆投资观察笔记 -->
+    <div class="card" style="margin-bottom:20px;background:linear-gradient(135deg,#f8f9fb,#e8f0fe);">
+      <h3>💡 呆呆的投资观察笔记</h3>
+      <div style="font-size:13px;line-height:1.8;color:#444;">
+        <p><strong>结论先行：</strong>7月1日是典型的"风格大切换"交易日，核心矛盾在于<em>昨日最强的科技全面回调，昨日最弱的金融周期全面反攻</em>。综合+6.83%、农林牧渔+4.89%、非银金融+4.63%领涨，通信-3.55%、电子-1.99%垫底。上证+0.44%独涨，创业板-1.89%和科创50-2.48%大幅回调。全市场4329只上涨（79%）说明这不是恐慌性出逃，而是<em>资金从拥挤的科技赛道向低位板块大迁移</em>。</p>
+        <p style="margin-top:8px;"><strong>五个关键洞察：</strong></p>
+        <ol style="padding-left:18px;">
+          <li><strong>"昨日涨今日跌"是牛市中的板块轮动而非趋势逆转：</strong>通信昨日+4.89%今天-3.55%，电子昨日+4.22%今天-1.99%，连续两日的极端波动体现了极高换手率下的筹码交换。这不是基本面恶化——通信年内+67.43%、电子年内+82.58%仍在极高位置，而是获利盘在月末/季初集中兑现。量能放大至3.66万亿也印证了高换手特征。</li>
+          <li><strong>非银金融+4.63%是重要信号：</strong>证券+4.65%/保险+4.88%双线爆发，天风证券、国盛证券涨停，中国人寿+9.70%。在昨日银行连续两日大跌的背景下，非银的强势表现说明资金在金融板块内部做了"从银行到券商保险"的切换。半年度结束、MPA考核完成后，券商经纪/投行/资管收入预期和保险投资端改善成为新的催化剂。</li>
+          <li><strong>农林牧渔的"填坑式"反弹不代表趋势反转：</strong>养殖业+6.41%虽然亮眼，但农林牧渔板块年内仍跌-21.61%，换手率仅3.08%。这是在极端超跌后的技术性反弹，而非基本面驱动的趋势逆转。牧原+5.69%固然吸引眼球，但养殖业"猪周期"尚处底部磨底阶段，CPI温和回升的验证仍需时间。</li>
+          <li><strong>79%上涨占比+221涨停是极强信号：</strong>4329只上涨/1145只下跌，上涨占比79.09%，这是近两个月极强的单日广度。昨日只有55%上涨是科技单边，今天79%是全面开花。涨停221只vs跌停仅11只，市场情绪从"结构性亢奋"转向"普遍乐观"。但这可能也是短期过热信号——"涨多跌少"之后往往伴随分化。</li>
+          <li><strong>港股休市日的A股"独立行情"需要明日验证：</strong>7月1日港股因回归纪念日休市，恒指停留在22881点。今日A股科技大幅回调而港股缺席，明日港股恢复交易后恒科大概率跟随补跌。但恒指成分股中内地金融股受益于A股非银+4.63%的带动可能有对冲效应。AH联动的滞后性需要在明日才得以验证。</li>
+        </ol>
+        <p style="margin-top:8px;"><strong>本周关注：</strong>科创50能否守住2100整数关口（若跌破则确认短期顶部）；非银金融反弹是否有持续性（券商指数若连涨3日则确认新主线）；港股明日恢复后恒科对A股科技回调的反应幅度；农林牧渔是否出现"一日游"（如昨日医药生物+5.91%→今日+3.88%的延续性）。</p>
+      </div>    </div>
+
+    <!-- Indices -->
     <div class="card" style="margin-bottom:20px;">
-      <h3>📉 主流指数 <span id="fullday-status-badge" class="status-badge live">● 实时</span></h3>
-      <div class="index-grid" id="fullday-index-grid">
-        <div class="index-card" data-qt="sh000001" data-market="a">
+      <h3>📉 主流指数 — 全日收盘表现</h3>
+      <div class="index-grid">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">上证指数</div>
-          <div class="index-price" id="f-price-sh000001">4,112.45</div>
-          <div class="index-change up" id="f-pct-sh000001">+0.44%</div>
-          <div class="index-time" id="f-time-sh000001">更新 17:02</div>
+          <div class="index-price">4,112.45</div>
+          <div class="index-change up">+0.44%</div>
         </div>
-        <div class="index-card" data-qt="sz399001" data-market="a">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">深证成指</div>
-          <div class="index-price" id="f-price-sz399001">16,119.17</div>
-          <div class="index-change down" id="f-pct-sz399001">-0.53%</div>
-          <div class="index-time" id="f-time-sz399001">更新 17:02</div>
+          <div class="index-price">16,119.17</div>
+          <div class="index-change down">-0.53%</div>
         </div>
-        <div class="index-card" data-qt="sz399006" data-market="a">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">创业板指</div>
-          <div class="index-price" id="f-price-sz399006">4,260.72</div>
-          <div class="index-change down" id="f-pct-sz399006">-1.89%</div>
-          <div class="index-time" id="f-time-sz399006">更新 17:02</div>
+          <div class="index-price">4,260.72</div>
+          <div class="index-change down">-1.89%</div>
         </div>
-        <div class="index-card" data-qt="sh000688" data-market="a">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">科创50</div>
-          <div class="index-price" id="f-price-sh000688">2,153.04</div>
-          <div class="index-change down" id="f-pct-sh000688">-2.48%</div>
-          <div class="index-time" id="f-time-sh000688">更新 17:02</div>
+          <div class="index-price">2,153.04</div>
+          <div class="index-change down">-2.48%</div>
         </div>
-        <div class="index-card" data-qt="hkHSI" data-market="hk" data-holiday="true">
+        <div class="index-card">
           <span class="market-tag hk-share">港股</span>
           <div class="index-name">恒生指数</div>
-          <div class="index-price" id="f-price-hkHSI">22,881.02</div>
-          <div class="index-change down" id="f-pct-hkHSI">-0.63%</div>
-          <div class="index-time" id="f-time-hkHSI">更新 17:02</div>
+          <div class="index-price" style="font-size:13px;color:#999;">22,881.02</div>
+          <div class="index-change" style="color:#999;font-size:11px;">七一休市</div>
         </div>
-        <div class="index-card" data-qt="hkHSTECH" data-market="hk" data-holiday="true">
+        <div class="index-card">
           <span class="market-tag hk-share">港股</span>
           <div class="index-name">恒生科技</div>
-          <div class="index-price" id="f-price-hkHSTECH">4,472.23</div>
-          <div class="index-change up" id="f-pct-hkHSTECH">+1.80%</div>
-          <div class="index-time" id="f-time-hkHSTECH">更新 17:02</div>
+          <div class="index-price" style="font-size:13px;color:#999;">4,472.23</div>
+          <div class="index-change" style="color:#999;font-size:11px;">七一休市</div>
         </div>
       </div>
 
+      <!-- Market Breadth - Sun donut chart -->
+      <div style="margin-top:16px;">
+        <div style="font-size:13px;color:#666;margin-bottom:8px;">
+          涨跌分布：<span style="color:#e74c3c;">4329↑</span> / <span style="color:#999;">54—</span> / <span style="color:#27ae60;">1145↓</span>
+        </div>
+        <div class="sun-chart-wrap">
+          <div class="sun-chart" style="background: conic-gradient(#e74c3c 0deg 284.7deg, #ccc 284.7deg 288.5deg, #27ae60 288.5deg 360deg);">
+            <div class="sun-chart-inner">79.1%</div>
+          </div>
+          <div class="sun-legend">
+            <div><span class="dot" style="background:#e74c3c;"></span>上涨 4329 只（79.09%）</div>
+            <div><span class="dot" style="background:#ccc;"></span>平盘 54 只（0.99%）</div>
+            <div><span class="dot" style="background:#27ae60;"></span>下跌 1145 只（20.92%）</div>
+          </div>
+        </div>
+        <div class="breadth-bar">
+          <div class="up" style="width:79.09%;"></div>
+          <div class="flat" style="width:0.99%;"></div>
+          <div class="down" style="width:20.92%;"></div>
+        </div>
+        <div style="font-size:11px;color:#999;margin-top:4px;">
+          涨停 221 只 | 跌停 11 只 | 成交额 3.66 万亿（较上日放量 3,862 亿）
+        </div>
+      </div>
+
+      <!-- Market Stats -->
       <div class="stats-row" style="margin-top:16px;">
         <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#e74c3c;">4553↑</div>
-          <div class="stat-label">上涨家数</div>
+          <div class="stat-value" style="font-size:15px;">3.66万亿</div>
+          <div class="stat-label">两市成交额</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#27ae60;">931↓</div>
-          <div class="stat-label">下跌家数</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;">2.42万亿</div>
-          <div class="stat-label">半日成交额</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#e74c3c;">82%</div>
+          <div class="stat-value" style="font-size:15px;color:#e74c3c;">79.09%</div>
           <div class="stat-label">上涨占比</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#e74c3c;">204只</div>
+          <div class="stat-value" style="font-size:15px;">221只</div>
           <div class="stat-label">涨停家数</div>
         </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:15px;">11只</div>
+          <div class="stat-label">跌停家数</div>
+        </div>
       </div>
+
     </div>
 
-    <!-- Sector Top/Bottom（JS实时渲染，收盘后自动化替换为完整版含原因+基金） -->
+    <!-- Sector Top/Bottom -->
     <div class="grid-2">
       <div class="card">
-        <h3 id="fullday-top5-hdr">🔺 行业涨幅 TOP 5（实时）</h3>
+        <h3>🔺 行业涨幅 TOP 5（全日收盘）</h3>
         <div style="overflow-x:auto;">
-        <table id="fullday-top5-body">
-<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>
-          <tr><td>1</td><td>综合</td><td class="sector-up">+6.83%</td></tr>
-          <tr><td>2</td><td>农林牧渔</td><td class="sector-up">+4.89%</td></tr>
-          <tr><td>3</td><td>非银金融</td><td class="sector-up">+4.63%</td></tr>
-          <tr><td>4</td><td>医药生物</td><td class="sector-up">+3.88%</td></tr>
-          <tr><td>5</td><td>社会服务</td><td class="sector-up">+3.32%</td></tr>
+        <table>
+          <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
+          <tr class="sector-row">
+            <td rowspan="2">1</td>
+            <td>综合</td>
+            <td class="sector-up">+6.83%</td>
+            <td><span class="reason-badge">综合板块全日+6.83%异动领涨全市场，振幅8.75%为今日最大，东阳光涨停(+10.01%)领涨，小板块弹性大+资金溢出效应驱动</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name" style="color:#999;">暂无对应行业指数基金</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">2</td>
+            <td>农林牧渔</td>
+            <td class="sector-up">+4.89%</td>
+            <td><span class="reason-badge">养殖业+6.41%子行业领涨全市场，牧原股份+5.69%、湘佳股份/益生股份涨停，猪价回暖预期+CPI温和回升+超跌回补三重共振</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证畜牧养殖产业指数发起C(027192)</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">3</td>
+            <td>非银金融</td>
+            <td class="sector-up">+4.63%</td>
+            <td><span class="reason-badge">证券Ⅱ+4.65%/保险Ⅱ+4.88%双引擎驱动，天风证券/国盛证券涨停，中国人寿+9.70%，半年末考核后资金回流+半年报预期催化</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证证券保险C(001553)</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">4</td>
+            <td>医药生物</td>
+            <td class="sector-up">+3.88%</td>
+            <td><span class="reason-badge">化学制药+5.43%子行业领涨，汇宇制药20cm涨停、艾力斯+15.21%，创新药概念午后震荡回暖，连续两日走强(-1.34%→+3.88%)</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证医药100指数C(001551)</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">5</td>
+            <td>社会服务</td>
+            <td class="sector-up">+3.32%</td>
+            <td><span class="reason-badge">教育+5.45%子行业领涨，中公教育涨停，社会服务板块超跌反弹（年内-14.76%），消费场景修复预期+资金轮动驱动</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name" style="color:#999;">暂无对应行业指数基金</span></td>
+          </tr>
+
         </table>
         </div>
       </div>
       <div class="card">
-        <h3 id="fullday-bot5-hdr">🔻 行业跌幅 BOTTOM 5（实时）</h3>
+        <h3>🔻 行业跌幅 BOTTOM 5（全日收盘）</h3>
         <div style="overflow-x:auto;">
-        <table id="fullday-bot5-body">
-<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>
-          <tr><td>1</td><td>通信</td><td class="sector-down">-3.55%</td></tr>
-          <tr><td>2</td><td>电子</td><td class="sector-down">-1.99%</td></tr>
-          <tr><td>3</td><td>电力设备</td><td class="sector-down">-1.46%</td></tr>
-          <tr><td>4</td><td>建筑材料</td><td class="sector-down">-0.92%</td></tr>
-          <tr><td>5</td><td>机械设备</td><td class="sector-down">-0.47%</td></tr>
+        <table>
+          <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
+          <tr>
+            <td>1</td><td>通信</td>
+            <td class="sector-down">-3.55%</td>
+            <td><span class="reason-badge">昨日领涨+4.89%今日反转-3.55%，通信设备子行业领跌，CPO/光通信概念获利回吐，成交额25390亿放量下跌</span></td>
+          </tr>
+
+          <tr>
+            <td>2</td><td>电子</td>
+            <td class="sector-down">-1.99%</td>
+            <td><span class="reason-badge">昨日+4.22%创新高后今日回调，半导体/消费电子全线走弱，成交额12.64万亿居全市场首位，放量下跌暗示分歧加剧</span></td>
+          </tr>
+
+          <tr>
+            <td>3</td><td>电力设备</td>
+            <td class="sector-down">-1.46%</td>
+            <td><span class="reason-badge">新能源方向承压，光伏/风电设备回调，电力设备年内仍涨+5.71%，高位获利了结+板块轮动压力</span></td>
+          </tr>
+
+          <tr>
+            <td>4</td><td>建筑材料</td>
+            <td class="sector-down">-0.92%</td>
+            <td><span class="reason-badge">建材板块小幅回调，年内涨幅+44.92%累积大量获利盘，地产链脉冲后回吐</span></td>
+          </tr>
+
+          <tr>
+            <td>5</td><td>机械设备</td>
+            <td class="sector-down">-0.47%</td>
+            <td><span class="reason-badge">昨日领涨+3.11%的机械设备今日回调-0.47%，自动化设备/机器人概念获利回吐，年内+22.02%仍在高位</span></td>
+          </tr>
+
         </table>
         </div>
       </div>
+
     </div>
 
-    <!-- 午盘简版原因拆解（收盘后替换为全日版） -->
+    <!-- Full Sector Rankings -->
     <div class="card" style="margin-top:20px;">
-      <h3>🔍 午盘驱动因素速览（收盘后更新全日拆解）</h3>
-      <ol class="cause-list">
-        <li><strong>农林牧渔养殖业全面爆发：</strong>养殖业+6.96%领涨，晓鸣股份/傲农生物涨停，猪肉价格预期回升+产能去化。</li>
-        <li><strong>非银金融券商强势：</strong>证券Ⅱ+4.60%，资金净流入58.66亿，汇金科技涨停，市场放量利好券商。</li>
-        <li><strong>通信电子科技回调：</strong>通信-2.32%获利回吐，电子-0.33%高位震荡，资金向传统板块切换。</li>
-        <li><strong>房地产超跌反弹：</strong>房地产+3.52%低位反弹，政策宽松预期驱动，年内仍跌-13.50%。</li>
-        <li><strong>全面普涨接近极端：</strong>82%个股上涨、204涨停，过去一年仅16%交易日达到此热度。午后出现明显跳水。</li>
-      </ol>
+      <h3>📋 申万一级行业涨跌幅全排名（30个行业，已获取数据）</h3>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+      <table>
+        <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>成交额(亿)</th><th>换手率</th><th>PE</th><th>年内涨跌</th></tr>
+        <tr><td>1</td><td>综合</td><td class="sector-up">+6.83%</td><td>668亿</td><td>2.73%</td><td>128.23</td><td class="sector-up">+17.16%</td></tr>
+        <tr><td>2</td><td>农林牧渔</td><td class="sector-up">+4.89%</td><td>2446亿</td><td>3.08%</td><td>36.44</td><td class="sector-down">-21.61%</td></tr>
+        <tr><td>3</td><td>非银金融</td><td class="sector-up">+4.63%</td><td>11815亿</td><td>2.01%</td><td>11.29</td><td class="sector-down">-11.34%</td></tr>
+        <tr><td>4</td><td>医药生物</td><td class="sector-up">+3.88%</td><td>16609亿</td><td>2.85%</td><td>30.88</td><td class="sector-down">-6.78%</td></tr>
+        <tr><td>5</td><td>社会服务</td><td class="sector-up">+3.32%</td><td>1254亿</td><td>3.06%</td><td>39.25</td><td class="sector-down">-14.76%</td></tr>
+        <tr><td>6</td><td>商贸零售</td><td class="sector-up">+3.30%</td><td>1832亿</td><td>2.13%</td><td>32.46</td><td class="sector-down">-27.10%</td></tr>
+        <tr><td>7</td><td>纺织服饰</td><td class="sector-up">+2.75%</td><td>1373亿</td><td>2.22%</td><td>23.65</td><td class="sector-down">-9.39%</td></tr>
+        <tr><td>8</td><td>房地产</td><td class="sector-up">+2.50%</td><td>2900亿</td><td>2.14%</td><td>20.71</td><td class="sector-down">-14.35%</td></tr>
+        <tr><td>9</td><td>煤炭</td><td class="sector-up">+2.49%</td><td>1241亿</td><td>1.32%</td><td>19.79</td><td class="sector-up">+3.95%</td></tr>
+        <tr><td>10</td><td>基础化工</td><td class="sector-up">+2.32%</td><td>20845亿</td><td>3.73%</td><td>32.20</td><td class="sector-up">+11.53%</td></tr>
+        <tr style="background:#f8f9fb;"><td colspan="7" style="text-align:center;color:#999;font-size:12px;padding:4px;">··· 中段省略（美容护理+2.32% / 石油石化+2.18% / 钢铁+2.11% / 交通运输+1.99% / 轻工制造+1.90% / 建筑装饰+1.75% / 公用事业+1.51% / 计算机+1.41% / 汽车+1.19% / 食品饮料+1.17% / 家用电器+1.13% / 传媒+1.00% / 国防军工+0.92% / 银行+0.64% / 有色金属+0.18%） ···</td></tr>
+        <tr><td>26</td><td>机械设备</td><td class="sector-down">-0.47%</td><td>28738亿</td><td>3.07%</td><td>50.24</td><td class="sector-up">+22.02%</td></tr>
+        <tr><td>27</td><td>建筑材料</td><td class="sector-down">-0.92%</td><td>4772亿</td><td>3.11%</td><td>46.19</td><td class="sector-up">+44.92%</td></tr>
+        <tr><td>28</td><td>电力设备</td><td class="sector-down">-1.46%</td><td>30739亿</td><td>3.66%</td><td>37.23</td><td class="sector-up">+5.71%</td></tr>
+        <tr><td>29</td><td>电子</td><td class="sector-down">-1.99%</td><td>126357亿</td><td>7.50%</td><td>106.44</td><td class="sector-up">+82.58%</td></tr>
+        <tr><td>30</td><td>通信</td><td class="sector-down">-3.55%</td><td>25390亿</td><td>2.17%</td><td>76.15</td><td class="sector-up">+67.43%</td></tr>
+      </table>
+      <div style="font-size:11px;color:#999;margin-top:4px;">注：环保行业数据缺失，已获取30/31个申万一级行业完整排名</div>
+      </div>
+    </div>
+
+    <!-- HK market detail -->
+    <div class="card" style="margin-top:20px;">
+      <h3>🇭🇰 港股市场 — 今日休市</h3>
+      <div style="background:#f8f9fb;border-radius:10px;padding:20px;text-align:center;">
+        <div style="font-size:48px;margin-bottom:12px;">🇭🇰</div>
+        <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:6px;">香港特别行政区成立纪念日</div>
+        <div style="font-size:14px;color:#666;line-height:1.8;">
+          2026年7月1日（星期三）港股休市一天<br>
+          上一交易日（6月30日）：恒生指数 22,881.02（-0.63%）| 恒生科技 4,472.23（+1.80%）<br>
+          明日（7月2日）恢复正常交易
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:#999;">
+          💡 今日A股科技大幅回调（通信-3.55%/电子-1.99%），港股明日开盘后恒科大概率跟随补跌；<br>
+          但A股非银金融+4.63%的强势表现或通过内地金融H股映射对冲部分压力
+        </div>
+      </div>
     </div>
 
   </div>
 
-  <!-- ==================== 午盘总结 ==================== -->
-  <div class="tab-content active" id="tab-morning">
+      <!-- ==================== 午盘总结 ==================== -->
+  <div class="tab-content" id="tab-morning">
 
     <!-- Causes -->
     <div class="card" style="margin-bottom:20px;">
       <h3>🔍 午盘市场五大驱动因素拆解</h3>
       <ol class="cause-list">
-        <li><strong>农林牧渔养殖业全面爆发（最强主线）：</strong>农林牧渔板块半日暴涨+5.46%领涨全市场，养殖业子行业+6.96%领衔，晓鸣股份涨停(+11.06%)、傲农生物涨停(+10.07%)。猪肉/鸡肉价格预期回升叠加产能去化逻辑，饲料+4.98%与渔业+5.18%联动走强，板块呈现"养殖+饲料+渔业"全链条攻击格局。</li>
-        <li><strong>非银金融券商强势领涨（第二主线）：</strong>非银金融半日+4.35%，证券Ⅱ+4.60%领涨，主力资金净流入58.66亿居全行业首位。证券IT概念+7.23%爆发，汇金科技涨停(+19.97%)。市场半日成交2.42万亿放量3151亿，直接利好券商经纪与自营业务收入预期。</li>
-        <li><strong>通信电子科技获利回吐（主线切换）：</strong>通信-2.32%昨日+4.89%大涨后资金获利了结，通信设备/CPO概念高位回调，虽成交额1619亿维持高位但买卖分歧加大。电子-0.33%高位震荡，半导体冲高回落，成交额8350亿居全市场首位显示资金在高位换手热烈。</li>
-        <li><strong>房地产商贸零售超跌反弹（低位修复）：</strong>房地产+3.52%、商贸零售+3.65%双双低位反弹。房地产年内仍跌-13.50%，政策宽松预期叠加估值修复逻辑驱动。商贸零售年内-26.85%，免税/百货/电商概念活跃，社会消费预期边际改善但基本面反转仍需验证。</li>
-        <li><strong>全面普涨成交放量但情绪接近极端（警惕信号）：</strong>A股82%个股上涨、4553涨vs931跌、204只涨停仅7只跌停，成交额2.42万亿（较上日+3151亿）。过去一年仅16%的交易日热度相当，上涨广度接近极端区间。宽基分化显著：上证+1.08%大盘价值领涨 vs 科创50-0.31%成长走弱，资金从科技回流传统板块。</li>
+        <li><strong>通信光通信大幅反弹（最强主线）：</strong>通信板块半日暴涨+5.52%领涨全市场，中际旭创、新易盛等前期超跌CPO龙头集体回暖。通信ETF成交活跃，资金回补迹象明显，板块在昨日-5%后迎来技术性修复。</li>
+        <li><strong>电子半导体延续强势（第二主线）：</strong>电子板块半日+3.88%，半导体(+4.49%)持续活跃，华海清科等设备龙头创新高。电子行业成交额774亿居全市场首位，资金持续加码科技赛道。</li>
+        <li><strong>医药生物一日游回调（典型轮动）：</strong>昨日领涨+5.37%的医药生物今日回调-1.95%，化学制药/生物制品高位获利回吐。板块呈现典型的"一日游"特征，资金快进快出操作频繁。</li>
+        <li><strong>银行煤炭走弱（高股息承压）：</strong>银行(-2.34%)、煤炭(-3.31%)等传统高股息板块同步走弱。半年末考核结束，银行MPA考核资金回笼压力释放，高股息品种遭集中兑现。</li>
+        <li><strong>恒生科技小幅走强但恒指转跌（内外分化）：</strong>恒生科技半日+1.40%延续反弹，但恒生指数-1.19%受内地银行/能源股拖累。A股创业板科创50大涨但港股跟涨力度有限，AH溢价率扩大。</li>
       </ol>
     </div>
 
-    <!-- Indices: 上午交易时段(9:30-11:30)实时刷新，11:30后冻结 -->
+    <!-- Indices -->
     <div class="card" style="margin-bottom:20px;">
-      <h3>📉 主流指数 — 上午收盘表现 <span id="morning-status-badge" class="status-badge frozen">已收盘</span></h3>
-      <div class="index-grid" id="morning-index-grid">
-        <div class="index-card" data-qt="sh000001" data-market="a">
+      <h3>📉 主流指数 — 上午收盘表现</h3>
+      <div class="index-grid">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">上证指数</div>
-          <div class="index-price" id="m-price-sh000001">4,112.45</div>
-          <div class="index-change up" id="m-pct-sh000001">+0.44%</div>
-          <div class="index-time" id="m-time-sh000001">11:30 午盘收盘</div>
+          <div class="index-price">4,082.13</div>
+          <div class="index-change up">▲ 0.20%</div>
         </div>
-        <div class="index-card" data-qt="sz399001" data-market="a">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">深证成指</div>
-          <div class="index-price" id="m-price-sz399001">16,119.17</div>
-          <div class="index-change down" id="m-pct-sz399001">-0.53%</div>
-          <div class="index-time" id="m-time-sz399001">11:30 午盘收盘</div>
+          <div class="index-price">16,202.90</div>
+          <div class="index-change up">▲ 2.47%</div>
         </div>
-        <div class="index-card" data-qt="sz399006" data-market="a">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">创业板指</div>
-          <div class="index-price" id="m-price-sz399006">4,260.72</div>
-          <div class="index-change down" id="m-pct-sz399006">-1.89%</div>
-          <div class="index-time" id="m-time-sz399006">11:30 午盘收盘</div>
+          <div class="index-price">4,345.84</div>
+          <div class="index-change up">▲ 3.06%</div>
         </div>
-        <div class="index-card" data-qt="sh000688" data-market="a">
+        <div class="index-card">
           <span class="market-tag a-share">A股</span>
           <div class="index-name">科创50</div>
-          <div class="index-price" id="m-price-sh000688">2,153.04</div>
-          <div class="index-change down" id="m-pct-sh000688">-2.48%</div>
-          <div class="index-time" id="m-time-sh000688">11:30 午盘收盘</div>
+          <div class="index-price">2,200.53</div>
+          <div class="index-change up">▲ 3.51%</div>
         </div>
-        <div class="index-card" data-qt="hkHSI" data-market="hk" data-holiday="true">
+        <div class="index-card">
           <span class="market-tag hk-share">港股</span>
           <div class="index-name">恒生指数</div>
-          <div class="index-price" id="m-price-hkHSI">22,881.02</div>
-          <div class="index-change down" id="m-pct-hkHSI">-0.63%</div>
-          <div class="index-time" id="m-time-hkHSI">6/30收盘</div>
+          <div class="index-price">22,752.96</div>
+          <div class="index-change down">▼ 1.19%</div>
         </div>
-        <div class="index-card" data-qt="hkHSTECH" data-market="hk" data-holiday="true">
+        <div class="index-card">
           <span class="market-tag hk-share">港股</span>
           <div class="index-name">恒生科技</div>
-          <div class="index-price" id="m-price-hkHSTECH">4,472.23</div>
-          <div class="index-change up" id="m-pct-hkHSTECH">+1.80%</div>
-          <div class="index-time" id="m-time-hkHSTECH">6/30收盘</div>
+          <div class="index-price">4,454.38</div>
+          <div class="index-change up">▲ 1.40%</div>
         </div>
       </div>
 
-      <div class="stats-row" id="morning-stats-row">
+      <div class="stats-row">
         <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#e74c3c;">4553↑</div>
-          <div class="stat-label">上涨家数</div>
+          <div class="stat-value red" style="font-size:16px;">2,900+</div>
+          <div class="stat-label">下跌个股数(估)</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#27ae60;">931↓</div>
-          <div class="stat-label">下跌家数</div>
+          <div class="stat-value" style="color:#e74c3c;">3.52万亿</div>
+          <div class="stat-label">半日成交额(估)</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;">2.42万亿</div>
-          <div class="stat-label">半日成交额</div>
+          <div class="stat-value red" style="font-size:16px;">科创+3.5%</div>
+          <div class="stat-label">最强指数</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#e74c3c;">82%</div>
-          <div class="stat-label">上涨占比</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" style="font-size:16px;color:#e74c3c;">204只</div>
-          <div class="stat-label">涨停家数</div>
+          <div class="stat-value" style="font-size:16px;">通信+5.5%</div>
+          <div class="stat-label">最强行业</div>
         </div>
       </div>
     </div>
@@ -792,54 +884,49 @@
           <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
           <tr class="sector-row">
             <td rowspan="2">1</td>
-            <td>农林牧渔</td>
-            <td class="sector-up">+5.46%</td>
-            <td><span class="reason-badge">养殖业+6.96%领涨全市场，晓鸣股份(+11.06%)/傲农生物(+10.07%)涨停，猪肉价格预期回升+产能去化逻辑驱动，饲料+4.98%/渔业+5.18%联动</span></td>
+            <td>通信</td>
+            <td class="sector-up">▲ 5.52%</td>
+            <td><span class="reason-badge">通信板块强势领涨，光通信/CPO概念大幅反弹(+5.52%)，中际旭创、新易盛等龙头集体回暖，前期超跌后技术性修复</span></td>
           </tr>
           <tr class="fund-row">
-            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证畜牧养殖产业指数发起C(027192)</span></td>
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证全指通信设备指数发起C(020900)</span></td>
           </tr>
-
           <tr class="sector-row">
             <td rowspan="2">2</td>
-            <td>非银金融</td>
-            <td class="sector-up">+4.35%</td>
-            <td><span class="reason-badge">证券Ⅱ+4.60%领涨，主力资金净流入58.66亿居全行业首位，证券IT概念+7.23%爆发，汇金科技涨停(+19.97%)，市场放量利好券商经纪收入</span></td>
+            <td>国防军工</td>
+            <td class="sector-up">▲ 3.95%</td>
+            <td><span class="reason-badge">航天装备(+4.73%)和航空装备(+3.89%)子行业全面走高，军工电子持续活跃，资金流入军工板块寻求避险</span></td>
           </tr>
           <tr class="fund-row">
-            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证证券保险C(001553)</span></td>
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">富国中证军工指数(LOF)C(013035)</span></td>
           </tr>
-
           <tr class="sector-row">
             <td rowspan="2">3</td>
-            <td>商贸零售</td>
-            <td class="sector-up">+3.65%</td>
-            <td><span class="reason-badge">消费零售板块低位反弹，免税/百货/电商概念活跃，年内仍跌-26.85%为全市场最深跌行业之一，社会消费预期边际改善驱动超跌修复</span></td>
+            <td>电子</td>
+            <td class="sector-up">▲ 3.88%</td>
+            <td><span class="reason-badge">半导体+4.49%持续活跃，电子化学品+4.65%，华海清科等龙头继续创新高，消费电子跟随回暖，成交额774亿居行业首位</span></td>
           </tr>
           <tr class="fund-row">
-            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name" style="color:#999;">暂无对应行业指数基金</span></td>
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证电子ETF联接C(001618)</span></td>
           </tr>
-
           <tr class="sector-row">
             <td rowspan="2">4</td>
-            <td>房地产</td>
-            <td class="sector-up">+3.52%</td>
-            <td><span class="reason-badge">超跌反弹，年内仍跌-13.50%，政策宽松预期叠加估值修复逻辑驱动，但新房销售/土地市场基本面改善仍需时间验证</span></td>
+            <td>计算机</td>
+            <td class="sector-up">▲ 3.37%</td>
+            <td><span class="reason-badge">AI应用软件端强势反弹(+3.37%)，算力调度/大模型概念涨幅居前，信创板块全面回暖</span></td>
           </tr>
           <tr class="fund-row">
-            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">南方中证房地产ETF发起联接C(004643)</span></td>
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证计算机ETF联接C(001630)</span></td>
           </tr>
-
           <tr class="sector-row">
             <td rowspan="2">5</td>
-            <td>社会服务</td>
-            <td class="sector-up">+3.26%</td>
-            <td><span class="reason-badge">教育+5.43%子行业领涨，中公教育涨停(+10.00%)，旅游/酒店/餐饮板块全面活跃，服务业复苏预期升温，学期末教育培训需求旺季催化</span></td>
+            <td>机械设备</td>
+            <td class="sector-up">▲ 2.99%</td>
+            <td><span class="reason-badge">自动化设备+3.42%领涨，机器人概念活跃，工程机械龙头企稳反弹</span></td>
           </tr>
           <tr class="fund-row">
             <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name" style="color:#999;">暂无对应行业指数基金</span></td>
           </tr>
-
         </table>
         </div>
       </div>
@@ -849,29 +936,29 @@
         <table>
           <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
           <tr>
-            <td>1</td><td>通信</td>
-            <td class="sector-down">-2.32%</td>
-            <td><span class="reason-badge">昨日+4.89%领涨全市场后获利回吐，通信设备-2.29%，CPO/光通信概念高位回调，成交额1619亿仍维持高位但买卖分歧加大</span></td>
+            <td>1</td><td>医药生物</td>
+            <td class="sector-down">▼ 1.95%</td>
+            <td><span class="reason-badge">医药生物板块回调(-1.95%)</span></td>
           </tr>
           <tr>
-            <td>2</td><td>电力设备</td>
-            <td class="sector-down">-0.49%</td>
-            <td><span class="reason-badge">光伏/储能板块震荡回调，前期涨幅较大的新能源标的获利了结，成交额2153亿维持活跃但内部分化加剧</span></td>
+            <td>2</td><td>交通运输</td>
+            <td class="sector-down">▼ 2.07%</td>
+            <td><span class="reason-badge">交通运输板块回调(-2.07%)</span></td>
           </tr>
           <tr>
-            <td>3</td><td>电子</td>
-            <td class="sector-down">-0.33%</td>
-            <td><span class="reason-badge">半导体冲高回落，消费电子高位震荡，成交额8350亿居全市场首位，资金高位换手热烈但方向分歧加大</span></td>
+            <td>3</td><td>银行</td>
+            <td class="sector-down">▼ 2.34%</td>
+            <td><span class="reason-badge">银行板块回调(-2.34%)</span></td>
           </tr>
           <tr>
-            <td>4</td><td>建筑材料</td>
-            <td class="sector-up">+0.18%</td>
-            <td><span class="reason-badge">微幅收涨但跑输大盘，水泥/玻璃子行业窄幅震荡，基建投资增速放缓+房地产新开工低迷压制需求端，缺乏新催化</span></td>
+            <td>4</td><td>石油石化</td>
+            <td class="sector-down">▼ 2.83%</td>
+            <td><span class="reason-badge">石油石化板块回调(-2.83%)</span></td>
           </tr>
           <tr>
-            <td>5</td><td>机械设备</td>
-            <td class="sector-up">+0.22%</td>
-            <td><span class="reason-badge">自动化设备/工程机械高位整理，前期华为机器人概念炒作热度降温，成交额1918亿温和但缺乏攻击性</span></td>
+            <td>5</td><td>煤炭</td>
+            <td class="sector-down">▼ 3.31%</td>
+            <td><span class="reason-badge">煤炭板块回调(-3.31%)</span></td>
           </tr>
         </table>
         </div>
@@ -972,9 +1059,8 @@
     <div class="card" style="background:linear-gradient(135deg,#f0f4ff,#e8efff);margin-bottom:20px;">
       <h3>📌 当前展示</h3>
       <p style="font-size:13px;color:#555;line-height:1.8;">
-        本页展示的是 <strong>2026年7月1日（星期三）</strong> 的午盘市场总结。<br>当日A股全面普涨：82%个股上涨、4553涨vs931跌、204只涨停，<br>
-        农林牧渔+5.46%养殖业爆发领涨全行业，非银金融+4.35%券商强势。🇭🇰 港股因香港特别行政区成立纪念日休市一日。<br>
-        全日市场总结将于 15:10 自动更新。
+        本页展示的是 <strong>2026年7月1日（星期三）</strong> 的全日收盘看板。<br>当日市场风格大切换：上证+0.44%独涨，综合+6.83%/农林牧渔+4.89%领涨，4329只上涨占比79%，<br>
+        3.66万亿成交，221只涨停，通信-3.55%/电子-1.99%回调，是典型的"高低切换+风格轮动"交易日。港股因回归纪念日休市。
       </p>
     </div>
   </div>
@@ -982,15 +1068,13 @@
   <div class="disclaimer">
     ⚠️ 免责声明：本看板仅供数据参考与学习研究之用，不构成任何投资建议。数据来源为腾讯自选股公开市场数据，可能存在延迟。<br>
     投资有风险，决策需谨慎。如需专业投资建议，请咨询持牌证券投资顾问机构。<br>
-    Generated by 呆呆 · 徐浩男的智能助理 · 2026-07-01 17:02
+    Generated by 呆呆 · 徐浩男的智能助理 · 2026-07-01
   </div>
 </div>
 
 <script>
-// ==============================
-// Tab Switching
-// ==============================
 function switchTab(tab, btn) {
+  // btn is the button element passed via onclick='switchTab(..., this)'
   if (!btn && window.event) btn = window.event.target;
   if (!btn) return;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -998,448 +1082,6 @@ function switchTab(tab, btn) {
   btn.classList.add('active');
   document.getElementById('tab-' + tab).classList.add('active');
 }
-
-// ==============================
-// Real-time Index Refresh Engine
-// ==============================
-(function() {
-  'use strict';
-
-  // Index definitions: qt code → display config
-  var INDICES = {
-    'sh000001': { name: '上证指数', market: 'a', decimals: 2 },
-    'sz399001': { name: '深证成指', market: 'a', decimals: 2 },
-    'sz399006': { name: '创业板指', market: 'a', decimals: 2 },
-    'sh000688': { name: '科创50',   market: 'a', decimals: 2 },
-    'hkHSI':     { name: '恒生指数', market: 'hk', decimals: 2 },
-    'hkHSTECH':  { name: '恒生科技', market: 'hk', decimals: 2 }
-  };
-
-  // SW L1 sector codes → display names (31 sectors, qt.gtimg.cn batch query)
-  var SECTORS = {
-    'pt01801010': '农林牧渔', 'pt01801030': '基础化工', 'pt01801040': '钢铁',
-    'pt01801050': '有色金属', 'pt01801080': '电子', 'pt01801110': '家用电器',
-    'pt01801120': '食品饮料', 'pt01801130': '纺织服饰', 'pt01801140': '轻工制造',
-    'pt01801150': '医药生物', 'pt01801160': '公用事业', 'pt01801170': '交通运输',
-    'pt01801180': '房地产', 'pt01801200': '商贸零售', 'pt01801210': '社会服务',
-    'pt01801230': '综合', 'pt01801710': '建筑材料', 'pt01801720': '建筑装饰',
-    'pt01801730': '电力设备', 'pt01801740': '国防军工', 'pt01801750': '计算机',
-    'pt01801760': '传媒', 'pt01801770': '通信', 'pt01801780': '银行',
-    'pt01801790': '非银金融', 'pt01801880': '汽车', 'pt01801890': '机械设备',
-    'pt01801950': '煤炭', 'pt01801960': '石油石化', 'pt01801980': '美容护理'
-  };
-  // All codes for batch query: indices + sectors
-  var ALL_CODES = Object.keys(INDICES).concat(Object.keys(SECTORS));
-
-  // Store snapshots: for morning tab freeze at 11:30
-  var morningSnapshot = null;
-  var isHKHoliday = false; // Set by automation for holiday detection
-
-  // Check if any HK index card has data-holiday="true"
-  function detectHKHoliday() {
-    var hkCard = document.querySelector('#morning-index-grid .index-card[data-holiday="true"]');
-    if (hkCard) isHKHoliday = true;
-  }
-
-  // Determine current trading status
-  function getTradingStatus() {
-    var now = new Date();
-    var day = now.getDay();
-    var t = now.getHours() * 60 + now.getMinutes();
-
-    // Weekend
-    if (day === 0 || day === 6) {
-      return { aTrading: false, hkTrading: false, session: 'weekend', label: '周末休市' };
-    }
-
-    var aMorning   = 9*60+30, aMorningEnd   = 11*60+30; // A-share: 9:30-11:30
-    var aAfternoon = 13*60,   aAfternoonEnd = 15*60;     // A-share: 13:00-15:00
-    var hkMorning  = 9*60+30, hkMorningEnd  = 12*60;     // HK: 9:30-12:00
-    var hkAfternoon= 13*60,   hkAfternoonEnd= 16*60;     // HK: 13:00-16:00
-
-    var aTrading = (t >= aMorning && t <= aMorningEnd) || (t >= aAfternoon && t <= aAfternoonEnd);
-    var hkTrading = isHKHoliday ? false : ((t >= hkMorning && t <= hkMorningEnd) || (t >= hkAfternoon && t <= hkAfternoonEnd));
-
-    var session = 'closed';
-    var label = '已收盘';
-
-    if (t < aMorning) {
-      session = 'pre_market'; label = '待开盘';
-    } else if (t >= aMorning && t <= aMorningEnd) {
-      session = 'a_morning'; label = '● 实时';
-    } else if (t > aMorningEnd && t < aAfternoon) {
-      session = 'lunch'; label = '午间休市';
-    } else if (t >= aAfternoon && t <= aAfternoonEnd) {
-      session = 'a_afternoon'; label = '● 实时';
-    }
-
-    return {
-      aTrading: aTrading,
-      hkTrading: hkTrading,
-      session: session,
-      label: label,
-      now: now
-    };
-  }
-
-  // Fetch data from qt.gtimg.cn — pure script tag injection (most reliable cross-domain)
-  function fetchQtData(callback) {
-    var codes = ALL_CODES.join(',');
-    var url = 'https://qt.gtimg.cn/q=' + codes + '&_t=' + Date.now();
-    var resolved = false;
-    var failTimer = null;
-
-    function resolve(data) {
-      if (resolved) return;
-      resolved = true;
-      if (failTimer) clearTimeout(failTimer);
-      callback(data);
-    }
-
-    // Use script tag injection — qt.gtimg.cn returns JS variable assignments
-    // which set global vars like v_sh000001 when loaded as a <script>
-    var script = document.createElement('script');
-    script.src = url;
-
-    script.onload = function() {
-      var lines = [];
-      ALL_CODES.forEach(function(code) {
-        var val = window['v_' + code];
-        if (val !== undefined && val !== null) {
-          lines.push('v_' + code + '="' + String(val).replace(/"/g, '\\"') + '"');
-        }
-      });
-      script.remove();
-      if (lines.length > 0) {
-        resolve(parseQtResponse(lines.join('\n')));
-      } else {
-        resolve(null);
-      }
-    };
-
-    script.onerror = function() {
-      script.remove();
-      resolve(null);
-    };
-
-    document.head.appendChild(script);
-
-    // 3-second timeout fallback
-    failTimer = setTimeout(function() {
-      resolve(null);
-    }, 3000);
-  }
-
-  // Parse qt.gtimg.cn text response into structured data
-  function parseQtResponse(text) {
-    var data = {};
-    var lines = text.split('\n');
-    lines.forEach(function(line) {
-      var match = line.match(/v_(\w+)="(.+)"/);
-      if (!match) return;
-      var code = match[1];
-      var fields = match[2].split('~');
-      if (fields.length < 35) return;
-
-      // Field mapping (0-based):
-      // 1=name, 3=price, 4=prev_close, 30=time, 31=change, 32=change_pct, 33=high, 34=low
-      var name      = fields[1] || '';
-      var price     = parseFloat(fields[3]);
-      var prevClose = parseFloat(fields[4]);
-      var time      = fields[30] || '';
-      var change    = parseFloat(fields[31]);
-      var pct       = parseFloat(fields[32]);
-      var high      = parseFloat(fields[33]);
-      var low       = parseFloat(fields[34]);
-
-      if (isNaN(price)) return;
-
-      // Check if data is stale (HK holiday → data timestamp is from previous day)
-      var isStale = false;
-      if (INDICES[code] && INDICES[code].market === 'hk') {
-        var today = new Date();
-        var todayStr = today.getFullYear() + '' +
-          ('0' + (today.getMonth() + 1)).slice(-2) +
-          ('0' + today.getDate()).slice(-2);
-        if (time && time.indexOf(todayStr) === -1) {
-          isStale = true;
-        }
-      }
-
-      data[code] = {
-        name: name,
-        price: price,
-        prevClose: prevClose,
-        change: change,
-        pct: pct,
-        high: high,
-        low: low,
-        time: time,
-        isStale: isStale
-      };
-    });
-    return data;
-  }
-
-  // Format number with commas and decimals
-  function fmtPrice(val, decimals) {
-    if (val == null || isNaN(val)) return '—';
-    return val.toLocaleString('zh-CN', {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals
-    });
-  }
-
-  function fmtPct(val) {
-    if (val == null || isNaN(val)) return '—';
-    var sign = val >= 0 ? '+' : '';
-    return sign + val.toFixed(2) + '%';
-  }
-
-  function fmtTime(ts) {
-    if (!ts) return '';
-    // ts format: "20260701142042" or "2026/06/30 16:08:28"
-    if (ts.length === 14) {
-      return ts.substr(8,2) + ':' + ts.substr(10,2) + ':' + ts.substr(12,2);
-    }
-    if (ts.length > 10) {
-      return ts.substr(11, 8);
-    }
-    return ts;
-  }
-
-  // Color class for percentage
-  function pctClass(val) {
-    if (val == null || isNaN(val)) return 'neutral';
-    return val > 0 ? 'up' : (val < 0 ? 'down' : 'neutral');
-  }
-
-  // Update a single tab's index cards with data
-  function updateTabIndices(prefix, data, status) {
-    Object.keys(INDICES).forEach(function(code) {
-      var idx = INDICES[code];
-      var item = data[code];
-      var isHK = (idx.market === 'hk');
-      var isStale = item && item.isStale;
-
-      var priceEl = document.getElementById(prefix + '-price-' + code);
-      var pctEl   = document.getElementById(prefix + '-pct-' + code);
-      var timeEl  = document.getElementById(prefix + '-time-' + code);
-
-      if (!priceEl) return;
-
-      if (isStale) {
-        // HK holiday: keep existing data
-        return;
-      }
-
-      if (item) {
-        priceEl.textContent = fmtPrice(item.price, idx.decimals);
-        var pctText = fmtPct(item.pct);
-        pctEl.textContent = pctText;
-        pctEl.className = 'index-change ' + pctClass(item.pct);
-
-        if (timeEl) {
-          if (prefix === 'm') {
-            timeEl.textContent = '11:30 午盘收盘';
-          } else {
-            var t = fmtTime(item.time);
-            timeEl.textContent = status === 'live' ? '更新 ' + t : (t || '');
-          }
-        }
-      }
-    });
-  }
-
-  // Update status badges
-  function updateStatusBadges(status) {
-    var mBadge = document.getElementById('morning-status-badge');
-    var fBadge = document.getElementById('fullday-status-badge');
-
-    if (fBadge) {
-      if (status.aTrading) {
-        fBadge.textContent = status.label;
-        fBadge.className = 'status-badge live';
-      } else if (status.session === 'lunch') {
-        fBadge.textContent = '午间休市';
-        fBadge.className = 'status-badge pending';
-      } else if (status.session === 'pre_market') {
-        fBadge.textContent = '待开盘';
-        fBadge.className = 'status-badge pending';
-      } else {
-        fBadge.textContent = '已收盘';
-        fBadge.className = 'status-badge frozen';
-      }
-    }
-
-    if (mBadge) {
-      if (status.session === 'a_morning') {
-        mBadge.textContent = status.label;
-        mBadge.className = 'status-badge live';
-      } else {
-        mBadge.textContent = '已收盘';
-        mBadge.className = 'status-badge frozen';
-      }
-    }
-
-    // Update fullday placeholder card text
-    updateFulldayPlaceholder(status);
-  }
-
-  // Update fullday tab placeholder text
-  function updateFulldayPlaceholder(status) {
-    var waitCard = document.getElementById('fullday-wait-card');
-    if (!waitCard) return;
-    var h3 = waitCard.querySelector('h3');
-    var p = waitCard.querySelector('p');
-    if (!h3 || !p) return;
-
-    if (status.aTrading) {
-      h3.textContent = '📡 指数数据实时刷新中…';
-      p.textContent = '交易时段内每15分钟自动更新。完整分析（行业排名/原因拆解/涨跌分布）将于A股15:00收盘后由自动化产出。';
-      h3.style.color = '#555';
-    } else if (status.session === 'lunch') {
-      h3.textContent = '🍱 午间休市 — 指数暂不更新';
-      p.textContent = 'A股下午13:00恢复交易后指数数据将自动刷新。完整分析将于收盘后产出。';
-      h3.style.color = '#b8860b';
-    } else if (status.session === 'closed' || status.session === 'weekend') {
-      h3.textContent = '⏳ 市场已收盘 — 等待自动化产出';
-      p.textContent = '完整分析（行业排名/原因拆解/涨跌分布/新闻归因）产出中，将在15:10自动更新。下方显示的是收盘时刻的指数快照。';
-      h3.style.color = '#999';
-    } else if (status.session === 'pre_market') {
-      h3.textContent = '🌅 等待开盘 — 9:30开始实时刷新';
-      p.textContent = 'A股上午9:30开盘后指数数据将每15分钟自动刷新。';
-      h3.style.color = '#3498db';
-    }
-  }
-
-  // Render sector rankings (TOP5/BOTTOM5) in the fullday tab
-  function renderSectorRankings(data) {
-    // Collect sector data
-    var sectors = [];
-    Object.keys(SECTORS).forEach(function(code) {
-      var item = data[code];
-      if (item && !item.isStale && !isNaN(item.pct)) {
-        sectors.push({ name: item.name || SECTORS[code], pct: item.pct });
-      }
-    });
-    if (sectors.length < 5) return;
-
-    // Sort by pct descending
-    sectors.sort(function(a, b) { return b.pct - a.pct; });
-
-    // Render TOP5
-    var top5El = document.getElementById('fullday-top5-body');
-    if (top5El) {
-      var html = '<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>';
-      sectors.slice(0, 5).forEach(function(s, i) {
-        var cls = s.pct >= 0 ? 'sector-up' : 'sector-down';
-        var sign = s.pct >= 0 ? '+' : '';
-        html += '<tr><td>' + (i + 1) + '</td><td>' + s.name + '</td><td class="' + cls + '">' + sign + s.pct.toFixed(2) + '%</td></tr>';
-      });
-      top5El.innerHTML = html;
-    }
-
-    // Render BOTTOM5
-    var bot5El = document.getElementById('fullday-bot5-body');
-    if (bot5El) {
-      var html = '<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>';
-      sectors.slice(-5).reverse().forEach(function(s, i) {
-        var cls = s.pct >= 0 ? 'sector-up' : 'sector-down';
-        var sign = s.pct >= 0 ? '+' : '';
-        html += '<tr><td>' + (i + 1) + '</td><td>' + s.name + '</td><td class="' + cls + '">' + sign + s.pct.toFixed(2) + '%</td></tr>';
-      });
-      bot5El.innerHTML = html;
-    }
-
-    // Update header timestamps
-    var top5Hdr = document.getElementById('fullday-top5-hdr');
-    var bot5Hdr = document.getElementById('fullday-bot5-hdr');
-    var now = new Date();
-    var ts = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
-    if (top5Hdr) top5Hdr.textContent = '🔺 行业涨幅 TOP 5（实时 · ' + ts + '）';
-    if (bot5Hdr) bot5Hdr.textContent = '🔻 行业跌幅 BOTTOM 5（实时 · ' + ts + '）';
-  }
-
-  // Main refresh cycle
-  function refresh() {
-    var status = getTradingStatus();
-    updateStatusBadges(status);
-
-    // Determine which tabs to refresh
-    var refreshMorning = (status.session === 'a_morning');
-    var refreshFullday = status.aTrading;
-
-    if (!refreshMorning && !refreshFullday) {
-      // No trading — skip API call
-      return;
-    }
-
-    fetchQtData(function(data) {
-      if (!data) return;
-
-      // Save morning snapshot at the right time
-      if (status.session === 'a_morning') {
-        morningSnapshot = data;
-      }
-
-      // Fullday tab: refresh if A-share is trading
-      if (refreshFullday) {
-        updateTabIndices('f', data, 'live');
-        renderSectorRankings(data);
-      }
-
-      // Morning tab: only refresh during morning session
-      if (refreshMorning) {
-        updateTabIndices('m', data, 'live');
-        renderSectorRankings(data);
-      }
-    });
-  }
-
-  // Initialize
-  function init() {
-    detectHKHoliday();
-    var status = getTradingStatus();
-
-    // 下午交易时段(13:00-15:00)：自动切换到全日Tab为默认视图
-    if (status.session === 'a_afternoon') {
-      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-      document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
-      var fBtn = document.querySelector('.tab-btn[onclick*="fullday"]');
-      var fTab = document.getElementById('tab-fullday');
-      if (fBtn) fBtn.classList.add('active');
-      if (fTab) fTab.classList.add('active');
-    }
-
-    // Set fullday status on load
-    updateStatusBadges(status);
-
-    // If in trading hours, do immediate refresh
-    if (status.aTrading || status.session === 'a_morning') {
-      refresh();
-    }
-
-    // Set up periodic refresh every 15 minutes
-    setInterval(function() {
-      var s = getTradingStatus();
-
-      if (s.aTrading || s.session === 'a_morning') {
-        refresh();
-      } else {
-        // No trading — just update badges and placeholder text
-        updateStatusBadges(s);
-      }
-    }, 900000);
-  }
-
-  // Start on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
 </script>
 </body>
 </html>
