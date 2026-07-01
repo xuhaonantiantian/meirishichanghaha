@@ -213,12 +213,25 @@ def update_html(html_path, data):
 
 if __name__ == '__main__':
     import os
-    # Find index.html relative to script dir (scripts/../index.html)
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(script_dir)
     html_path = os.path.join(repo_root, 'index.html')
 
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] 开始刷新市场数据...")
+    now = datetime.now(TZ)
+    ts = now.strftime('%H:%M:%S')
+
+    # 非交易时段跳过：周末 or 非 9:30-15:00
+    weekday = now.weekday()  # 0=Mon, 6=Sun
+    hour = now.hour
+    minute = now.minute
+    t = hour * 60 + minute
+    is_trading = (0 <= weekday <= 4) and (570 <= t <= 900)  # Mon-Fri, 9:30-15:00
+
+    if not is_trading:
+        print(f"[{ts}] 非交易时段，跳过刷新")
+        exit(0)
+
+    print(f"[{ts}] 开始刷新市场数据...")
     try:
         data = fetch_data()
         print(f"  获取到 {len(data)} 个标的行情数据")
