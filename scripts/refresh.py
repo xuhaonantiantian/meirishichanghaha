@@ -4,10 +4,15 @@ Market Dashboard Auto-Refresh Script
 Fetches real-time index + sector data from qt.gtimg.cn and updates index.html
 Run: python scripts/refresh.py          (from repo root)
 Output: updates index.html in repo root
+Timezone: Beijing time (UTC+8), independent of server clock
 """
 import urllib.request
 import re
-from datetime import datetime
+import os
+from datetime import datetime, timezone, timedelta
+
+# Force Beijing timezone
+TZ = timezone(timedelta(hours=8))
 
 CODES = [
     'sh000001','sz399001','sz399006','sh000688','hkHSI','hkHSTECH',
@@ -91,7 +96,7 @@ def update_html(html_path, data):
     with open(html_path, 'r', encoding='utf-8') as f:
         html = f.read()
 
-    now = datetime.now()
+    now = datetime.now(TZ)
     ts = now.strftime('%H:%M')
     weekday = ['一','二','三','四','五','六','日'][now.weekday()]
     date_cn = now.strftime(f'%Y年%m月%d日（星期{weekday}）')
