@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 微信缓存禁止：每次打开拉取最新内容 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>2026年07月01日 市场数据看板 | 呆呆</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #666;
+    --red: #e74c3c;
+    --green: #27ae60;
+    --blue: #2c3e50;
+    --border: #e8ecf0;
+    --accent: #3498db;
+    --warning: #f39c12;
+    --tag-bg: #f0f4f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 16px;
+    color: white;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 6px;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  /* Summary Banner */
+  .summary-banner {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .summary-banner .tag {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  .summary-banner .summary-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a2e;
+  }
+  .summary-banner .detail-text {
+    font-size: 13px;
+    color: #666;
+    margin-top: 6px;
+  }
+
+  /* Section Title */
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .icon {
+    font-size: 22px;
+  }
+
+  /* Grid Layout */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--blue);
+  }
+
+  /* Index Cards */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .index-card {
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+  .index-card .index-name {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 4px;
+  }
+  .index-card .index-price {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .index-card .index-change {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .index-card .index-change.down { color: var(--green); }
+  .index-card .index-change.up { color: var(--red); }
+  .market-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+  }
+  .market-tag.a-share { background: #ffe0e0; color: #c0392b; }
+  .market-tag.hk-share { background: #e0f0ff; color: #2980b9; }
+
+  /* Sector Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    padding: 8px 10px;
+    background: #f8f9fb;
+    color: #666;
+    font-weight: 600;
+    border-bottom: 2px solid #e8ecf0;
+    font-size: 12px;
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .sector-up { color: var(--red); font-weight: 600; }
+  .sector-down { color: var(--green); font-weight: 600; }
+
+  /* Reason Badge */
+  .reason-badge {
+    font-size: 11px;
+    background: var(--tag-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #555;
+    display: inline-block;
+    max-width: 220px;
+    line-height: 1.4;
+  }
+
+  /* Cause List */
+  .cause-list {
+    list-style: none;
+    counter-reset: cause;
+  }
+  .cause-list li {
+    counter-increment: cause;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background: #f8f9fb;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .cause-list li::before {
+    content: counter(cause);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .stat-item {
+    flex: 1;
+    min-width: 120px;
+    background: white;
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+  .stat-item .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .stat-item .stat-label {
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+  }
+  .stat-item .stat-value.red { color: var(--red); }
+  .stat-item .stat-value.green { color: var(--green); }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #999;
+    transition: all 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tab-btn.active {
+    background: var(--blue);
+    color: white;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Market breadth bar - decorative bar */
+  .breadth-bar {
+    display: flex;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 8px 0;
+  }
+  .breadth-bar .up { background: var(--red); }
+  .breadth-bar .flat { background: #ccc; }
+  .breadth-bar .down { background: var(--green); }
+
+  /* Sun donut chart */
+  .sun-chart-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 10px 0;
+  }
+  .sun-chart {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .sun-chart-inner {
+    position: absolute;
+    inset: 14px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+  .sun-legend { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+  .sun-legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+
+  /* Fund name in sector tables */
+  .fund-cell { font-size: 11px; max-width: 160px; }
+  .fund-sub-row td {
+    padding: 2px 10px 8px !important;
+    font-size: 11px !important;
+    color: var(--text-secondary);
+    border-bottom: 1px solid #e8ecf0;
+  }
+  .fund-sub-row .fund-label {
+    color: #999;
+    font-size: 10px;
+  }
+  .fund-sub-row .fund-name {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Excel-style sector row group */
+  .sector-row td { border-bottom: none; padding-bottom: 2px; vertical-align: middle; }
+  .fund-row td { padding-top: 2px !important; padding-bottom: 8px !important; border-bottom: 1px solid #e8ecf0; font-size: 11px; color: var(--text-secondary); }
+  .fund-row .fund-label { color: #999; font-size: 10px; }
+  .fund-row .fund-name { color: var(--accent); font-weight: 600; }
+  .breadth-bar .flat { background: #ccc; }
+  .breadth-bar .down { background: var(--green); }
+
+  .disclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 32px;
+    padding: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Guide tab styles */
+  .timeline-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .time-dot {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .time-dot.morning { background: #f0a060; }
+  .time-dot.ashare  { background: #e74c3c; }
+  .time-dot.fullday { background: #3b6df0; }
+  .time-dot.usstock { background: #8e44ad; }
+  .time-info { flex: 1; min-width: 0; }
+  .time-info .time { font-size: 18px; font-weight: 700; }
+  .time-info .label { font-size: 14px; color: var(--text); margin-top: 2px; }
+  .time-info .detail { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .market-badges { display: flex; gap: 4px; margin-top: 6px; }
+  .badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .badge.a { background: #ffe8e5; color: #c0392b; }
+  .badge.hk { background: #e5f2ff; color: #2471a3; }
+  .badge.us { background: #ede0f5; color: #7d3c98; }
+  .source-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 8px 0;
+  }
+  .source-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #eef2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .index-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+    .tab-btn { font-size: 12px; padding: 8px 10px; }
+    .header h1 { font-size: 20px; }
+    .summary-banner .summary-text { font-size: 13px; }
+    body { padding: 12px; }
+    .section-title { font-size: 17px; }
+    table { font-size: 11px; }
+    th, td { padding: 6px 6px; }
+    .reason-badge { max-width: 130px; font-size: 10px; }
+    .index-card { padding: 6px 4px; }
+    .index-card .index-name { font-size: 9px; margin-bottom: 2px; }
+    .index-card .index-price { font-size: 13px; margin-bottom: 2px; }
+    .index-card .index-change { font-size: 11px; }
+    .index-card .market-tag { font-size: 8px; padding: 0 4px; margin-bottom: 2px; }
+    .fund-cell { font-size: 10px; max-width: 110px; }
+    .sun-chart { width: 60px; height: 60px; }
+    .sun-chart-inner { inset: 12px; font-size: 10px; }
+    .stats-row { gap: 6px; margin-bottom: 0; }
+    .stat-item { padding: 6px 4px; min-width: 0; }
+    .stat-item .stat-value { font-size: 12px; }
+    .stat-item .stat-label { font-size: 9px; }
+    .card { padding: 12px; margin-bottom: 12px; }
+    .card h3 { font-size: 13px; margin-bottom: 8px; }
+    .cause-list li { font-size: 12px; padding: 8px 10px; }
+    .cause-list li::before { width: 16px; height: 16px; line-height: 16px; font-size: 9px; margin-right: 6px; }
+    .fund-row td { font-size: 10px !important; padding-top: 1px !important; padding-bottom: 6px !important; }
+    .fund-row .fund-label { font-size: 9px; }
+  }
+
+
+  /* Mobile: header meta wrap */
+  .header .meta {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+  }
+
+  /* Mobile: summary banner tag inline */
+  .summary-banner .tag {
+    vertical-align: middle;
+    margin-bottom: 4px;
+  }
+
+  /* Mobile: index grid 2 columns for narrow screens */
+  @media (max-width: 400px) {
+    .index-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .index-card .index-price { font-size: 11px !important; }
+    .index-card .index-change { font-size: 10px !important; }
+  }
+
+  /* Mobile: stats row 2 columns */
+  @media (max-width: 400px) {
+    .stat-item { flex: 0 0 calc(50% - 3px); min-width: 0; }
+  }
+
+  /* Mobile: reason badge wider */
+  @media (max-width: 768px) {
+    .reason-badge { max-width: 100% !important; white-space: normal !important; }
+  }
+
+  /* Mobile: table cells less padding */
+  @media (max-width: 480px) {
+    th, td { padding: 5px 4px !important; font-size: 10px !important; }
+    .fund-row td { font-size: 9px !important; }
+  }
+
+  /* Live indicator */
+  .status-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .status-badge.live {
+    background: #ffe8e5;
+    color: #c0392b;
+    animation: livePulse 1.8s infinite;
+  }
+  .status-badge.frozen {
+    background: #f0f2f5;
+    color: #999;
+  }
+  .status-badge.pending {
+    background: #fff8e5;
+    color: #b8860b;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .index-time {
+    font-size: 10px;
+    color: #999;
+    margin-top: 2px;
+  }
+  .index-change { font-size: 14px; font-weight: 600; }
+  .index-change.up { color: var(--red); }
+  .index-change.down { color: var(--green); }
+  .index-change.neutral { color: #999; }
+
+  /* Mobile: live badge */
+  @media (max-width: 768px) {
+    .status-badge { font-size: 9px; padding: 1px 6px; }
+    .index-time { font-size: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>📊 市场数据看板</h1>
+    <div class="subtitle">A股 · 港股 — 交易日数据总结</div>
+    <div class="meta">
+      <span>📅 2026年07月01日（星期三）</span>
+      <span>📈 数据来源：腾讯自选股</span>
+      <span>🤖 呆呆·智能助理</span>
+    </div>
+  </div>
+
+  <!-- Summary Banner -->
+  <div class="summary-banner">
+    <span class="tag">🔥 全面普涨</span>
+    <span class="summary-text">A股82%个股上涨！上证+1.08%领涨蓝筹，农林牧渔+5.46%养殖业爆发，非银金融+4.35%券商强势。两市成交2.42万亿放量3151亿，204只涨停。通信-2.32%获利回吐，电子-0.33%高位震荡，科技主线短期消化</span>
+    <div class="detail-text">核心驱动：农林牧渔养殖业+6.96%猪肉价格预期反弹 → 非银金融券商+4.60%市场放量利好 → 房地产+3.52%超跌反弹 → 通信-2.32%昨日大涨后获利了结 → 科创50-0.31%成长风格暂歇，上证大盘价值全面走强。🇭🇰 7月1日香港特别行政区成立纪念日，港股休市一日。</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn" onclick="switchTab('fullday', this)">☀️ 全日市场总结</button>
+    <button class="tab-btn active" onclick="switchTab('morning', this)">🌅 午盘市场总结</button>
+    <button class="tab-btn" onclick="switchTab('guide', this)">📋 看板说明</button>
+  </div>
+
+  <!-- ==================== 全日市场总结 ==================== -->
+  <div class="tab-content" id="tab-fullday">
+
+    <div class="card" style="margin-bottom:20px;text-align:center;padding:30px;background:linear-gradient(135deg,#fff8e5,#fff3e0);" id="fullday-wait-card">
+      <h3 style="color:#e67e22;">⏳ 全日分析将于A股收盘后（15:10）更新</h3>
+      <p style="font-size:13px;color:#999;margin-top:6px;">以下是截至午盘(11:30)的行业排名快照 + 盘中实时指数数据。收盘后自动化产出完整分析。</p>
+    </div>
+
+    <!-- Indices: 交易时段内 JS 实时刷新，收盘后冻结 -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>📉 主流指数 <span id="fullday-status-badge" class="status-badge live">● 实时</span></h3>
+      <div class="index-grid" id="fullday-index-grid">
+        <div class="index-card" data-qt="sh000001" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">上证指数</div>
+          <div class="index-price" id="f-price-sh000001">4,112.45</div>
+          <div class="index-change up" id="f-pct-sh000001">+0.44%</div>
+          <div class="index-time" id="f-time-sh000001">更新 15:02</div>
+        </div>
+        <div class="index-card" data-qt="sz399001" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">深证成指</div>
+          <div class="index-price" id="f-price-sz399001">16,119.17</div>
+          <div class="index-change down" id="f-pct-sz399001">-0.53%</div>
+          <div class="index-time" id="f-time-sz399001">更新 15:02</div>
+        </div>
+        <div class="index-card" data-qt="sz399006" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">创业板指</div>
+          <div class="index-price" id="f-price-sz399006">4,260.72</div>
+          <div class="index-change down" id="f-pct-sz399006">-1.89%</div>
+          <div class="index-time" id="f-time-sz399006">更新 15:02</div>
+        </div>
+        <div class="index-card" data-qt="sh000688" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">科创50</div>
+          <div class="index-price" id="f-price-sh000688">2,153.04</div>
+          <div class="index-change down" id="f-pct-sh000688">-2.48%</div>
+          <div class="index-time" id="f-time-sh000688">更新 15:02</div>
+        </div>
+        <div class="index-card" data-qt="hkHSI" data-market="hk" data-holiday="true">
+          <span class="market-tag hk-share">港股</span>
+          <div class="index-name">恒生指数</div>
+          <div class="index-price" id="f-price-hkHSI">22,881.02</div>
+          <div class="index-change down" id="f-pct-hkHSI">-0.63%</div>
+          <div class="index-time" id="f-time-hkHSI">更新 15:02</div>
+        </div>
+        <div class="index-card" data-qt="hkHSTECH" data-market="hk" data-holiday="true">
+          <span class="market-tag hk-share">港股</span>
+          <div class="index-name">恒生科技</div>
+          <div class="index-price" id="f-price-hkHSTECH">4,472.23</div>
+          <div class="index-change up" id="f-pct-hkHSTECH">+1.80%</div>
+          <div class="index-time" id="f-time-hkHSTECH">更新 15:02</div>
+        </div>
+      </div>
+
+      <div class="stats-row" style="margin-top:16px;">
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#e74c3c;">4553↑</div>
+          <div class="stat-label">上涨家数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#27ae60;">931↓</div>
+          <div class="stat-label">下跌家数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;">2.42万亿</div>
+          <div class="stat-label">半日成交额</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#e74c3c;">82%</div>
+          <div class="stat-label">上涨占比</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#e74c3c;">204只</div>
+          <div class="stat-label">涨停家数</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sector Top/Bottom（JS实时渲染，收盘后自动化替换为完整版含原因+基金） -->
+    <div class="grid-2">
+      <div class="card">
+        <h3 id="fullday-top5-hdr">🔺 行业涨幅 TOP 5（实时）</h3>
+        <div style="overflow-x:auto;">
+        <table id="fullday-top5-body">
+<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>
+          <tr><td>1</td><td>综合</td><td class="sector-up">+6.83%</td></tr>
+          <tr><td>2</td><td>农林牧渔</td><td class="sector-up">+4.89%</td></tr>
+          <tr><td>3</td><td>非银金融</td><td class="sector-up">+4.63%</td></tr>
+          <tr><td>4</td><td>医药生物</td><td class="sector-up">+3.88%</td></tr>
+          <tr><td>5</td><td>社会服务</td><td class="sector-up">+3.32%</td></tr>
+        </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3 id="fullday-bot5-hdr">🔻 行业跌幅 BOTTOM 5（实时）</h3>
+        <div style="overflow-x:auto;">
+        <table id="fullday-bot5-body">
+<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>
+          <tr><td>1</td><td>通信</td><td class="sector-down">-3.55%</td></tr>
+          <tr><td>2</td><td>电子</td><td class="sector-down">-1.99%</td></tr>
+          <tr><td>3</td><td>电力设备</td><td class="sector-down">-1.46%</td></tr>
+          <tr><td>4</td><td>建筑材料</td><td class="sector-down">-0.92%</td></tr>
+          <tr><td>5</td><td>机械设备</td><td class="sector-down">-0.47%</td></tr>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 午盘简版原因拆解（收盘后替换为全日版） -->
+    <div class="card" style="margin-top:20px;">
+      <h3>🔍 午盘驱动因素速览（收盘后更新全日拆解）</h3>
+      <ol class="cause-list">
+        <li><strong>农林牧渔养殖业全面爆发：</strong>养殖业+6.96%领涨，晓鸣股份/傲农生物涨停，猪肉价格预期回升+产能去化。</li>
+        <li><strong>非银金融券商强势：</strong>证券Ⅱ+4.60%，资金净流入58.66亿，汇金科技涨停，市场放量利好券商。</li>
+        <li><strong>通信电子科技回调：</strong>通信-2.32%获利回吐，电子-0.33%高位震荡，资金向传统板块切换。</li>
+        <li><strong>房地产超跌反弹：</strong>房地产+3.52%低位反弹，政策宽松预期驱动，年内仍跌-13.50%。</li>
+        <li><strong>全面普涨接近极端：</strong>82%个股上涨、204涨停，过去一年仅16%交易日达到此热度。午后出现明显跳水。</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <!-- ==================== 午盘总结 ==================== -->
+  <div class="tab-content active" id="tab-morning">
+
+    <!-- Causes -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>🔍 午盘市场五大驱动因素拆解</h3>
+      <ol class="cause-list">
+        <li><strong>农林牧渔养殖业全面爆发（最强主线）：</strong>农林牧渔板块半日暴涨+5.46%领涨全市场，养殖业子行业+6.96%领衔，晓鸣股份涨停(+11.06%)、傲农生物涨停(+10.07%)。猪肉/鸡肉价格预期回升叠加产能去化逻辑，饲料+4.98%与渔业+5.18%联动走强，板块呈现"养殖+饲料+渔业"全链条攻击格局。</li>
+        <li><strong>非银金融券商强势领涨（第二主线）：</strong>非银金融半日+4.35%，证券Ⅱ+4.60%领涨，主力资金净流入58.66亿居全行业首位。证券IT概念+7.23%爆发，汇金科技涨停(+19.97%)。市场半日成交2.42万亿放量3151亿，直接利好券商经纪与自营业务收入预期。</li>
+        <li><strong>通信电子科技获利回吐（主线切换）：</strong>通信-2.32%昨日+4.89%大涨后资金获利了结，通信设备/CPO概念高位回调，虽成交额1619亿维持高位但买卖分歧加大。电子-0.33%高位震荡，半导体冲高回落，成交额8350亿居全市场首位显示资金在高位换手热烈。</li>
+        <li><strong>房地产商贸零售超跌反弹（低位修复）：</strong>房地产+3.52%、商贸零售+3.65%双双低位反弹。房地产年内仍跌-13.50%，政策宽松预期叠加估值修复逻辑驱动。商贸零售年内-26.85%，免税/百货/电商概念活跃，社会消费预期边际改善但基本面反转仍需验证。</li>
+        <li><strong>全面普涨成交放量但情绪接近极端（警惕信号）：</strong>A股82%个股上涨、4553涨vs931跌、204只涨停仅7只跌停，成交额2.42万亿（较上日+3151亿）。过去一年仅16%的交易日热度相当，上涨广度接近极端区间。宽基分化显著：上证+1.08%大盘价值领涨 vs 科创50-0.31%成长走弱，资金从科技回流传统板块。</li>
+      </ol>
+    </div>
+
+    <!-- Indices: 上午交易时段(9:30-11:30)实时刷新，11:30后冻结 -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>📉 主流指数 — 上午收盘表现 <span id="morning-status-badge" class="status-badge frozen">已收盘</span></h3>
+      <div class="index-grid" id="morning-index-grid">
+        <div class="index-card" data-qt="sh000001" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">上证指数</div>
+          <div class="index-price" id="m-price-sh000001">4,112.45</div>
+          <div class="index-change up" id="m-pct-sh000001">+0.44%</div>
+          <div class="index-time" id="m-time-sh000001">11:30 午盘收盘</div>
+        </div>
+        <div class="index-card" data-qt="sz399001" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">深证成指</div>
+          <div class="index-price" id="m-price-sz399001">16,119.17</div>
+          <div class="index-change down" id="m-pct-sz399001">-0.53%</div>
+          <div class="index-time" id="m-time-sz399001">11:30 午盘收盘</div>
+        </div>
+        <div class="index-card" data-qt="sz399006" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">创业板指</div>
+          <div class="index-price" id="m-price-sz399006">4,260.72</div>
+          <div class="index-change down" id="m-pct-sz399006">-1.89%</div>
+          <div class="index-time" id="m-time-sz399006">11:30 午盘收盘</div>
+        </div>
+        <div class="index-card" data-qt="sh000688" data-market="a">
+          <span class="market-tag a-share">A股</span>
+          <div class="index-name">科创50</div>
+          <div class="index-price" id="m-price-sh000688">2,153.04</div>
+          <div class="index-change down" id="m-pct-sh000688">-2.48%</div>
+          <div class="index-time" id="m-time-sh000688">11:30 午盘收盘</div>
+        </div>
+        <div class="index-card" data-qt="hkHSI" data-market="hk" data-holiday="true">
+          <span class="market-tag hk-share">港股</span>
+          <div class="index-name">恒生指数</div>
+          <div class="index-price" id="m-price-hkHSI">22,881.02</div>
+          <div class="index-change down" id="m-pct-hkHSI">-0.63%</div>
+          <div class="index-time" id="m-time-hkHSI">6/30收盘</div>
+        </div>
+        <div class="index-card" data-qt="hkHSTECH" data-market="hk" data-holiday="true">
+          <span class="market-tag hk-share">港股</span>
+          <div class="index-name">恒生科技</div>
+          <div class="index-price" id="m-price-hkHSTECH">4,472.23</div>
+          <div class="index-change up" id="m-pct-hkHSTECH">+1.80%</div>
+          <div class="index-time" id="m-time-hkHSTECH">6/30收盘</div>
+        </div>
+      </div>
+
+      <div class="stats-row" id="morning-stats-row">
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#e74c3c;">4553↑</div>
+          <div class="stat-label">上涨家数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#27ae60;">931↓</div>
+          <div class="stat-label">下跌家数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;">2.42万亿</div>
+          <div class="stat-label">半日成交额</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#e74c3c;">82%</div>
+          <div class="stat-label">上涨占比</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="font-size:16px;color:#e74c3c;">204只</div>
+          <div class="stat-label">涨停家数</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sector Top/Bottom -->
+    <div class="grid-2">
+      <div class="card">
+        <h3>🔺 行业涨幅 TOP 5（午盘）</h3>
+        <div style="overflow-x:auto;">
+        <table>
+          <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
+          <tr class="sector-row">
+            <td rowspan="2">1</td>
+            <td>农林牧渔</td>
+            <td class="sector-up">+5.46%</td>
+            <td><span class="reason-badge">养殖业+6.96%领涨全市场，晓鸣股份(+11.06%)/傲农生物(+10.07%)涨停，猪肉价格预期回升+产能去化逻辑驱动，饲料+4.98%/渔业+5.18%联动</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证畜牧养殖产业指数发起C(027192)</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">2</td>
+            <td>非银金融</td>
+            <td class="sector-up">+4.35%</td>
+            <td><span class="reason-badge">证券Ⅱ+4.60%领涨，主力资金净流入58.66亿居全行业首位，证券IT概念+7.23%爆发，汇金科技涨停(+19.97%)，市场放量利好券商经纪收入</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">天弘中证证券保险C(001553)</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">3</td>
+            <td>商贸零售</td>
+            <td class="sector-up">+3.65%</td>
+            <td><span class="reason-badge">消费零售板块低位反弹，免税/百货/电商概念活跃，年内仍跌-26.85%为全市场最深跌行业之一，社会消费预期边际改善驱动超跌修复</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name" style="color:#999;">暂无对应行业指数基金</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">4</td>
+            <td>房地产</td>
+            <td class="sector-up">+3.52%</td>
+            <td><span class="reason-badge">超跌反弹，年内仍跌-13.50%，政策宽松预期叠加估值修复逻辑驱动，但新房销售/土地市场基本面改善仍需时间验证</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name">南方中证房地产ETF发起联接C(004643)</span></td>
+          </tr>
+
+          <tr class="sector-row">
+            <td rowspan="2">5</td>
+            <td>社会服务</td>
+            <td class="sector-up">+3.26%</td>
+            <td><span class="reason-badge">教育+5.43%子行业领涨，中公教育涨停(+10.00%)，旅游/酒店/餐饮板块全面活跃，服务业复苏预期升温，学期末教育培训需求旺季催化</span></td>
+          </tr>
+          <tr class="fund-row">
+            <td colspan="3"><span class="fund-label">关联基金</span> <span class="fund-name" style="color:#999;">暂无对应行业指数基金</span></td>
+          </tr>
+
+        </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🔻 行业跌幅 BOTTOM 5（午盘）</h3>
+        <div style="overflow-x:auto;">
+        <table>
+          <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
+          <tr>
+            <td>1</td><td>通信</td>
+            <td class="sector-down">-2.32%</td>
+            <td><span class="reason-badge">昨日+4.89%领涨全市场后获利回吐，通信设备-2.29%，CPO/光通信概念高位回调，成交额1619亿仍维持高位但买卖分歧加大</span></td>
+          </tr>
+          <tr>
+            <td>2</td><td>电力设备</td>
+            <td class="sector-down">-0.49%</td>
+            <td><span class="reason-badge">光伏/储能板块震荡回调，前期涨幅较大的新能源标的获利了结，成交额2153亿维持活跃但内部分化加剧</span></td>
+          </tr>
+          <tr>
+            <td>3</td><td>电子</td>
+            <td class="sector-down">-0.33%</td>
+            <td><span class="reason-badge">半导体冲高回落，消费电子高位震荡，成交额8350亿居全市场首位，资金高位换手热烈但方向分歧加大</span></td>
+          </tr>
+          <tr>
+            <td>4</td><td>建筑材料</td>
+            <td class="sector-up">+0.18%</td>
+            <td><span class="reason-badge">微幅收涨但跑输大盘，水泥/玻璃子行业窄幅震荡，基建投资增速放缓+房地产新开工低迷压制需求端，缺乏新催化</span></td>
+          </tr>
+          <tr>
+            <td>5</td><td>机械设备</td>
+            <td class="sector-up">+0.22%</td>
+            <td><span class="reason-badge">自动化设备/工程机械高位整理，前期华为机器人概念炒作热度降温，成交额1918亿温和但缺乏攻击性</span></td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ==================== 看板说明 ==================== -->
+  <div class="tab-content" id="tab-guide">
+
+    <!-- 概述 -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>📊 市场数据看板</h3>
+      <p style="font-size:13px;line-height:1.8;color:#555;margin-bottom:12px;">
+        每个交易日四次定时推送，覆盖 <strong>A股</strong>（上证/深证/创业板/科创50）、<strong>港股</strong>（恒生指数/恒生科技）和 <strong>美股</strong>（标普500/纳斯达克/道琼斯），含申万31行业排名、涨跌分布、估值技术面、新闻归因分析。
+      </p>
+    </div>
+
+    <!-- 推送时间线 -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>📋 推送节奏</h3>
+      <div class="timeline-item">
+        <div class="time-dot morning">1</div>
+        <div class="time-info">
+          <div class="time">12:10</div>
+          <div class="label">午盘市场总结</div>
+          <div class="detail">A股 + 港股 上午收盘数据</div>
+          <div class="market-badges">
+            <span class="badge a">A股</span>
+            <span class="badge hk">港股</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-dot ashare">2</div>
+        <div class="time-info">
+          <div class="time">15:10</div>
+          <div class="label">A股收盘总结</div>
+          <div class="detail">仅A股全日收盘数据（A股 15:00 收市）</div>
+          <div class="market-badges"><span class="badge a">A股</span></div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-dot fullday">3</div>
+        <div class="time-info">
+          <div class="time">16:10</div>
+          <div class="label">A股 + 港股全日汇总</div>
+          <div class="detail">A股 + 港股 合并全日数据（港股 16:00 收市）</div>
+          <div class="market-badges">
+            <span class="badge a">A股</span>
+            <span class="badge hk">港股</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="time-dot usstock">4</div>
+        <div class="time-info">
+          <div class="time">04:10</div>
+          <div class="label">美股收盘总结</div>
+          <div class="detail">美股三大指数全日数据（美东 16:00 = 北京时间 04:00 收市）</div>
+          <div class="market-badges"><span class="badge us">美股</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 看板内容 -->
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <h3>✓ 看板包含内容</h3>
+        <div style="font-size:13px;line-height:2;color:#555;">
+          • 主流指数行情（上证/深证/创业板/科创50/恒生/恒科/标普500/纳斯达克/道琼斯）<br>
+          • 申万一级行业涨跌幅 Top 5 &amp; Bottom 5<br>
+          • 31行业全排名 + 异动原因解读<br>
+          • 涨跌分布可视化（上涨/下跌/平盘占比）<br>
+          • 市场估值（PE/PB 分位）与技术面信号<br>
+          • 港股成分股异动详情<br>
+          • 大跌/大涨原因金字塔式拆解<br>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📡 数据来源</h3>
+        <div class="source-row">
+          <div class="source-icon">📈</div>
+          <div>行情数据 · 腾讯自选股（WeStock Data）</div>
+        </div>
+        <div class="source-row">
+          <div class="source-icon">📰</div>
+          <div>市场新闻 · 百度/知乎/东方财富 公开资讯</div>
+        </div>
+        <div class="source-row">
+          <div class="source-icon">🤖</div>
+          <div>分析生成 · 呆呆 AI 智能助理</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 当前示例 -->
+    <div class="card" style="background:linear-gradient(135deg,#f0f4ff,#e8efff);margin-bottom:20px;">
+      <h3>📌 当前展示</h3>
+      <p style="font-size:13px;color:#555;line-height:1.8;">
+        本页展示的是 <strong>2026年7月1日（星期三）</strong> 的午盘市场总结。<br>当日A股全面普涨：82%个股上涨、4553涨vs931跌、204只涨停，<br>
+        农林牧渔+5.46%养殖业爆发领涨全行业，非银金融+4.35%券商强势。🇭🇰 港股因香港特别行政区成立纪念日休市一日。<br>
+        全日市场总结将于 15:10 自动更新。
+      </p>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ 免责声明：本看板仅供数据参考与学习研究之用，不构成任何投资建议。数据来源为腾讯自选股公开市场数据，可能存在延迟。<br>
+    投资有风险，决策需谨慎。如需专业投资建议，请咨询持牌证券投资顾问机构。<br>
+    Generated by 呆呆 · 徐浩男的智能助理 · 2026-07-01 15:02
+  </div>
+</div>
+
+<script>
+// ==============================
+// Tab Switching
+// ==============================
+function switchTab(tab, btn) {
+  if (!btn && window.event) btn = window.event.target;
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// ==============================
+// Real-time Index Refresh Engine
+// ==============================
+(function() {
+  'use strict';
+
+  // Index definitions: qt code → display config
+  var INDICES = {
+    'sh000001': { name: '上证指数', market: 'a', decimals: 2 },
+    'sz399001': { name: '深证成指', market: 'a', decimals: 2 },
+    'sz399006': { name: '创业板指', market: 'a', decimals: 2 },
+    'sh000688': { name: '科创50',   market: 'a', decimals: 2 },
+    'hkHSI':     { name: '恒生指数', market: 'hk', decimals: 2 },
+    'hkHSTECH':  { name: '恒生科技', market: 'hk', decimals: 2 }
+  };
+
+  // SW L1 sector codes → display names (31 sectors, qt.gtimg.cn batch query)
+  var SECTORS = {
+    'pt01801010': '农林牧渔', 'pt01801030': '基础化工', 'pt01801040': '钢铁',
+    'pt01801050': '有色金属', 'pt01801080': '电子', 'pt01801110': '家用电器',
+    'pt01801120': '食品饮料', 'pt01801130': '纺织服饰', 'pt01801140': '轻工制造',
+    'pt01801150': '医药生物', 'pt01801160': '公用事业', 'pt01801170': '交通运输',
+    'pt01801180': '房地产', 'pt01801200': '商贸零售', 'pt01801210': '社会服务',
+    'pt01801230': '综合', 'pt01801710': '建筑材料', 'pt01801720': '建筑装饰',
+    'pt01801730': '电力设备', 'pt01801740': '国防军工', 'pt01801750': '计算机',
+    'pt01801760': '传媒', 'pt01801770': '通信', 'pt01801780': '银行',
+    'pt01801790': '非银金融', 'pt01801880': '汽车', 'pt01801890': '机械设备',
+    'pt01801950': '煤炭', 'pt01801960': '石油石化', 'pt01801980': '美容护理'
+  };
+  // All codes for batch query: indices + sectors
+  var ALL_CODES = Object.keys(INDICES).concat(Object.keys(SECTORS));
+
+  // Store snapshots: for morning tab freeze at 11:30
+  var morningSnapshot = null;
+  var isHKHoliday = false; // Set by automation for holiday detection
+
+  // Check if any HK index card has data-holiday="true"
+  function detectHKHoliday() {
+    var hkCard = document.querySelector('#morning-index-grid .index-card[data-holiday="true"]');
+    if (hkCard) isHKHoliday = true;
+  }
+
+  // Determine current trading status
+  function getTradingStatus() {
+    var now = new Date();
+    var day = now.getDay();
+    var t = now.getHours() * 60 + now.getMinutes();
+
+    // Weekend
+    if (day === 0 || day === 6) {
+      return { aTrading: false, hkTrading: false, session: 'weekend', label: '周末休市' };
+    }
+
+    var aMorning   = 9*60+30, aMorningEnd   = 11*60+30; // A-share: 9:30-11:30
+    var aAfternoon = 13*60,   aAfternoonEnd = 15*60;     // A-share: 13:00-15:00
+    var hkMorning  = 9*60+30, hkMorningEnd  = 12*60;     // HK: 9:30-12:00
+    var hkAfternoon= 13*60,   hkAfternoonEnd= 16*60;     // HK: 13:00-16:00
+
+    var aTrading = (t >= aMorning && t <= aMorningEnd) || (t >= aAfternoon && t <= aAfternoonEnd);
+    var hkTrading = isHKHoliday ? false : ((t >= hkMorning && t <= hkMorningEnd) || (t >= hkAfternoon && t <= hkAfternoonEnd));
+
+    var session = 'closed';
+    var label = '已收盘';
+
+    if (t < aMorning) {
+      session = 'pre_market'; label = '待开盘';
+    } else if (t >= aMorning && t <= aMorningEnd) {
+      session = 'a_morning'; label = '● 实时';
+    } else if (t > aMorningEnd && t < aAfternoon) {
+      session = 'lunch'; label = '午间休市';
+    } else if (t >= aAfternoon && t <= aAfternoonEnd) {
+      session = 'a_afternoon'; label = '● 实时';
+    }
+
+    return {
+      aTrading: aTrading,
+      hkTrading: hkTrading,
+      session: session,
+      label: label,
+      now: now
+    };
+  }
+
+  // Fetch data from qt.gtimg.cn — pure script tag injection (most reliable cross-domain)
+  function fetchQtData(callback) {
+    var codes = ALL_CODES.join(',');
+    var url = 'https://qt.gtimg.cn/q=' + codes + '&_t=' + Date.now();
+    var resolved = false;
+    var failTimer = null;
+
+    function resolve(data) {
+      if (resolved) return;
+      resolved = true;
+      if (failTimer) clearTimeout(failTimer);
+      callback(data);
+    }
+
+    // Use script tag injection — qt.gtimg.cn returns JS variable assignments
+    // which set global vars like v_sh000001 when loaded as a <script>
+    var script = document.createElement('script');
+    script.src = url;
+
+    script.onload = function() {
+      var lines = [];
+      ALL_CODES.forEach(function(code) {
+        var val = window['v_' + code];
+        if (val !== undefined && val !== null) {
+          lines.push('v_' + code + '="' + String(val).replace(/"/g, '\\"') + '"');
+        }
+      });
+      script.remove();
+      if (lines.length > 0) {
+        resolve(parseQtResponse(lines.join('\n')));
+      } else {
+        resolve(null);
+      }
+    };
+
+    script.onerror = function() {
+      script.remove();
+      resolve(null);
+    };
+
+    document.head.appendChild(script);
+
+    // 3-second timeout fallback
+    failTimer = setTimeout(function() {
+      resolve(null);
+    }, 3000);
+  }
+
+  // Parse qt.gtimg.cn text response into structured data
+  function parseQtResponse(text) {
+    var data = {};
+    var lines = text.split('\n');
+    lines.forEach(function(line) {
+      var match = line.match(/v_(\w+)="(.+)"/);
+      if (!match) return;
+      var code = match[1];
+      var fields = match[2].split('~');
+      if (fields.length < 35) return;
+
+      // Field mapping (0-based):
+      // 1=name, 3=price, 4=prev_close, 30=time, 31=change, 32=change_pct, 33=high, 34=low
+      var name      = fields[1] || '';
+      var price     = parseFloat(fields[3]);
+      var prevClose = parseFloat(fields[4]);
+      var time      = fields[30] || '';
+      var change    = parseFloat(fields[31]);
+      var pct       = parseFloat(fields[32]);
+      var high      = parseFloat(fields[33]);
+      var low       = parseFloat(fields[34]);
+
+      if (isNaN(price)) return;
+
+      // Check if data is stale (HK holiday → data timestamp is from previous day)
+      var isStale = false;
+      if (INDICES[code] && INDICES[code].market === 'hk') {
+        var today = new Date();
+        var todayStr = today.getFullYear() + '' +
+          ('0' + (today.getMonth() + 1)).slice(-2) +
+          ('0' + today.getDate()).slice(-2);
+        if (time && time.indexOf(todayStr) === -1) {
+          isStale = true;
+        }
+      }
+
+      data[code] = {
+        name: name,
+        price: price,
+        prevClose: prevClose,
+        change: change,
+        pct: pct,
+        high: high,
+        low: low,
+        time: time,
+        isStale: isStale
+      };
+    });
+    return data;
+  }
+
+  // Format number with commas and decimals
+  function fmtPrice(val, decimals) {
+    if (val == null || isNaN(val)) return '—';
+    return val.toLocaleString('zh-CN', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function fmtPct(val) {
+    if (val == null || isNaN(val)) return '—';
+    var sign = val >= 0 ? '+' : '';
+    return sign + val.toFixed(2) + '%';
+  }
+
+  function fmtTime(ts) {
+    if (!ts) return '';
+    // ts format: "20260701142042" or "2026/06/30 16:08:28"
+    if (ts.length === 14) {
+      return ts.substr(8,2) + ':' + ts.substr(10,2) + ':' + ts.substr(12,2);
+    }
+    if (ts.length > 10) {
+      return ts.substr(11, 8);
+    }
+    return ts;
+  }
+
+  // Color class for percentage
+  function pctClass(val) {
+    if (val == null || isNaN(val)) return 'neutral';
+    return val > 0 ? 'up' : (val < 0 ? 'down' : 'neutral');
+  }
+
+  // Update a single tab's index cards with data
+  function updateTabIndices(prefix, data, status) {
+    Object.keys(INDICES).forEach(function(code) {
+      var idx = INDICES[code];
+      var item = data[code];
+      var isHK = (idx.market === 'hk');
+      var isStale = item && item.isStale;
+
+      var priceEl = document.getElementById(prefix + '-price-' + code);
+      var pctEl   = document.getElementById(prefix + '-pct-' + code);
+      var timeEl  = document.getElementById(prefix + '-time-' + code);
+
+      if (!priceEl) return;
+
+      if (isStale) {
+        // HK holiday: keep existing data
+        return;
+      }
+
+      if (item) {
+        priceEl.textContent = fmtPrice(item.price, idx.decimals);
+        var pctText = fmtPct(item.pct);
+        pctEl.textContent = pctText;
+        pctEl.className = 'index-change ' + pctClass(item.pct);
+
+        if (timeEl) {
+          if (prefix === 'm') {
+            timeEl.textContent = '11:30 午盘收盘';
+          } else {
+            var t = fmtTime(item.time);
+            timeEl.textContent = status === 'live' ? '更新 ' + t : (t || '');
+          }
+        }
+      }
+    });
+  }
+
+  // Update status badges
+  function updateStatusBadges(status) {
+    var mBadge = document.getElementById('morning-status-badge');
+    var fBadge = document.getElementById('fullday-status-badge');
+
+    if (fBadge) {
+      if (status.aTrading) {
+        fBadge.textContent = status.label;
+        fBadge.className = 'status-badge live';
+      } else if (status.session === 'lunch') {
+        fBadge.textContent = '午间休市';
+        fBadge.className = 'status-badge pending';
+      } else if (status.session === 'pre_market') {
+        fBadge.textContent = '待开盘';
+        fBadge.className = 'status-badge pending';
+      } else {
+        fBadge.textContent = '已收盘';
+        fBadge.className = 'status-badge frozen';
+      }
+    }
+
+    if (mBadge) {
+      if (status.session === 'a_morning') {
+        mBadge.textContent = status.label;
+        mBadge.className = 'status-badge live';
+      } else {
+        mBadge.textContent = '已收盘';
+        mBadge.className = 'status-badge frozen';
+      }
+    }
+
+    // Update fullday placeholder card text
+    updateFulldayPlaceholder(status);
+  }
+
+  // Update fullday tab placeholder text
+  function updateFulldayPlaceholder(status) {
+    var waitCard = document.getElementById('fullday-wait-card');
+    if (!waitCard) return;
+    var h3 = waitCard.querySelector('h3');
+    var p = waitCard.querySelector('p');
+    if (!h3 || !p) return;
+
+    if (status.aTrading) {
+      h3.textContent = '📡 指数数据实时刷新中…';
+      p.textContent = '交易时段内每15分钟自动更新。完整分析（行业排名/原因拆解/涨跌分布）将于A股15:00收盘后由自动化产出。';
+      h3.style.color = '#555';
+    } else if (status.session === 'lunch') {
+      h3.textContent = '🍱 午间休市 — 指数暂不更新';
+      p.textContent = 'A股下午13:00恢复交易后指数数据将自动刷新。完整分析将于收盘后产出。';
+      h3.style.color = '#b8860b';
+    } else if (status.session === 'closed' || status.session === 'weekend') {
+      h3.textContent = '⏳ 市场已收盘 — 等待自动化产出';
+      p.textContent = '完整分析（行业排名/原因拆解/涨跌分布/新闻归因）产出中，将在15:10自动更新。下方显示的是收盘时刻的指数快照。';
+      h3.style.color = '#999';
+    } else if (status.session === 'pre_market') {
+      h3.textContent = '🌅 等待开盘 — 9:30开始实时刷新';
+      p.textContent = 'A股上午9:30开盘后指数数据将每15分钟自动刷新。';
+      h3.style.color = '#3498db';
+    }
+  }
+
+  // Render sector rankings (TOP5/BOTTOM5) in the fullday tab
+  function renderSectorRankings(data) {
+    // Collect sector data
+    var sectors = [];
+    Object.keys(SECTORS).forEach(function(code) {
+      var item = data[code];
+      if (item && !item.isStale && !isNaN(item.pct)) {
+        sectors.push({ name: item.name || SECTORS[code], pct: item.pct });
+      }
+    });
+    if (sectors.length < 5) return;
+
+    // Sort by pct descending
+    sectors.sort(function(a, b) { return b.pct - a.pct; });
+
+    // Render TOP5
+    var top5El = document.getElementById('fullday-top5-body');
+    if (top5El) {
+      var html = '<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>';
+      sectors.slice(0, 5).forEach(function(s, i) {
+        var cls = s.pct >= 0 ? 'sector-up' : 'sector-down';
+        var sign = s.pct >= 0 ? '+' : '';
+        html += '<tr><td>' + (i + 1) + '</td><td>' + s.name + '</td><td class="' + cls + '">' + sign + s.pct.toFixed(2) + '%</td></tr>';
+      });
+      top5El.innerHTML = html;
+    }
+
+    // Render BOTTOM5
+    var bot5El = document.getElementById('fullday-bot5-body');
+    if (bot5El) {
+      var html = '<tr><th>排名</th><th>行业</th><th>涨跌幅</th></tr>';
+      sectors.slice(-5).reverse().forEach(function(s, i) {
+        var cls = s.pct >= 0 ? 'sector-up' : 'sector-down';
+        var sign = s.pct >= 0 ? '+' : '';
+        html += '<tr><td>' + (i + 1) + '</td><td>' + s.name + '</td><td class="' + cls + '">' + sign + s.pct.toFixed(2) + '%</td></tr>';
+      });
+      bot5El.innerHTML = html;
+    }
+
+    // Update header timestamps
+    var top5Hdr = document.getElementById('fullday-top5-hdr');
+    var bot5Hdr = document.getElementById('fullday-bot5-hdr');
+    var now = new Date();
+    var ts = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+    if (top5Hdr) top5Hdr.textContent = '🔺 行业涨幅 TOP 5（实时 · ' + ts + '）';
+    if (bot5Hdr) bot5Hdr.textContent = '🔻 行业跌幅 BOTTOM 5（实时 · ' + ts + '）';
+  }
+
+  // Main refresh cycle
+  function refresh() {
+    var status = getTradingStatus();
+    updateStatusBadges(status);
+
+    // Determine which tabs to refresh
+    var refreshMorning = (status.session === 'a_morning');
+    var refreshFullday = status.aTrading;
+
+    if (!refreshMorning && !refreshFullday) {
+      // No trading — skip API call
+      return;
+    }
+
+    fetchQtData(function(data) {
+      if (!data) return;
+
+      // Save morning snapshot at the right time
+      if (status.session === 'a_morning') {
+        morningSnapshot = data;
+      }
+
+      // Fullday tab: refresh if A-share is trading
+      if (refreshFullday) {
+        updateTabIndices('f', data, 'live');
+        renderSectorRankings(data);
+      }
+
+      // Morning tab: only refresh during morning session
+      if (refreshMorning) {
+        updateTabIndices('m', data, 'live');
+        renderSectorRankings(data);
+      }
+    });
+  }
+
+  // Initialize
+  function init() {
+    detectHKHoliday();
+    var status = getTradingStatus();
+
+    // 下午交易时段(13:00-15:00)：自动切换到全日Tab为默认视图
+    if (status.session === 'a_afternoon') {
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+      var fBtn = document.querySelector('.tab-btn[onclick*="fullday"]');
+      var fTab = document.getElementById('tab-fullday');
+      if (fBtn) fBtn.classList.add('active');
+      if (fTab) fTab.classList.add('active');
+    }
+
+    // Set fullday status on load
+    updateStatusBadges(status);
+
+    // If in trading hours, do immediate refresh
+    if (status.aTrading || status.session === 'a_morning') {
+      refresh();
+    }
+
+    // Set up periodic refresh every 15 minutes
+    setInterval(function() {
+      var s = getTradingStatus();
+
+      if (s.aTrading || s.session === 'a_morning') {
+        refresh();
+      } else {
+        // No trading — just update badges and placeholder text
+        updateStatusBadges(s);
+      }
+    }, 900000);
+  }
+
+  // Start on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
