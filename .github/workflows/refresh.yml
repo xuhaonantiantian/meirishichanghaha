@@ -2,9 +2,10 @@ name: Refresh Market Dashboard
 
 on:
   schedule:
-    # Runs at minute 0,15,30,45 during UTC hours 1-6 (Beijing 9:00-14:45) Mon-Fri
-    - cron: '*/15 1-6 * * 1-5'
-  workflow_dispatch:  # Allow manual trigger
+    # Every 10 min during UTC 1-6 (Beijing 9:00-14:50) Mon-Fri
+    # Script auto-skips outside 9:30-15:00 China time
+    - cron: '*/10 1-6 * * 1-5'
+  workflow_dispatch:
 
 permissions:
   contents: write
