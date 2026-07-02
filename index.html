@@ -1,841 +1,1661 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- 寰俊缂撳瓨绂佹锛氭瘡娆℃墦寮€鎷夊彇鏈€鏂板唴瀹?-->
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
 <meta http-equiv="Pragma" content="no-cache">
+
 <meta http-equiv="Expires" content="0">
+
 <title>2026骞?鏈?鏃?甯傚満鏁版嵁鐪嬫澘 | 鍛嗗憜</title>
+
 <style>
+
   :root {
+
     --bg: #f5f6f8;
+
     --card-bg: #ffffff;
+
     --text: #1a1a2e;
+
     --text-secondary: #666;
+
     --red: #e74c3c;
+
     --green: #27ae60;
+
     --blue: #2c3e50;
+
     --border: #e8ecf0;
+
     --accent: #3498db;
+
     --warning: #f39c12;
+
     --tag-bg: #f0f4f8;
+
   }
+
+
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+
+
   body {
+
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+
     background: var(--bg);
+
     color: var(--text);
+
     line-height: 1.6;
+
     padding: 20px;
+
   }
+
+
 
   .container {
+
     max-width: 1400px;
+
     margin: 0 auto;
+
   }
+
+
 
   /* Header */
+
   .header {
+
     text-align: center;
+
     padding: 30px 20px;
+
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
     border-radius: 16px;
+
     color: white;
+
     margin-bottom: 24px;
+
   }
+
   .header h1 {
+
     font-size: 28px;
+
     font-weight: 700;
+
     letter-spacing: 0.5px;
+
   }
+
   .header .subtitle {
+
     font-size: 14px;
+
     opacity: 0.7;
+
     margin-top: 6px;
+
   }
+
   .header .meta {
+
     display: flex;
+
     justify-content: center;
+
     gap: 24px;
+
     margin-top: 16px;
+
     font-size: 13px;
+
     opacity: 0.8;
+
   }
+
+
 
   /* Summary Banner */
+
   .summary-banner {
+
     background: #fff;
+
     border-radius: 12px;
+
     padding: 20px 24px;
+
     margin-bottom: 20px;
+
     border-left: 4px solid var(--accent);
+
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+
   }
+
   .summary-banner .tag {
+
     display: inline-block;
+
     background: var(--red);
+
     color: white;
+
     padding: 2px 10px;
+
     border-radius: 4px;
+
     font-size: 12px;
+
     margin-right: 8px;
+
   }
+
   .summary-banner .summary-text {
+
     font-size: 15px;
+
     font-weight: 600;
+
     color: #1a1a2e;
+
   }
+
   .summary-banner .detail-text {
+
     font-size: 13px;
+
     color: #666;
+
     margin-top: 6px;
+
   }
+
+
 
   /* Section Title */
+
   .section-title {
+
     font-size: 20px;
+
     font-weight: 700;
+
     color: var(--blue);
+
     margin: 32px 0 16px;
+
     padding-bottom: 8px;
+
     border-bottom: 2px solid var(--accent);
+
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
   }
+
   .section-title .icon {
+
     font-size: 22px;
+
   }
+
+
 
   /* Grid Layout */
+
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
 
+
+
   /* Cards */
+
   .card {
+
     background: var(--card-bg);
+
     border-radius: 12px;
+
     padding: 20px;
+
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+
   }
+
   .card h3 {
+
     font-size: 16px;
+
     font-weight: 600;
+
     margin-bottom: 12px;
+
     color: var(--blue);
+
   }
+
+
 
   /* Index Cards */
+
   .index-grid {
+
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 12px;
+
     margin-bottom: 20px;
+
   }
+
   .index-card {
+
     background: white;
+
     border-radius: 10px;
+
     padding: 16px;
+
     text-align: center;
+
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+
     border: 1px solid var(--border);
+
   }
+
   .index-card .index-name {
+
     font-size: 12px;
+
     color: #999;
+
     margin-bottom: 4px;
+
   }
+
   .index-card .index-price {
+
     font-size: 22px;
+
     font-weight: 700;
+
     margin-bottom: 4px;
+
   }
+
   .index-card .index-change {
+
     font-size: 14px;
+
     font-weight: 600;
+
   }
+
   .index-card .index-change.down { color: var(--green); }
+
   .index-card .index-change.up { color: var(--red); }
+
   .market-tag {
+
     display: inline-block;
+
     font-size: 10px;
+
     padding: 1px 6px;
+
     border-radius: 3px;
+
     margin-bottom: 4px;
+
   }
+
   .market-tag.a-share { background: #ffe0e0; color: #c0392b; }
+
   .market-tag.hk-share { background: #e0f0ff; color: #2980b9; }
 
+
+
   /* Sector Table */
+
   table {
+
     width: 100%;
+
     border-collapse: collapse;
+
     font-size: 13px;
+
   }
+
   th {
+
     text-align: left;
+
     padding: 8px 10px;
+
     background: #f8f9fb;
+
     color: #666;
+
     font-weight: 600;
+
     border-bottom: 2px solid #e8ecf0;
+
     font-size: 12px;
+
   }
+
   td {
+
     padding: 8px 10px;
+
     border-bottom: 1px solid #f0f2f5;
+
   }
+
   .sector-up { color: var(--red); font-weight: 600; }
+
   .sector-down { color: var(--green); font-weight: 600; }
 
+
+
   /* Reason Badge */
+
   .reason-badge {
+
     font-size: 11px;
+
     background: var(--tag-bg);
+
     padding: 2px 8px;
+
     border-radius: 4px;
+
     color: #555;
+
     display: inline-block;
+
     max-width: 220px;
+
     line-height: 1.4;
+
   }
+
+
 
   /* Cause List */
+
   .cause-list {
+
     list-style: none;
+
     counter-reset: cause;
+
   }
+
   .cause-list li {
+
     counter-increment: cause;
+
     padding: 10px 14px;
+
     margin-bottom: 8px;
+
     background: #f8f9fb;
+
     border-radius: 8px;
+
     font-size: 13px;
+
     line-height: 1.6;
+
   }
+
   .cause-list li::before {
+
     content: counter(cause);
+
     display: inline-block;
+
     width: 20px;
+
     height: 20px;
+
     background: var(--accent);
+
     color: white;
+
     border-radius: 50%;
+
     text-align: center;
+
     line-height: 20px;
+
     font-size: 11px;
+
     font-weight: 700;
+
     margin-right: 8px;
+
   }
+
+
 
   /* Stats Row */
+
   .stats-row {
+
     display: flex;
+
     gap: 16px;
+
     flex-wrap: wrap;
+
     margin-bottom: 20px;
+
   }
+
   .stat-item {
+
     flex: 1;
+
     min-width: 120px;
+
     background: white;
+
     border-radius: 10px;
+
     padding: 14px 16px;
+
     text-align: center;
+
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+
     border: 1px solid var(--border);
+
   }
+
   .stat-item .stat-value {
+
     font-size: 20px;
+
     font-weight: 700;
+
   }
+
   .stat-item .stat-label {
+
     font-size: 11px;
+
     color: #999;
+
     margin-top: 2px;
+
   }
+
   .stat-item .stat-value.red { color: var(--red); }
+
   .stat-item .stat-value.green { color: var(--green); }
 
+
+
   /* Tabs */
+
   .tabs {
+
     display: flex;
+
     gap: 4px;
+
     margin-bottom: 20px;
+
     background: white;
+
     border-radius: 10px;
+
     padding: 4px;
+
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+
     overflow-x: auto;
+
     -webkit-overflow-scrolling: touch;
+
   }
+
   .tab-btn {
+
     flex: 1;
+
     min-width: 0;
+
     padding: 10px 12px;
+
     border: none;
+
     background: transparent;
+
     border-radius: 8px;
+
     cursor: pointer;
+
     font-size: 14px;
+
     font-weight: 600;
+
     color: #999;
+
     transition: all 0.2s;
+
     white-space: nowrap;
+
     overflow: hidden;
+
     text-overflow: ellipsis;
+
   }
+
   .tab-btn.active {
+
     background: var(--blue);
+
     color: white;
+
   }
+
   .tab-content { display: none; }
+
   .tab-content.active { display: block; }
 
+
+
   /* Market breadth bar - decorative bar */
+
   .breadth-bar {
+
     display: flex;
+
     height: 20px;
+
     border-radius: 10px;
+
     overflow: hidden;
+
     margin: 8px 0;
+
   }
+
   .breadth-bar .up { background: var(--red); }
+
   .breadth-bar .flat { background: #ccc; }
+
   .breadth-bar .down { background: var(--green); }
+
+
 
   /* Sun donut chart */
+
   .sun-chart-wrap {
+
     display: flex;
+
     align-items: center;
+
     gap: 16px;
+
     margin: 10px 0;
+
   }
+
   .sun-chart {
+
     width: 72px;
+
     height: 72px;
+
     border-radius: 50%;
+
     flex-shrink: 0;
+
     position: relative;
+
   }
+
   .sun-chart-inner {
+
     position: absolute;
+
     inset: 14px;
+
     background: var(--card-bg);
+
     border-radius: 50%;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     font-size: 11px;
+
     font-weight: 700;
+
     color: var(--text-secondary);
+
   }
+
   .sun-legend { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+
   .sun-legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
 
+
+
   /* Fund name in sector tables */
+
   .fund-cell { font-size: 11px; max-width: 160px; }
+
   .fund-sub-row td {
+
     padding: 2px 10px 8px !important;
+
     font-size: 11px !important;
+
     color: var(--text-secondary);
+
     border-bottom: 1px solid #e8ecf0;
+
   }
+
   .fund-sub-row .fund-label {
+
     color: #999;
+
     font-size: 10px;
+
   }
+
   .fund-sub-row .fund-name {
+
     color: var(--accent);
+
     font-weight: 600;
+
   }
+
+
 
   /* Excel-style sector row group */
+
   .sector-row td { border-bottom: none; padding-bottom: 2px; vertical-align: middle; }
+
   .fund-row td { padding-top: 2px !important; padding-bottom: 8px !important; border-bottom: 1px solid #e8ecf0; font-size: 11px; color: var(--text-secondary); }
+
   .fund-row .fund-label { color: #999; font-size: 10px; }
+
   .fund-row .fund-name { color: var(--accent); font-weight: 600; }
+
   .breadth-bar .flat { background: #ccc; }
+
   .breadth-bar .down { background: var(--green); }
 
+
+
   .disclaimer {
+
     text-align: center;
+
     font-size: 11px;
+
     color: #aaa;
+
     margin-top: 32px;
+
     padding: 16px;
+
     border-top: 1px solid var(--border);
+
   }
+
+
 
   /* Guide tab styles */
+
   .timeline-item {
+
     display: flex;
+
     gap: 12px;
+
     padding: 14px 0;
+
     border-bottom: 1px solid var(--border);
+
     align-items: flex-start;
-  }
-  .timeline-item:last-child { border-bottom: none; }
-  .time-dot {
-    flex-shrink: 0;
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-  }
-  .time-dot.morning { background: #f0a060; }
-  .time-dot.ashare  { background: #e74c3c; }
-  .time-dot.fullday { background: #3b6df0; }
-  .time-dot.usstock { background: #8e44ad; }
-  .time-info { flex: 1; min-width: 0; }
-  .time-info .time { font-size: 18px; font-weight: 700; }
-  .time-info .label { font-size: 14px; color: var(--text); margin-top: 2px; }
-  .time-info .detail { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
-  .market-badges { display: flex; gap: 4px; margin-top: 6px; }
-  .badge {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-weight: 600;
-  }
-  .badge.a { background: #ffe8e5; color: #c0392b; }
-  .badge.hk { background: #e5f2ff; color: #2471a3; }
-  .badge.us { background: #ede0f5; color: #7d3c98; }
-  .source-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    padding: 8px 0;
-  }
-  .source-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: #eef2ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
+
   }
 
-  @media (max-width: 768px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    .index-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
-    .tab-btn { font-size: 12px; padding: 8px 10px; }
-    .header h1 { font-size: 20px; }
-    .summary-banner .summary-text { font-size: 13px; }
-    body { padding: 12px; }
-    .section-title { font-size: 17px; }
-    table { font-size: 11px; }
-    th, td { padding: 6px 6px; }
-    .reason-badge { max-width: 130px; font-size: 10px; }
-    .index-card { padding: 6px 4px; }
-    .index-card .index-name { font-size: 9px; margin-bottom: 2px; }
-    .index-card .index-price { font-size: 13px; margin-bottom: 2px; }
-    .index-card .index-change { font-size: 11px; }
-    .index-card .market-tag { font-size: 8px; padding: 0 4px; margin-bottom: 2px; }
-    .fund-cell { font-size: 10px; max-width: 110px; }
-    .sun-chart { width: 60px; height: 60px; }
-    .sun-chart-inner { inset: 12px; font-size: 10px; }
-    .stats-row { gap: 6px; margin-bottom: 0; }
-    .stat-item { padding: 6px 4px; min-width: 0; }
-    .stat-item .stat-value { font-size: 12px; }
-    .stat-item .stat-label { font-size: 9px; }
-    .card { padding: 12px; margin-bottom: 12px; }
-    .card h3 { font-size: 13px; margin-bottom: 8px; }
-    .cause-list li { font-size: 12px; padding: 8px 10px; }
-    .cause-list li::before { width: 16px; height: 16px; line-height: 16px; font-size: 9px; margin-right: 6px; }
-    .fund-row td { font-size: 10px !important; padding-top: 1px !important; padding-bottom: 6px !important; }
-    .fund-row .fund-label { font-size: 9px; }
+  .timeline-item:last-child { border-bottom: none; }
+
+  .time-dot {
+
+    flex-shrink: 0;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #fff;
+
   }
+
+  .time-dot.morning { background: #f0a060; }
+
+  .time-dot.ashare  { background: #e74c3c; }
+
+  .time-dot.fullday { background: #3b6df0; }
+
+  .time-dot.usstock { background: #8e44ad; }
+
+  .time-info { flex: 1; min-width: 0; }
+
+  .time-info .time { font-size: 18px; font-weight: 700; }
+
+  .time-info .label { font-size: 14px; color: var(--text); margin-top: 2px; }
+
+  .time-info .detail { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+  .market-badges { display: flex; gap: 4px; margin-top: 6px; }
+
+  .badge {
+
+    font-size: 10px;
+
+    padding: 2px 8px;
+
+    border-radius: 3px;
+
+    font-weight: 600;
+
+  }
+
+  .badge.a { background: #ffe8e5; color: #c0392b; }
+
+  .badge.hk { background: #e5f2ff; color: #2471a3; }
+
+  .badge.us { background: #ede0f5; color: #7d3c98; }
+
+  .source-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 13px;
+
+    color: var(--text-secondary);
+
+    padding: 8px 0;
+
+  }
+
+  .source-icon {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 8px;
+
+    background: #eef2ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 14px;
+
+    flex-shrink: 0;
+
+  }
+
+
+
+  @media (max-width: 768px) {
+
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+    .index-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+
+    .tab-btn { font-size: 12px; padding: 8px 10px; }
+
+    .header h1 { font-size: 20px; }
+
+    .summary-banner .summary-text { font-size: 13px; }
+
+    body { padding: 12px; }
+
+    .section-title { font-size: 17px; }
+
+    table { font-size: 11px; }
+
+    th, td { padding: 6px 6px; }
+
+    .reason-badge { max-width: 130px; font-size: 10px; }
+
+    .index-card { padding: 6px 4px; }
+
+    .index-card .index-name { font-size: 9px; margin-bottom: 2px; }
+
+    .index-card .index-price { font-size: 13px; margin-bottom: 2px; }
+
+    .index-card .index-change { font-size: 11px; }
+
+    .index-card .market-tag { font-size: 8px; padding: 0 4px; margin-bottom: 2px; }
+
+    .fund-cell { font-size: 10px; max-width: 110px; }
+
+    .sun-chart { width: 60px; height: 60px; }
+
+    .sun-chart-inner { inset: 12px; font-size: 10px; }
+
+    .stats-row { gap: 6px; margin-bottom: 0; }
+
+    .stat-item { padding: 6px 4px; min-width: 0; }
+
+    .stat-item .stat-value { font-size: 12px; }
+
+    .stat-item .stat-label { font-size: 9px; }
+
+    .card { padding: 12px; margin-bottom: 12px; }
+
+    .card h3 { font-size: 13px; margin-bottom: 8px; }
+
+    .cause-list li { font-size: 12px; padding: 8px 10px; }
+
+    .cause-list li::before { width: 16px; height: 16px; line-height: 16px; font-size: 9px; margin-right: 6px; }
+
+    .fund-row td { font-size: 10px !important; padding-top: 1px !important; padding-bottom: 6px !important; }
+
+    .fund-row .fund-label { font-size: 9px; }
+
+  }
+
+
+
 
 
   /* Mobile: header meta wrap */
+
   .header .meta {
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     row-gap: 6px;
+
   }
+
+
 
   /* Mobile: summary banner tag inline */
+
   .summary-banner .tag {
+
     vertical-align: middle;
+
     margin-bottom: 4px;
+
   }
+
+
 
   /* Mobile: index grid 2 columns for narrow screens */
+
   @media (max-width: 400px) {
+
     .index-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
     .index-card .index-price { font-size: 11px !important; }
+
     .index-card .index-change { font-size: 10px !important; }
+
   }
+
+
 
   /* Mobile: stats row 2 columns */
+
   @media (max-width: 400px) {
+
     .stat-item { flex: 0 0 calc(50% - 3px); min-width: 0; }
+
   }
+
+
 
   /* Mobile: reason badge wider */
+
   @media (max-width: 768px) {
+
     .reason-badge { max-width: 100% !important; white-space: normal !important; }
+
   }
+
+
 
   /* Mobile: table cells less padding */
+
   @media (max-width: 480px) {
+
     th, td { padding: 5px 4px !important; font-size: 10px !important; }
+
     .fund-row td { font-size: 9px !important; }
+
   }
+
+
 
   /* Live indicator */
+
   .status-badge {
+
     display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px;
+
     margin-left: 6px; vertical-align: middle; font-weight: 600;
+
   }
+
   .status-badge.live { background: #ffe8e5; color: #c0392b; animation: livePulse 1.8s infinite; }
+
   .status-badge.frozen { background: #f0f2f5; color: #999; }
+
   .status-badge.pending { background: #fff8e5; color: #b8860b; }
+
   @keyframes livePulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
   .index-time { font-size: 10px; color: #999; margin-top: 2px; }
+
   .index-change { font-size: 14px; font-weight: 600; }
+
   .index-change.up { color: var(--red); }
+
   .index-change.down { color: var(--green); }
+
   .index-change.neutral { color: #999; }
+
   @media (max-width:768px) { .status-badge{font-size:9px;padding:1px 6px} .index-time{font-size:8px} }
 
+
+
 </style>
+
 </head>
+
 <body>
+
 <div class="container">
 
+
+
   <!-- Header -->
+
   <div class="header">
+
     <h1>馃搳 甯傚満鏁版嵁鐪嬫澘</h1>
-    <div class="subtitle">A鑲?+ 娓偂 鈥?浜ゆ槗鏃ユ暟鎹€荤粨锛堝崍鐩樺揩鐓э級</div>
+
+    <div class="subtitle">A鑲″叏鏃ユ敹鐩樻€荤粨 鈥?绉戞妧宕╃洏鏃ワ紝绉戝垱50鏆磋穼7.70%</div>
+
     <div class="meta">
+
       <span>馃搮 2026骞?鏈?鏃ワ紙鏄熸湡鍥涳級</span>
+
       <span>馃搱 鏁版嵁鏉ユ簮锛氳吘璁嚜閫夎偂</span>
+
       <span>馃 鍛嗗憜路鏅鸿兘鍔╃悊</span>
+
     </div>
+
   </div>
+
+
 
   <!-- Summary Banner -->
-  <div class="summary-banner">
-    <span class="tag">鈿?绉戞妧缁х画閲嶆尗</span>
-    <span class="summary-text">A鑲″叏闈㈣蛋寮憋紒涓婅瘉-0.90%鏀?075鐐癸紝娣辫瘉-2.09%銆佸垱涓氭澘-3.47%銆佺鍒?0-4.61%澶у箙鍥炶皟銆傞€氫俊-4.83%銆佺數瀛?3.98%缁х画棰嗚穼锛涙湁鑹查噾灞?2.19%銆佹苯杞?1.70%閫嗗娍椋樼孩銆傛腐鑲℃亽鐢?1.19%銆佹亽绉?0.62%鐙珛鏀剁孩銆備袱甯?8%涓偂涓婃定锛屾垚浜ょ缉閲忚嚦2.24涓囦嚎锛堣緝涓婃棩-1780浜匡級</span>
-    <div class="detail-text">鏍稿績椹卞姩锛氱鎶€璧涢亾杩炵画绗笁澶╁洖璋冿紙閫氫俊涓ゆ棩绱-9.2% 鈫?骞村唴娑ㄥ箙浠嶆湁+59%鑾峰埄鍥炲悙鍘嬪姏锛夆啋 A鑲℃寚鏁板叏绾胯蛋寮变絾涓偂娑ㄥ璺屽皯锛?浜屽叓鍒嗗寲"锛屾潈閲嶈偂鎷栫疮鎸囨暟锛夆啋 璧勯噾浠庣鎶€鍚戝懆鏈?浼犵粺鏉垮潡杩佺Щ锛堟湁鑹查噾灞?2.19%銆佹苯杞?1.70%銆佸熀纭€鍖栧伐+1.29%锛夆啋 娓偂璧勯噾闈㈢嫭绔嬶紝鎭掓寚鎭掔閫嗗娍鏀剁孩銆傚吀鍨嬬殑"鎸囨暟璺屻€佷釜鑲℃定"鍒嗗寲鏍煎眬銆?/div>
+
+      <div class="summary-banner">
+
+    <span class="tag">鈿狅笍 绉戞妧宕╃洏</span>
+
+    <span class="summary-text">A鑲″叏绾块噸鎸紒涓婅瘉-2.03%鏀?029鐐癸紝娣辫瘉-3.85%銆佸垱涓氭澘-5.71%銆佺鍒?0鏆磋穼7.70%鍒涘勾鍐呮渶澶ц穼骞呫€傜鎶€鑲″穿鐩橈紙閫氫俊-7.36%/鐢靛瓙-7.15%锛夛紝鐓ょ偔+1.60%銆侀摱琛?1.08%閫嗗娍闃插尽锛涙腐鑲?6:10鏇存柊銆傚崕娑︽柊鑳芥簮涓婂競棣栨棩娑?36.89%锛屽叏鏃ユ垚浜?.45涓囦嚎</span>
+
+    <div class="detail-text">鏍稿績椹卞姩锛氱鎶€鑲￠泦涓幏鍒╀簡缁擄紙閫氫俊骞村唴+60%+銆佺數瀛?76%锛夆啋 涓姤瀛ｄ笟缁╀笉纭畾鎬цЕ鍙戣俯韪?鈫?鍗庢鼎鏂拌兘婧怚PO铏瑰惛鏁堝簲 鈫?璧勯噾鍒囨崲鑷崇叅鐐?閾惰/浼犲獟绛夐槻寰℃澘鍧?鈫?缇庤仈鍌ㄥ亸楣拌〃鎬佸帇鍒堕闄╁亸濂姐€傚吀鍨嬬殑"鏆村姏椋庢牸杞姩"浜ゆ槗鏃ワ紝鍓嶆湡娑ㄥ箙杩囧ぇ鐨勭鎶€璧涢亾閬亣闆嗕腑鎶涘敭銆?/div>
+
   </div>
+
+
 
   <!-- Tabs -->
+
   <div class="tabs">
-    <button class="tab-btn" onclick="switchTab('fullday', this)">鈽€锔?鍏ㄦ棩甯傚満鎬荤粨</button>
-    <button class="tab-btn active" onclick="switchTab('morning', this)">馃寘 鍗堢洏甯傚満鎬荤粨</button>
+
+    <button class="tab-btn active" onclick="switchTab('fullday', this)">鈽€锔?鍏ㄦ棩甯傚満鎬荤粨</button>
+
+    <button class="tab-btn" onclick="switchTab('morning', this)">馃寘 鍗堢洏甯傚満鎬荤粨</button>
+
     <button class="tab-btn" onclick="switchTab('guide', this)">馃搵 鐪嬫澘璇存槑</button>
+
   </div>
 
-  <!-- ==================== 鍏ㄦ棩甯傚満鎬荤粨锛堝崰浣嶏級 ==================== -->
-  <div class="tab-content" id="tab-fullday">
+
+
+      <div class="tab-content active" id="tab-fullday">
+
+    <!-- 鍘熷洜鎷嗚В -->
     <div class="card" style="margin-bottom:20px;">
-      <h3>馃攳 鍏ㄦ棩甯傚満椹卞姩鍥犵礌 <span id="fullday-status-badge" class="status-badge frozen">宸叉敹鐩?/span></h3>
-      <div id="fullday-analysis-placeholder">
-        <ol class="cause-list">
-          <li><strong>寰匒鑲℃敹鐩樺悗鏇存柊锛?5:10鎺ㄩ€佸叏鏃ュ垎鏋愶級</strong></li>
-          <li><strong>鈫?涓嬫柟鎸囨暟琛屾儏涓庤涓氭帓鍚嶄负鐩樹腑瀹炴椂鏁版嵁 鈫?/strong></li>
-        </ol>
+      <h3>馃攳 鍏ㄦ棩甯傚満椹卞姩鍥犵礌</h3>
+      <ol class="cause-list">
+        <li><strong>绉戞妧鍏ㄧ嚎宕╃洏锛岀鍒?0鏆磋穼7.70%锛?/strong>鍗婂浣?鍏夋ā鍧?PCB涓夊ぇ绉戞妧璧涢亾闆嗕綋閲嶆尗锛岀數瀛?7.15%銆侀€氫俊-7.36%灞呰涓氳穼骞呭墠鍒楋紝瀛樺偍榫欏ご鍏嗘槗鍒涙柊銆丳CB榫欏ご鍙屽弻璺屽仠锛岀鎶€鏉垮潡閬亣骞村唴鏈€澶у崟鏃ヨ穼骞呫€?/li>
+        <li><strong>鍗庢鼎鏂拌兘婧愪笂甯傝櫣鍚告晥搴旓細</strong>娣卞競鍙蹭笂鏈€澶PO棣栨棩娑?36.89%锛屽惛寮曞ぇ閲忔椿璺冭祫閲戯紝鍔犲墽瀛橀噺绉戞妧鏉垮潡娴佸姩鎬ф娊绂伙紝鍏ㄥぉ鎴愪氦瓒?.45涓囦嚎銆?/li>
+        <li><strong>闃插尽鏉垮潡閫嗗娍鍚搁噾锛?/strong>鐓ょ偔+1.60%銆侀摱琛?1.08%銆佷紶濯?1.17%閫嗗娍椋樼孩锛岃祫閲戜粠楂樹及鍊肩鎶€鍚戜綆浼板€间紶缁熸澘鍧楀垏鎹紝璐甸噾灞?5.43%棰嗘定姒傚康鏉垮潡锛岄粍閲戣偂闆嗕綋椋欏崌銆?/li>
+        <li><strong>涓姤涓氱哗棰勬湡涓诲椋庢牸杞姩锛?/strong>绉戞妧鑲″墠鏈熸定骞呰繃澶э紙閫氫俊骞村唴+60%+銆佺數瀛?76%锛夛紝涓姤瀛ｆ潵涓达紝鑾峰埄璧勯噾闆嗕腑鍏戠幇锛岃浆鍚戜笟缁╃‘瀹氭€ф洿楂樼殑鍛ㄦ湡/闃插尽鏉垮潡銆?/li>
+        <li><strong>缇庤仈鍌ㄦ矁浠€鍋忛拱琛ㄦ€佸帇鍒堕闄╁亸濂斤細</strong>缇庤仈鍌ㄤ富甯渶鏂拌〃鎬佸亸楣帮紝缇庡厓璧板己鍘嬪埗椋庨櫓璧勪骇锛屼絾缇庡浗灏忛潪鍐滀笌鍒堕€犱笟PMI鍙屽弻闄嶆俯鍙堜负闄嶆伅棰勬湡鐣欏嚭绌洪棿锛屽競鍦哄浜庢柟鍚戝崥寮堥樁娈点€?/li>
+      </ol>
+    </div>
+
+    <!-- 鍛嗗憜鎶曡祫瑙傚療绗旇锛堥噾瀛楀鍘熺悊锛氱粨璁哄厛琛?鈫?鍒嗘潯璁鸿瘉锛?-->
+    <div class="card" style="margin-bottom:20px; background:linear-gradient(135deg,#fff8f0,#fff0f5); border-left:4px solid #e88;">
+      <h3>馃尭 鍛嗗憜鎶曡祫瑙傚療绗旇</h3>
+      <div style="font-size:15px;font-weight:700;color:#c0392b;margin:10px 0;padding:10px 14px;background:#ffe8e5;border-radius:6px;line-height:1.7;">
+        馃搶 缁撹锛氱鎶€鏆磋穼鈮犵郴缁熸€ч闄╋紝鏄?鏆村姏鐗?椋庢牸杞姩鈥斺€旇幏鍒╃洏闆嗕腑鍏戠幇 + 鍗庢鼎IPO铏瑰惛鍙犲姞锛岃祫閲戞湭绂诲満锛屼腑鏈熼€昏緫瀹屽ソ銆傚缓璁槻寰￠厤缃€佹帶鍒朵粨浣嶃€佺瓑寰呬腑鎶ラ獙璇併€?
+      </div>
+      <ol class="cause-list" style="counter-reset:none;">
+        <li style="counter-increment:none;"><strong>涓轰粈涔堜笉鏄郴缁熸€ч闄╋紵</strong>铏界劧绉戝垱50鍗曟棩-7.70%鐪嬭捣鏉ュ悡浜猴紝浣嗙叅鐐?1.60%銆侀摱琛?1.08%鍚屾椂閫嗗娍璧板己锛岃鏄庤祫閲戝苟鏈鍦鸿€屾槸鍦ㄥぇ瑙勬ā璋冧粨銆備粖鏃ヨ穼鍋滈緳澶存垚浜よ秴300浜匡紝鏄绌烘縺鐑堝崥寮堣€岄潪鏃犻噺宕╄穼銆傚叏甯傚満娴佸姩鎬у厖娌涳紙3.45涓囦嚎鎴愪氦锛夛紝涓嶅叿澶囩郴缁熸€у穿鐩樻潯浠躲€?/li>
+        <li style="counter-increment:none;"><strong>鐭湡涓嶅疁鎶勫簳绉戞妧銆?/strong>閫氫俊涓ゆ棩绱-11.7%锛?4.83%鈫?7.36%锛夛紝浣嗚嚜浣庣偣浠ユ潵娑ㄥ箙浠嶈秴130%銆侫I浜т笟閾惧熀鏈潰鏈伓鍖栤€斺€斿崐瀵间綋閿€鍞4鏈堝悓姣?94%銆佸ぇ妯″瀷ARR鍗婂勾+112%鈥斺€旀毚璺屾潵鑷氦鏄撴嫢鎸ゅ害淇鑰岄潪閫昏緫璇佷吉銆備絾鍔ㄩ噺宸茬牬锛岃嚦灏戠瓑5鏃ュ潎绾胯蛋骞冲啀鍋氬垽鏂紝杩借穼椋庨櫓锛炴満浼氥€?/li>
+        <li style="counter-increment:none;"><strong>闃插尽閰嶇疆涓夋潯涓荤嚎锛?/strong>鈶犻珮鑲℃伅閾惰/鐓ょ偔鈥斺€斾粖鏃ラ€嗗娍楠岃瘉闃插尽閫昏緫锛岃偂鎭巼4-6%鍖洪棿鏈夊畨鍏ㄨ竟闄咃紱鈶＄瓑寰呬腑鎶ヤ笟缁╄秴棰勬湡鐨勭鎶€榫欏ご閲嶆柊涓婅溅鈥斺€擜I涓婃父鏉愭枡锛堟湁鑹?鍖栧伐鐩稿鎶楄穼锛夛紱鈶㈢幇閲戜粨浣嶄笉浣庝簬40%锛屼负鍚庣画椋庢牸鏄庢湕鐣欏瓙寮广€傛暣浣撲粨浣嶅缓璁墹60%銆?/li>
+      </ol>
+    </div>
+
+    <!-- 涓绘祦鎸囨暟 -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>馃搲 涓绘祦鎸囨暟 鈥?鍏ㄦ棩鏀剁洏 <span style="font-size:11px;color:#999;background:#f0f2f5;padding:2px 6px;border-radius:3px;">宸叉敹鐩?/span></h3>
+      <div class="index-grid" id="fullday-index-grid">
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">涓婅瘉鎸囨暟</div><div class="index-price">4,028.90</div><div class="index-change down">鈻?2.03%</div><div class="index-time">鍏ㄦ棩鏀剁洏</div></div>
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">娣辫瘉鎴愭寚</div><div class="index-price">15,498.81</div><div class="index-change down">鈻?3.85%</div><div class="index-time">鍏ㄦ棩鏀剁洏</div></div>
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">鍒涗笟鏉挎寚</div><div class="index-price">4,017.27</div><div class="index-change down">鈻?5.71%</div><div class="index-time">鍏ㄦ棩鏀剁洏</div></div>
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">绉戝垱50</div><div class="index-price">1,987.29</div><div class="index-change down">鈻?7.70%</div><div class="index-time">鍏ㄦ棩鏀剁洏</div></div>
+        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓鎸囨暟</div><div class="index-price">--</div><div class="index-change">16:10鏇存柊</div></div>
+        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓绉戞妧</div><div class="index-price">--</div><div class="index-change">16:10鏇存柊</div></div>
       </div>
     </div>
-    <div class="card" style="margin-bottom:20px;">
-      <h3>馃搲 涓绘祦鎸囨暟 <span id="fullday-idx-hdr-label" style="font-size:11px;color:#3b6df0;background:#e8efff;padding:2px 6px;border-radius:3px;">鍏ㄦ棩鏀剁洏</span></h3>
-      <div class="index-grid">
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">涓婅瘉鎸囨暟</div><div class="index-price" id="f-price-sh000001">--</div><div class="index-change" id="f-pct-sh000001">--</div><div class="index-time" id="f-time-sh000001"></div></div>
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">娣辫瘉鎴愭寚</div><div class="index-price" id="f-price-sz399001">--</div><div class="index-change" id="f-pct-sz399001">--</div><div class="index-time" id="f-time-sz399001"></div></div>
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">鍒涗笟鏉挎寚</div><div class="index-price" id="f-price-sz399006">--</div><div class="index-change" id="f-pct-sz399006">--</div><div class="index-time" id="f-time-sz399006"></div></div>
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">绉戝垱50</div><div class="index-price" id="f-price-sh000688">--</div><div class="index-change" id="f-pct-sh000688">--</div><div class="index-time" id="f-time-sh000688"></div></div>
-        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓鎸囨暟</div><div class="index-price" id="f-price-hkHSI">--</div><div class="index-change" id="f-pct-hkHSI">--</div><div class="index-time" id="f-time-hkHSI"></div></div>
-        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓绉戞妧</div><div class="index-price" id="f-price-hkHSTECH">--</div><div class="index-change" id="f-pct-hkHSTECH">--</div><div class="index-time" id="f-time-hkHSTECH"></div></div>
-      </div>
-    </div>
-    <div class="grid-2">
+
+    <!-- 琛屼笟TOP5 / BOTTOM5 -->
+    <div class="grid-2" style="margin-bottom:20px;">
       <div class="card">
-        <h3 id="fullday-top5-hdr">馃敽 琛屼笟娑ㄥ箙 TOP 5</h3>
+        <h3>馃敽 娑ㄥ箙 TOP 5锛堝叏鏃ワ級</h3>
         <div style="overflow-x:auto;"><table>
-          <thead><tr><th>鎺掑悕</th><th>琛屼笟</th><th>娑ㄨ穼骞?/th></tr></thead>
-          <tbody id="fullday-top5-body"><tr><td colspan="3" style="color:#999;text-align:center;">鐩樹腑瀹炴椂鍒锋柊涓€?/td></tr></tbody>
+          <thead><tr><th>鎺掑悕</th><th>琛屼笟</th><th>娑ㄨ穼骞?/th><th>寮傚姩鍘熷洜</th></tr></thead>
+          <tbody>
+          <tr class="sector-row"><td rowspan="2">1</td><td>鐓ょ偔</td><td class="sector-up">鈻?1.60%</td><td><span class="reason-badge">灞辩叅鍥介檯+5.49%棰嗘定锛岄珮鑲℃伅闃插尽灞炴€?/span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name">瀵屽浗涓瘉鐓ょ偔鎸囨暟(LOF)C(013275)</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">2</td><td>绾虹粐鏈嶉グ</td><td class="sector-up">鈻?1.58%</td><td><span class="reason-badge">娆ｉ緳鎺ц偂娑ㄥ仠+10.09%锛岀汉缁囧埗閫犲叏绾垮弽寮?/span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">3</td><td>浼犲獟</td><td class="sector-up">鈻?1.17%</td><td><span class="reason-badge">鏄嗕粦涓囩淮娑?2%锛屾父鎴?褰辫闄㈢嚎鍙嶅脊</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">4</td><td>閾惰</td><td class="sector-up">鈻?1.08%</td><td><span class="reason-badge">楂樿偂鎭?浣庝及鍊奸槻寰★紝閾惰閫嗗娍鍚搁噾</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">5</td><td>缇庡鎶ょ悊</td><td class="sector-up">鈻?0.77%</td><td><span class="reason-badge">姘寸緤鑲′唤娑ㄥ仠+19.99%锛屾秷璐归槻寰¤疆鍔?/span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
+          </tbody>
         </table></div>
       </div>
       <div class="card">
-        <h3 id="fullday-bot5-hdr">馃敾 琛屼笟璺屽箙 BOTTOM 5</h3>
+        <h3>馃敾 璺屽箙 BOTTOM 5锛堝叏鏃ワ級</h3>
         <div style="overflow-x:auto;"><table>
-          <thead><tr><th>鎺掑悕</th><th>琛屼笟</th><th>娑ㄨ穼骞?/th></tr></thead>
-          <tbody id="fullday-bot5-body"><tr><td colspan="3" style="color:#999;text-align:center;">鐩樹腑瀹炴椂鍒锋柊涓€?/td></tr></tbody>
+          <thead><tr><th>鎺掑悕</th><th>琛屼笟</th><th>娑ㄨ穼骞?/th><th>寮傚姩鍘熷洜</th></tr></thead>
+          <tbody>
+          <tr><td>1</td><td>閫氫俊</td><td class="sector-down">鈻?7.36%</td><td><span class="reason-badge">CPO/鍏夐€氫俊鏆磋穼锛孉I绠楀姏閾捐幏鍒╀簡缁?/span></td></tr>
+          <tr><td>2</td><td>鐢靛瓙</td><td class="sector-down">鈻?7.15%</td><td><span class="reason-badge">鍗婂浣?PCB/娑堣垂鐢靛瓙鍏ㄧ嚎宕╄穼</span></td></tr>
+          <tr><td>3</td><td>寤虹瓚鏉愭枡</td><td class="sector-down">鈻?3.30%</td><td><span class="reason-badge">鐜荤拑鐜荤氦-5.10%锛屽缓鏉愭澘鍧楁壙鍘?/span></td></tr>
+          <tr><td>4</td><td>璁＄畻鏈?/td><td class="sector-down">鈻?2.79%</td><td><span class="reason-badge">杞欢寮€鍙?2.43%锛孖T鏈嶅姟鍚屾鍥炶皟</span></td></tr>
+          <tr><td>5</td><td>鏈烘璁惧</td><td class="sector-down">鈻?2.56%</td><td><span class="reason-badge">閫氱敤璁惧-1.75%锛屽埗閫犱笟璧板急</span></td></tr>
+          </tbody>
         </table></div>
       </div>
     </div>
+
+    <!-- 鍏ㄨ涓氭帓鍚?+ 娑ㄨ穼鍒嗗竷 -->
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <h3>馃搳 30琛屼笟鍏ㄦ棩鎺掑悕</h3>
+        <div style="overflow-x:auto; max-height:520px; overflow-y:auto;"><table>
+          <thead><tr><th>鎺掑悕</th><th>琛屼笟</th><th>娑ㄨ穼骞?/th><th>鎹㈡墜鐜?/th></tr></thead>
+          <tbody>
+<tr><td>1</td><td>鐓ょ偔</td><td class="sector-up">+1.60%</td><td>1.01%</td></tr>
+<tr><td>2</td><td>绾虹粐鏈嶉グ</td><td class="sector-up">+1.58%</td><td>2.12%</td></tr>
+<tr><td>3</td><td>浼犲獟</td><td class="sector-up">+1.17%</td><td>3.45%</td></tr>
+<tr><td>4</td><td>閾惰</td><td class="sector-up">+1.08%</td><td>0.29%</td></tr>
+<tr><td>5</td><td>缇庡鎶ょ悊</td><td class="sector-up">+0.77%</td><td>1.94%</td></tr>
+<tr><td>6</td><td>鍐滄灄鐗ф笖</td><td class="sector-up">+0.55%</td><td>2.75%</td></tr>
+<tr><td>7</td><td>鏈夎壊閲戝睘</td><td class="sector-up">+0.34%</td><td>3.82%</td></tr>
+<tr><td>8</td><td>浜ら€氳繍杈?/td><td class="sector-up">+0.32%</td><td>0.85%</td></tr>
+<tr><td>9</td><td>姹借溅</td><td class="sector-up">+0.25%</td><td>2.07%</td></tr>
+<tr><td>10</td><td>鐭虫补鐭冲寲</td><td class="sector-up">+0.15%</td><td>0.48%</td></tr>
+<tr><td>11</td><td>椋熷搧楗枡</td><td class="sector-up">+0.03%</td><td>1.78%</td></tr>
+<tr><td>12</td><td>閽㈤搧</td><td class="sector-up">+0.03%</td><td>1.27%</td></tr>
+<tr><td>13</td><td>瀹剁敤鐢靛櫒</td><td class="sector-down">-0.07%</td><td>2.27%</td></tr>
+<tr><td>14</td><td>鍖昏嵂鐢熺墿</td><td class="sector-down">-0.13%</td><td>2.68%</td></tr>
+<tr><td>15</td><td>杞诲伐鍒堕€?/td><td class="sector-down">-0.43%</td><td>2.45%</td></tr>
+<tr><td>16</td><td>鍩虹鍖栧伐</td><td class="sector-down">-0.62%</td><td>3.65%</td></tr>
+<tr><td>17</td><td>鍏敤浜嬩笟</td><td class="sector-down">-0.70%</td><td>1.90%</td></tr>
+<tr><td>18</td><td>鍟嗚锤闆跺敭</td><td class="sector-down">-0.71%</td><td>2.07%</td></tr>
+<tr><td>19</td><td>缁煎悎</td><td class="sector-down">-0.76%</td><td>3.86%</td></tr>
+<tr><td>20</td><td>绀句細鏈嶅姟</td><td class="sector-down">-1.11%</td><td>2.86%</td></tr>
+<tr><td>21</td><td>寤虹瓚瑁呴グ</td><td class="sector-down">-1.39%</td><td>1.39%</td></tr>
+<tr><td>22</td><td>鎴垮湴浜?/td><td class="sector-down">-1.51%</td><td>1.93%</td></tr>
+<tr><td>23</td><td>闈為摱閲戣瀺</td><td class="sector-down">-2.09%</td><td>1.52%</td></tr>
+<tr><td>24</td><td>鐢靛姏璁惧</td><td class="sector-down">-2.43%</td><td>3.29%</td></tr>
+<tr><td>25</td><td>鍥介槻鍐涘伐</td><td class="sector-down">-2.44%</td><td>2.66%</td></tr>
+<tr><td>26</td><td>鏈烘璁惧</td><td class="sector-down">-2.56%</td><td>3.23%</td></tr>
+<tr><td>27</td><td>璁＄畻鏈?/td><td class="sector-down">-2.79%</td><td>3.44%</td></tr>
+<tr><td>28</td><td>寤虹瓚鏉愭枡</td><td class="sector-down">-3.30%</td><td>2.64%</td></tr>
+<tr><td>29</td><td>鐢靛瓙</td><td class="sector-down">-7.15%</td><td>7.41%</td></tr>
+<tr><td>30</td><td>閫氫俊</td><td class="sector-down">-7.36%</td><td>1.98%</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card">
+        <h3>馃搱 甯傚満鎯呯华浠〃鐩?/h3>
+        <div class="sun-chart-wrap">
+          <div class="sun-chart" style="background: conic-gradient(var(--red) 0deg 52deg, var(--green) 52deg 360deg);">
+            <div class="sun-chart-inner">鏆磋穼鏃?/div>
+          </div>
+          <div class="sun-legend">
+            <div><span class="dot" style="background:var(--red);"></span> 涓婃定 ~900瀹?(17%)</div>
+            <div><span class="dot" style="background:var(--green);"></span> 涓嬭穼 ~4200瀹?(81%)</div>
+            <div><span class="dot" style="background:#ccc;"></span> 骞崇洏 ~100瀹?(2%)</div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item"><div class="stat-value">3.45涓囦嚎</div><div class="stat-label">鍏ㄦ棩鎴愪氦棰?/div></div>
+          <div class="stat-item"><div class="stat-value red">~50</div><div class="stat-label">娑ㄥ仠瀹舵暟</div></div>
+          <div class="stat-item"><div class="stat-value green">~80</div><div class="stat-label">璺屽仠瀹舵暟</div></div>
+          <div class="stat-item"><div class="stat-value green">-5.70浜?/div><div class="stat-label">涓诲姏鍑€娴佸嚭(浼?</div></div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:#999;">
+          馃敂 浠婃棩涓虹鎶€鏉垮潡骞村唴鏈€澶у崟鏃ヨ穼骞咃紝绉戝垱50璺?.70%涓?025骞翠互鏉ユ渶澶ц穼骞呬箣涓€銆?br>
+          鍗庢鼎鏂拌兘婧?N鍗庢鼎)棣栨棩涓婂競娑?36.89%锛屾垚浜ら宸ㄥぇ锛岃櫣鍚告晥搴旀槑鏄俱€?
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- ==================== 鍗堢洏鎬荤粨锛堢洏涓疄鏃讹級 ==================== -->
-  <div class="tab-content active" id="tab-morning">
+</div><!-- ==================== 鍗堢洏鎬荤粨锛堢洏涓疄鏃讹級 ==================== -->
+  <div class="tab-content" id="tab-morning">
 
     <div class="card" style="margin-bottom:20px;">
       <h3>馃攳 鍗堢洏浜斿ぇ椹卞姩鍥犵礌</h3>
       <ol class="cause-list">
-        <li><strong>绉戞妧璧涢亾杩炵画閲嶆尗锛?/strong>閫氫俊-4.83%銆佺數瀛?3.98%棰嗚穼鍏ㄥ競鍦猴紝杩欐槸缁у墠涓ゆ棩绉戞妧鍥炶皟鍚庣殑鍔犻€熶笅鎸€傞€氫俊涓ゆ棩绱璺屽箙杈?9.2%锛屼絾鑷?025骞翠綆鐐逛互鏉ユ定骞呬粛瓒?50%锛屽勾鍐?59.35%鐨勬诞鐩堟瀯鎴愬法澶ц幏鍒╁洖鍚愬帇鍔涖€傚厜閫氫俊/CPO姒傚康涓庡崐瀵间綋鍙屽弻鏉€璺岋紝鏄粖鏃鑲′笅琛岀殑涓昏鎷栫疮鍔涢噺銆?/li>
-        <li><strong>"浜屽叓鍒嗗寲"鏍煎眬鏄捐憲锛?/strong>涓婅瘉-0.90%銆佹繁璇?2.09%銆佸垱涓氭澘-3.47%銆佺鍒?0-4.61%鈥斺€斿洓澶鑲℃寚鏁板叏绾夸笅鎸紝浣嗗叏甯傚満58%涓偂涓婃定锛?225娑?2148璺?136娑ㄥ仠锛夈€傝繖鎰忓懗鐫€鎸囨暟鏉冮噸鑲★紙灏ゅ叾鏄鎶€+閲戣瀺澶х洏鑲★級鏄笅璺屼富鍔涳紝涓皬鐩樿偂鍙嶈€岀浉瀵规椿璺冿紝鏄吀鍨嬬殑"鎸囨暟璺屻€佷釜鑲℃定"鐨勭粨鏋勬€у垎鍖栥€?/li>
-        <li><strong>璧勯噾娴佸悜鍛ㄦ湡+浼犵粺鏉垮潡锛?/strong>鏈夎壊閲戝睘+2.19%棰嗘定鍏ㄨ涓氾紝璐甸噾灞炲瓙鏉垮潡+6.33%鐖嗗彂锛堟嫑閲戦粍閲戞定鍋滐級锛屽伐涓氶噾灞?2.65%鍚屾璧板己銆傛苯杞?1.70%锛堜箻鐢ㄨ溅+2.91%銆佸伐绋嬫満姊?2.82%锛夈€佸熀纭€鍖栧伐+1.29%銆佺汉缁囨湇楗?1.56%鈥斺€旇祫閲戜粠楂樹綅鐨勭鎶€鑲℃挙绂诲悗锛屾祦鍚戜及鍊肩浉瀵瑰悎鐞嗙殑鍛ㄦ湡鍜屾秷璐逛笂娓告澘鍧椼€?/li>
-        <li><strong>娓偂鐙珛鏀剁孩锛?/strong>鎭掔敓鎸囨暟+1.19%銆佹亽鐢熺鎶€+0.62%锛屼笌A鑲＄鎶€閲嶆尗褰㈡垚椴滄槑鍙嶅樊銆傛腐鑲¤祫閲戦潰鐩稿鐙珛锛屼笖鎭掔鑷勾鍐呴珮鐐瑰凡鍥炶皟绾?3%锛?715鈫?499锛夛紝瓒呰穼鍙嶅脊鍔ㄨ兘鍙犲姞澶栬祫瀵笻鑲′及鍊兼醇鍦扮殑璁ゅ彲锛屾槸娓偂閫嗗娍璧板己鐨勬牳蹇冮€昏緫銆?/li>
-        <li><strong>鎴愪氦缂╅噺鍙嶆槧瑙傛湜鎯呯华锛?/strong>涓ゅ競鍗堢洏鎴愪氦棰?.24涓囦嚎锛岃緝涓婃棩鍚屾湡鍑忓皯1,780浜匡紙-7.4%锛夈€傝繛缁袱鏃ョ缉閲忎笅琛岋紝璇存槑澶氱┖鍙屾柟鍦ㄥ綋鍓嶇偣浣嶈秼浜庤皑鎱庘€斺€旂鎶€鑾峰埄鐩樺嚭閫冧絾涔扮洏涓嶈冻锛屽懆鏈熸澘鍧楄櫧鏈夎祫閲戞祦鍏ヤ絾鏃犳硶甯﹀姩鎸囨暟銆傚競鍦哄湪绛夊緟鏂扮殑鍌寲淇″彿锛堟斂绛?澶栫洏/涓氱哗棰勫憡锛夈€?/li>
+        <li><strong>閫氫俊鐢靛瓙鏆磋穼锛?/strong>閫氫俊-4.54%銆佺數瀛?3.65%棰嗚穼銆?/li>
+        <li><strong>鏈夎壊鍛ㄦ湡閫嗗娍璧板己锛?/strong>鏈夎壊閲戝睘+2.29%锛屽伐涓氶噾灞炴湡璐ц蛋寮恒€?/li>
+        <li><strong>A鑲″叏绾夸笅鎸細</strong>涓婅瘉-0.77%銆佹繁璇?2.06%銆佸垱涓氭澘-3.22%銆佺鍒?0-3.96%銆?/li>
+        <li><strong>鎭掓寚鎭掔鐙珛椋樼孩锛?/strong>鎭掔敓+0.83%銆佹亽绉?0.54%銆?/li>
+        <li><strong>绉戞妧楂樹綅鍥炶皟锛?/strong>閫氫俊+60%銆佺數瀛?76%鑾峰埄鍥炲悙銆?/li>
       </ol>
     </div>
 
     <div class="card" style="margin-bottom:20px;">
-      <h3>馃搲 涓绘祦鎸囨暟 <span style="font-size:11px;color:#e74c3c;background:#ffe0e0;padding:2px 6px;border-radius:3px;">鍗堢洏蹇収</span></h3>
+      <h3>馃搲 涓绘祦鎸囨暟 <span style="font-size:11px;color:#e74c3c;background:#ffe0e0;padding:2px 6px;border-radius:3px;">鈿?瀹炴椂</span></h3>
       <div class="index-grid">
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">涓婅瘉鎸囨暟</div><div class="index-price">4,075.31</div><div class="index-change down">鈻?0.90%</div></div>
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">娣辫瘉鎴愭寚</div><div class="index-price">15,782.35</div><div class="index-change down">鈻?2.09%</div></div>
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">鍒涗笟鏉挎寚</div><div class="index-price">4,112.97</div><div class="index-change down">鈻?3.47%</div></div>
-        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">绉戝垱50</div><div class="index-price">2,053.69</div><div class="index-change down">鈻?4.61%</div></div>
-        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓鎸囨暟</div><div class="index-price">23,154.41</div><div class="index-change up">鈻?1.19%</div></div>
-        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓绉戞妧</div><div class="index-price">4,499.91</div><div class="index-change up">鈻?0.62%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">涓婅瘉鎸囨暟</div><div class="index-price">4,080.94</div><div class="index-change down">鈻?0.77%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">娣辫瘉鎴愭寚</div><div class="index-price">15,786.81</div><div class="index-change down">鈻?2.06%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">鍒涗笟鏉挎寚</div><div class="index-price">4,123.51</div><div class="index-change down">鈻?3.22%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A鑲?/span><div class="index-name">绉戝垱50</div><div class="index-price">2,067.84</div><div class="index-change down">鈻?3.96%</div></div>
+        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓鎸囨暟</div><div class="index-price">23,070.10</div><div class="index-change up">鈻?0.83%</div></div>
+        <div class="index-card"><span class="market-tag hk-share">娓偂</span><div class="index-name">鎭掔敓绉戞妧</div><div class="index-price">4,496.58</div><div class="index-change up">鈻?0.54%</div></div>
       </div>
-    </div>
-
-    <!-- Stats Row -->
-    <div class="stats-row">
-      <div class="stat-item"><div class="stat-value red">3,225</div><div class="stat-label">涓婃定瀹舵暟</div></div>
-      <div class="stat-item"><div class="stat-value green">2,148</div><div class="stat-label">涓嬭穼瀹舵暟</div></div>
-      <div class="stat-item"><div class="stat-value">157</div><div class="stat-label">骞崇洏</div></div>
-      <div class="stat-item"><div class="stat-value red">136</div><div class="stat-label">娑ㄥ仠</div></div>
-      <div class="stat-item"><div class="stat-value green">6</div><div class="stat-label">璺屽仠</div></div>
-      <div class="stat-item"><div class="stat-value">2.24涓囦嚎</div><div class="stat-label">涓ゅ競鎴愪氦棰?/div></div>
     </div>
 
     <div class="grid-2">
       <div class="card">
-        <h3>馃敽 娑ㄥ箙 TOP 5 <span style="font-size:11px;color:#e74c3c;background:#ffe0e0;padding:2px 6px;border-radius:3px;">鍗堢洏</span></h3>
+        <h3>馃敽 娑ㄥ箙 TOP 5 <span style="font-size:11px;color:#e74c3c;background:#ffe0e0;padding:2px 6px;border-radius:3px;">鈿?瀹炴椂</span></h3>
         <div style="overflow-x:auto;"><table>
           <tr><th>鎺掑悕</th><th>琛屼笟</th><th>娑ㄨ穼骞?/th><th>寮傚姩鍘熷洜</th></tr>
-          <tr class="sector-row"><td rowspan="2">1</td><td>鏈夎壊閲戝睘</td><td class="sector-up">鈻?2.19%</td><td><span class="reason-badge">璐甸噾灞?6.33%鐖嗗彂锛屽伐涓氶噾灞炶蛋寮?/span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name">澶╁紭涓瘉宸ヤ笟鏈夎壊閲戝睘涓婚ETF鍙戣捣鑱旀帴C(017193)</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">2</td><td>姹借溅</td><td class="sector-up">鈻?1.70%</td><td><span class="reason-badge">涔樼敤杞?2.91%銆佸伐绋嬫満姊?2.82%鑱斿姩</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name">澶╁紭涓瘉鏅鸿兘姹借溅鎸囨暟鍙戣捣寮廋(010956)</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">3</td><td>绾虹粐鏈嶉グ</td><td class="sector-up">鈻?1.56%</td><td><span class="reason-badge">娑堣垂鍑哄彛閾捐秴璺屽弽寮?/span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">4</td><td>缁煎悎</td><td class="sector-up">鈻?1.42%</td><td><span class="reason-badge">缁煎悎鏉垮潡寮傚姩锛屾尟骞?.67%鏀鹃噺</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">5</td><td>鍩虹鍖栧伐</td><td class="sector-up">鈻?1.29%</td><td><span class="reason-badge">鍖栧伐鍛ㄦ湡璧板己锛屾鑳?2.96%棰嗘定</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span> <span class="fund-name">澶╁紭涓瘉缁嗗垎鍖栧伐浜т笟涓婚ETF鑱旀帴C(015897)</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">1</td><td>鏈夎壊閲戝睘</td><td class="sector-up">鈻?2.29%</td><td><span class="reason-badge">鏈夎壊棰嗘定锛屽伐涓氶噾灞炶蛋寮?/span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span><span class="fund-name">鍗楁柟鏈夎壊閲戝睘ETF鑱旀帴C(004433)</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">2</td><td>姹借溅</td><td class="sector-up">鈻?1.71%</td><td><span class="reason-badge">鏅鸿兘椹鹃┒娲昏穬</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span><span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">3</td><td>绾虹粐鏈嶉グ</td><td class="sector-up">鈻?1.60%</td><td><span class="reason-badge">绾虹粐閫嗗娍鍙嶅脊</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span><span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">4</td><td>缁煎悎</td><td class="sector-up">鈻?1.56%</td><td><span class="reason-badge">缁煎悎灏忓箙鍙嶅脊</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span><span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">5</td><td>鍩虹鍖栧伐</td><td class="sector-up">鈻?1.29%</td><td><span class="reason-badge">鍖栧伐璧板己</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">鍏宠仈鍩洪噾</span><span class="fund-name" style="color:#999;">鏆傛棤瀵瑰簲</span></td></tr>
         </table></div>
       </div>
       <div class="card">
-        <h3>馃敾 璺屽箙 BOTTOM 5 <span style="font-size:11px;color:#e74c3c;background:#ffe0e0;padding:2px 6px;border-radius:3px;">鍗堢洏</span></h3>
+        <h3>馃敾 璺屽箙 BOTTOM 5 <span style="font-size:11px;color:#e74c3c;background:#ffe0e0;padding:2px 6px;border-radius:3px;">鈿?瀹炴椂</span></h3>
         <div style="overflow-x:auto;"><table>
           <tr><th>鎺掑悕</th><th>琛屼笟</th><th>娑ㄨ穼骞?/th><th>寮傚姩鍘熷洜</th></tr>
-          <tr><td>1</td><td>閫氫俊</td><td class="sector-down">鈻?4.83%</td><td><span class="reason-badge">鍏夐€氫俊/CPO缁х画鏉€璺岋紝骞村唴+59%鑾峰埄鍥炲悙</span></td></tr>
-          <tr><td>2</td><td>鐢靛瓙</td><td class="sector-down">鈻?3.98%</td><td><span class="reason-badge">鍗婂浣撳叏绾垮洖璋冿紝60鏃?79%楂樹綅鍘嬪姏</span></td></tr>
-          <tr><td>3</td><td>闈為摱閲戣瀺</td><td class="sector-down">鈻?1.81%</td><td><span class="reason-badge">鍒稿晢淇濋櫓鍥炶惤锛屽墠鏃ラ娑ㄥ悗鑾峰埄浜嗙粨</span></td></tr>
-          <tr><td>4</td><td>寤虹瓚鏉愭枡</td><td class="sector-down">鈻?1.21%</td><td><span class="reason-badge">姘存偿寤烘潗璧板急锛屾尟骞?.84%</span></td></tr>
-          <tr><td>5</td><td>璁＄畻鏈?/td><td class="sector-down">鈻?0.96%</td><td><span class="reason-badge">璺熼殢绉戞妧鏉垮潡鍥炶皟锛岃蒋浠禝T鎵垮帇</span></td></tr>
+          <tr><td>1</td><td>閫氫俊</td><td class="sector-down">鈻?4.54%</td><td><span class="reason-badge">鍏夐€氫俊CPO鍥炶皟</span></td></tr>
+          <tr><td>2</td><td>鐢靛瓙</td><td class="sector-down">鈻?3.65%</td><td><span class="reason-badge">鍗婂浣撹幏鍒╀簡缁?/span></td></tr>
+          <tr><td>3</td><td>闈為摱閲戣瀺</td><td class="sector-down">鈻?1.73%</td><td><span class="reason-badge">鍒稿晢淇濋櫓鍥炶皟</span></td></tr>
+          <tr><td>4</td><td>寤虹瓚鏉愭枡</td><td class="sector-down">鈻?1.14%</td><td><span class="reason-badge">姘存偿璧板急</span></td></tr>
+          <tr><td>5</td><td>鎴垮湴浜?/td><td class="sector-down">鈻?0.70%</td><td><span class="reason-badge">鍦颁骇璧板急</span></td></tr>
         </table></div>
       </div>
     </div>
-  </div>
+  </div><!-- ==================== 鐪嬫澘璇存槑 ==================== -->
 
-  <!-- ==================== 鐪嬫澘璇存槑 ==================== -->
   <div class="tab-content" id="tab-guide">
 
+
+
     <!-- 姒傝堪 -->
+
     <div class="card" style="margin-bottom:20px;">
+
       <h3>馃搳 甯傚満鏁版嵁鐪嬫澘 v2.0</h3>
+
       <p style="font-size:13px;line-height:1.8;color:#555;margin-bottom:12px;">
+
         浜ゆ槗鏃?<strong>5绉掔骇瀹炴椂</strong> 琛屾儏鐪嬫澘锛岃鐩?<strong>A鑲?+ 娓偂</strong> 涓绘祦鎸囨暟銆佺敵涓?1琛屼笟鎺掑悕銆佹定璺屽垎甯冿紝<br>
+
         姣忎氦鏄撴棩 12:10 鍜?15:10 鐢卞憜鍛?AI 浜у嚭娣卞害鍒嗘瀽锛堝師鍥犳媶瑙?+ 鎶曡祫绗旇锛夈€?br>
+
         <strong>浜戠 24/7 鎵樼</strong>锛屽叧鐢佃剳涔熻兘鐪嬨€?
+
       </p>
+
       <div style="margin-top:8px;padding:8px 12px;background:#e8f0fe;border-radius:8px;font-size:12px;color:#555;">
-        馃敆 鏈〉閾炬帴锛?a href="https://xuhaonantiantian.github.io/meirishichanghaha/" style="color:#3498db;">xuhaonantiantian.github.io/meirishichanghaha</a><br>
-        鈿狅笍 寰俊鍐呯疆娴忚鍣ㄥ彲鑳芥棤娉曟墦寮€ GitHub Pages锛岃鐐瑰嚮鍙充笂瑙掋€屸€︺€嶁啋銆屽湪娴忚鍣ㄤ腑鎵撳紑銆?
+
+        馃敆 鏈〉閾炬帴锛?a href="https://xuhaonantiantian.github.io/meirishichanghaha/" style="color:#3498db;">xuhaonantiantian.github.io/meirishichanghaha</a>
+
       </div>
+
     </div>
+
+
 
     <!-- 瀹炴椂鍒锋柊瑙勫垯 -->
+
     <div class="card" style="margin-bottom:20px;">
+
       <h3>鈿?鏁版嵁鍒锋柊瑙勫垯</h3>
+
       <table style="font-size:12px;">
+
         <tr><th style="width:40%;">鍐呭</th><th style="width:40%;">鏂瑰紡</th><th style="width:20%;">棰戠巼</th></tr>
+
         <tr><td>6澶ф寚鏁拌鎯?/td><td>鑵捐鑷€夎偂瀹炴椂鎺ュ彛锛坬t.gtimg.cn锛?/td><td>5绉掞紙娴忚鍣級/ 10鍒嗛挓锛堜簯绔厹搴曪級</td></tr>
+
         <tr><td>琛屼笟TOP5/BOTTOM5鎺掑悕</td><td>鐢充竾31琛屼笟瀹炴椂鎺掑簭</td><td>鍚屾寚鏁板悓姝?/td></tr>
+
         <tr><td>娑ㄨ穼鍒嗗竷缁熻</td><td>鍏ㄥ競鍦哄疄鏃舵埅闈?/td><td>10鍒嗛挓锛堜簯绔級</td></tr>
+
         <tr><td>甯傚満鍘熷洜鎷嗚В</td><td>鍛嗗憜 AI 鏅鸿兘鍒嗘瀽</td><td>12:10 / 15:10</td></tr>
+
         <tr><td>鎶曡祫瑙傚療绗旇</td><td>鍛嗗憜 AI 鏅鸿兘鍒嗘瀽</td><td>15:10</td></tr>
-        <tr><td>鍩洪噾鍏宠仈鏄犲皠</td><td>鍏嫙鎸囨暟鍩洪噾鏅鸿兘鍖归厤</td><td>12:10 / 15:10</td></tr>
+
+        <tr><td>鍩洪噾鍏宠仈鏄犲皠</td><td>澶╁紭鍩洪噾浼樺厛瑙勫垯</td><td>12:10 / 15:10</td></tr>
+
       </table>
+
       <div style="font-size:11px;color:#999;margin-top:8px;">
+
         浜ゆ槗鏃舵锛欰鑲?9:30-11:30 / 13:00-15:00 | 娓偂 9:30-12:00 / 13:00-16:00<br>
+
         闈炰氦鏄撴椂娈佃嚜鍔ㄥ仠姝㈠疄鏃跺埛鏂帮紝鏄剧ず鏈€鏂伴潤鎬佸揩鐓с€?
+
       </div>
+
     </div>
+
+
 
     <!-- 鎺ㄩ€佹椂闂寸嚎 -->
+
     <div class="card" style="margin-bottom:20px;">
+
       <h3>馃搵 鑷姩鍖栦骇鍑鸿妭濂?/h3>
+
       <div class="timeline-item">
+
         <div class="time-dot morning">1</div>
+
         <div class="time-info">
+
           <div class="time">12:10</div>
+
           <div class="label">鍗堢洏甯傚満鎬荤粨</div>
+
           <div class="detail">A鑲?+ 娓偂 涓婂崍鏀剁洏鏁版嵁</div>
+
           <div class="market-badges">
+
             <span class="badge a">A鑲?/span>
+
             <span class="badge hk">娓偂</span>
+
           </div>
+
         </div>
+
       </div>
+
       <div class="timeline-item">
+
         <div class="time-dot ashare">2</div>
+
         <div class="time-info">
+
           <div class="time">15:10</div>
+
           <div class="label">A鑲℃敹鐩樻€荤粨</div>
+
           <div class="detail">浠匒鑲″叏鏃ユ敹鐩樻暟鎹紙A鑲?15:00 鏀跺競锛?/div>
+
           <div class="market-badges"><span class="badge a">A鑲?/span></div>
+
         </div>
+
       </div>
+
       <div class="timeline-item">
+
         <div class="time-dot fullday">3</div>
+
         <div class="time-info">
+
           <div class="time">16:10</div>
+
           <div class="label">A鑲?+ 娓偂鍏ㄦ棩姹囨€?/div>
+
           <div class="detail">A鑲?+ 娓偂 鍚堝苟鍏ㄦ棩鏁版嵁锛堟腐鑲?16:00 鏀跺競锛?/div>
+
           <div class="market-badges">
+
             <span class="badge a">A鑲?/span>
+
             <span class="badge hk">娓偂</span>
+
           </div>
+
         </div>
+
       </div>
+
       <div class="timeline-item">
+
         <div class="time-dot usstock">4</div>
+
         <div class="time-info">
+
           <div class="time">04:10</div>
+
           <div class="label">缇庤偂鏀剁洏鎬荤粨</div>
+
           <div class="detail">缇庤偂涓夊ぇ鎸囨暟鍏ㄦ棩鏁版嵁锛堢編涓?16:00 = 鍖椾含鏃堕棿 04:00 鏀跺競锛?/div>
+
           <div class="market-badges"><span class="badge us">缇庤偂</span></div>
+
         </div>
+
       </div>
+
     </div>
+
+
 
     <!-- 鐪嬫澘鍐呭 -->
+
     <div class="grid-2" style="margin-bottom:20px;">
+
       <div class="card">
+
         <h3>鉁?鐪嬫澘鍖呭惈鍐呭</h3>
+
         <div style="font-size:13px;line-height:2;color:#555;">
+
           鈥?涓绘祦鎸囨暟琛屾儏锛堜笂璇?娣辫瘉/鍒涗笟鏉?绉戝垱50/鎭掔敓/鎭掔/鏍囨櫘500/绾虫柉杈惧厠/閬撶惣鏂級<br>
+
           鈥?鐢充竾涓€绾ц涓氭定璺屽箙 Top 5 &amp; Bottom 5<br>
+
           鈥?31琛屼笟鍏ㄦ帓鍚?+ 寮傚姩鍘熷洜瑙ｈ<br>
+
           鈥?娑ㄨ穼鍒嗗竷鍙鍖栵紙涓婃定/涓嬭穼/骞崇洏鍗犳瘮锛?br>
+
           鈥?甯傚満浼板€硷紙PE/PB 鍒嗕綅锛変笌鎶€鏈潰淇″彿<br>
+
           鈥?娓偂鎴愬垎鑲″紓鍔ㄨ鎯?br>
+
           鈥?澶ц穼/澶ф定鍘熷洜閲戝瓧濉斿紡鎷嗚В<br>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <h3>馃摗 鏁版嵁鏉ユ簮</h3>
+
         <div class="source-row">
+
           <div class="source-icon">馃搱</div>
+
           <div>琛屾儏鏁版嵁 路 鑵捐鑷€夎偂锛圵eStock Data锛?/div>
+
         </div>
+
         <div class="source-row">
+
           <div class="source-icon">馃摪</div>
+
           <div>甯傚満鏂伴椈 路 鐧惧害/鐭ヤ箮/涓滄柟璐㈠瘜 鍏紑璧勮</div>
+
         </div>
+
         <div class="source-row">
+
           <div class="source-icon">馃</div>
+
           <div>鍒嗘瀽鐢熸垚 路 鍛嗗憜 AI 鏅鸿兘鍔╃悊</div>
+
         </div>
+
       </div>
+
     </div>
+
+
 
     <!-- 褰撳墠绀轰緥 -->
+
     <div class="card" style="background:linear-gradient(135deg,#f0f4ff,#e8efff);margin-bottom:20px;">
+
       <h3>馃搶 褰撳墠灞曠ず</h3>
+
       <p style="font-size:13px;color:#555;line-height:1.8;">
-        鏈〉灞曠ず鐨勬槸 <strong>2026骞?鏈?鏃ワ紙鏄熸湡鍥涳級</strong> 鐨勭洏涓疄鏃剁湅鏉?br>馃寘 鍗堢洏 = 涓婂崍鏀剁洏蹇収锛圓鑲?1:30/娓偂12:00锛?br>鈽€锔?鍏ㄦ棩 = 15:10鍚庢洿鏂般€?br>褰撴棩甯傚満鏍煎眬锛氱鎶€閫氫俊-4.83%/鐢靛瓙-3.98%杩炵画绗笁澶╅噸鎸紝鎷栫疮A鑲″洓澶ф寚鏁板叏璺岋紱<br>
-        浣嗗叏甯傚満58%涓偂涓婃定锛?225娑?136娑ㄥ仠锛夛紝鍛堢幇"鎸囨暟璺屻€佷釜鑲℃定"鐨勪簩鍏垎鍖栵紱<br>
-        鏈夎壊閲戝睘+2.19%/姹借溅+1.70%閫嗗娍椋樼孩锛岃祫閲戜粠绉戞妧鍚戝懆鏈熸澘鍧楄縼绉伙紱<br>
-        娓偂鎭掔敓+1.19%/鎭掔+0.62%鐙珛鏀剁孩锛涗袱甯傜缉閲忚嚦2.24涓囦嚎锛?1780浜匡級銆?
+
+        鏈〉灞曠ず鐨勬槸 <strong>2026骞?鏈?鏃ワ紙鏄熸湡鍥涳級</strong> 鐨勭洏涓疄鏃剁湅鏉?br>馃寘 鍗堢洏 = 鐩樹腑瀹炴椂(鈿℃爣娉?<br>鈽€锔?鍏ㄦ棩 = 15:10鍚庢洿鏂般€?br>褰撴棩甯傚満绉戞妧宕╃洏锛氱鍒?0鏆磋穼7.70%锛岄€氫俊-7.36%/鐢靛瓙-7.15%灞呰穼骞呭墠鍒楋紝<br>
+
+        3.45涓囦嚎鎴愪氦锛岀叅鐐?1.60%/閾惰+1.08%閫嗗娍闃插尽锛屾槸鍏稿瀷鐨?绉戞妧鏆村姏鍥炶皟+椋庢牸杞姩"浜ゆ槗鏃ャ€傛腐鑲?6:10鍚庨殢鍏ㄦ棩姹囨€绘洿鏂般€?
+
       </p>
+
     </div>
+
   </div>
+
+
 
   <div class="disclaimer">
+
     鈿狅笍 鍏嶈矗澹版槑锛氭湰鐪嬫澘浠呬緵鏁版嵁鍙傝€冧笌瀛︿範鐮旂┒涔嬬敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛暟鎹潵婧愪负鑵捐鑷€夎偂鍏紑甯傚満鏁版嵁锛屽彲鑳藉瓨鍦ㄥ欢杩熴€?br>
+
     鎶曡祫鏈夐闄╋紝鍐崇瓥闇€璋ㄦ厧銆傚闇€涓撲笟鎶曡祫寤鸿锛岃鍜ㄨ鎸佺墝璇佸埜鎶曡祫椤鹃棶鏈烘瀯銆?br>
+
     Generated by 鍛嗗憜 路 寰愭旦鐢风殑鏅鸿兘鍔╃悊 路 2026-07-02
+
   </div>
+
 </div>
 
+
+
 <script>
+
 function switchTab(tab, btn) {
+
+  // btn is the button element passed via onclick='switchTab(..., this)'
+
   if (!btn && window.event) btn = window.event.target;
+
   if (!btn) return;
+
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
   btn.classList.add('active');
+
   document.getElementById('tab-' + tab).classList.add('active');
+
 }
+
 </script>
 
+
+
 <script>
+
 (function(){
+
 'use strict';
+
 var INDICES={
+
   'sh000001':{name:'涓婅瘉鎸囨暟',market:'a',decimals:2},
+
   'sz399001':{name:'娣辫瘉鎴愭寚',market:'a',decimals:2},
+
   'sz399006':{name:'鍒涗笟鏉挎寚',market:'a',decimals:2},
+
   'sh000688':{name:'绉戝垱50',market:'a',decimals:2},
+
   'hkHSI':{name:'鎭掔敓鎸囨暟',market:'hk',decimals:2},
+
   'hkHSTECH':{name:'鎭掔敓绉戞妧',market:'hk',decimals:2}
+
 };
+
 var SECTORS={'pt01801010':'鍐滄灄鐗ф笖','pt01801030':'鍩虹鍖栧伐','pt01801040':'閽㈤搧','pt01801050':'鏈夎壊閲戝睘','pt01801080':'鐢靛瓙','pt01801110':'瀹剁敤鐢靛櫒','pt01801120':'椋熷搧楗枡','pt01801130':'绾虹粐鏈嶉グ','pt01801140':'杞诲伐鍒堕€?,'pt01801150':'鍖昏嵂鐢熺墿','pt01801160':'鍏敤浜嬩笟','pt01801170':'浜ら€氳繍杈?,'pt01801180':'鎴垮湴浜?,'pt01801200':'鍟嗚锤闆跺敭','pt01801210':'绀句細鏈嶅姟','pt01801230':'缁煎悎','pt01801710':'寤虹瓚鏉愭枡','pt01801720':'寤虹瓚瑁呴グ','pt01801730':'鐢靛姏璁惧','pt01801740':'鍥介槻鍐涘伐','pt01801750':'璁＄畻鏈?,'pt01801760':'浼犲獟','pt01801770':'閫氫俊','pt01801780':'閾惰','pt01801790':'闈為摱閲戣瀺','pt01801880':'姹借溅','pt01801890':'鏈烘璁惧','pt01801950':'鐓ょ偔','pt01801960':'鐭虫补鐭冲寲','pt01801980':'缇庡鎶ょ悊'};
+
 var ALL_CODES=Object.keys(INDICES).concat(Object.keys(SECTORS));
 
+var isHKHoliday=!!document.querySelector('#fullday-index-grid .index-card[data-holiday="true"]');
+
+
+
 function isTrading(){var n=new Date(),d=n.getDay(),t=n.getHours()*60+n.getMinutes();if(d===0||d===6)return!1;return t>=570&&t<=900}
+
 function getStatus(){var n=new Date(),d=n.getDay(),t=n.getHours()*60+n.getMinutes(),a=t>=570&&t<=900,s='宸叉敹鐩?,l='宸叉敹鐩?;if(d===0||d===6){s='浼戝競';l='浼戝競'}else if(t<570){s='寰呭紑鐩?;l='寰呭紑鐩?}else if(t<=690){s='鈼?瀹炴椂';l='鈼?瀹炴椂'}else if(t<780){s='鍗堥棿浼戝競';l='宸叉敹鐩?}else if(t<=900){s='鈼?瀹炴椂';l='宸叉敹鐩?}return{trading:a,session:t<=690?'morning':(t<=900?'afternoon':'closed'),labelF:s,labelM:l}}
 
+
+
 function fmtPrice(v,d){if(v==null||isNaN(v))return'鈥?;return v.toLocaleString('zh-CN',{minimumFractionDigits:d||2,maximumFractionDigits:d||2})}
+
 function fmtPct(v){if(v==null||isNaN(v))return'鈥?;return(v>=0?'+':'')+v.toFixed(2)+'%'}
+
 function pctCls(v){return v>0?'up':(v<0?'down':'neutral')}
+
+
 
 function parseQt(text){var d={};text.split('\n').forEach(function(l){var m=l.match(/v_(\w+)="(.+)"/);if(!m)return;var c=m[1],f=m[2].split('~');if(f.length<35)return;var p=parseFloat(f[3]),pct=parseFloat(f[32]);if(isNaN(p))return;d[c]={name:f[1]||'',price:p,pct:pct,time:f[30]||''}});return d}
 
+
+
 function fetchQtData(cb){var url='https://qt.gtimg.cn/q='+ALL_CODES.join(',')+'&_t='+Date.now(),resolved=!1,timer=null,scr=document.createElement('script');scr.src=url;scr.onload=function(){var l=[];ALL_CODES.forEach(function(c){var v=window['v_'+c];if(v!=null)l.push('v_'+c+'="'+String(v).replace(/"/g,'\\"')+'"')});scr.remove();if(l.length){if(timer)clearTimeout(timer);resolved=!0;cb(parseQt(l.join('\n')))}};scr.onerror=function(){scr.remove();if(!resolved){resolved=!0;if(timer)clearTimeout(timer);cb(null)}};document.head.appendChild(scr);timer=setTimeout(function(){if(!resolved){resolved=!0;cb(null)}},3000)}
+
+
 
 function updateIndices(pref,data){Object.keys(INDICES).forEach(function(c){var it=data[c],pe=document.getElementById(pref+'-price-'+c),ce=document.getElementById(pref+'-pct-'+c),te=document.getElementById(pref+'-time-'+c);if(!pe||!it)return;pe.textContent=fmtPrice(it.price,INDICES[c].decimals);ce.textContent=fmtPct(it.pct);ce.className='index-change '+pctCls(it.pct);if(te)te.textContent=pref==='f'?'鈼?瀹炴椂':''})}
 
+
+
 function renderSectors(data){var s=[];Object.keys(SECTORS).forEach(function(c){var it=data[c];if(it&&!isNaN(it.pct))s.push({name:it.name||SECTORS[c],pct:it.pct})});if(s.length<5)return;s.sort(function(a,b){return b.pct-a.pct});var t5=document.getElementById('fullday-top5-body'),b5=document.getElementById('fullday-bot5-body'),h5=document.getElementById('fullday-top5-hdr'),hb=document.getElementById('fullday-bot5-hdr'),ts=('0'+new Date().getHours()).slice(-2)+':'+('0'+new Date().getMinutes()).slice(-2)+':'+('0'+new Date().getSeconds()).slice(-2);if(t5){var h='';s.slice(0,5).forEach(function(x,i){var cl=x.pct>=0?'sector-up':'sector-down',si=x.pct>=0?'+':'';h+='<tr><td>'+(i+1)+'</td><td>'+x.name+'</td><td class="'+cl+'">'+si+x.pct.toFixed(2)+'%</td></tr>'});t5.innerHTML=h}if(b5){var h='';s.slice(-5).reverse().forEach(function(x,i){var cl=x.pct>=0?'sector-up':'sector-down',si=x.pct>=0?'+':'';h+='<tr><td>'+(i+1)+'</td><td>'+x.name+'</td><td class="'+cl+'">'+si+x.pct.toFixed(2)+'%</td></tr>'});b5.innerHTML=h}if(h5)h5.textContent='馃敽 琛屼笟娑ㄥ箙 TOP 5锛堝疄鏃?路 '+ts+'锛?;if(hb)hb.textContent='馃敾 琛屼笟璺屽箙 BOTTOM 5锛堝疄鏃?路 '+ts+'锛?}
 
-function updateBadges(st){var fb=document.getElementById('fullday-status-badge'),mb=document.getElementById('morning-status-badge'),fh=document.getElementById('fullday-idx-hdr-label');if(fb){fb.textContent=st.labelF;fb.className='status-badge '+(st.trading?'live':(st.session==='closed'?'frozen':'pending'))}if(mb){mb.textContent=st.labelM;mb.className='status-badge '+(st.session==='morning'?'live':'frozen')}if(fh){fh.textContent=st.trading?'鈼?鐩樹腑瀹炴椂':(st.session==='closed'?'鍏ㄦ棩鏀剁洏':'寰呭紑鐩?);fh.style.color=st.trading?'#e74c3c':'#3b6df0';fh.style.background=st.trading?'#ffe0e0':'#e8efff'}}
+
+
+function updateBadges(st){var fb=document.getElementById('fullday-status-badge'),mb=document.getElementById('morning-status-badge');if(fb){fb.textContent=st.labelF;fb.className='status-badge '+(st.trading?'live':(st.session==='closed'?'frozen':'pending'))}if(mb){mb.textContent=st.labelM;mb.className='status-badge '+(st.session==='morning'?'live':'frozen')}}
+
+
 
 function refresh(){var st=getStatus();updateBadges(st);if(!st.trading&&st.session!=='morning')return;fetchQtData(function(d){if(!d)return;if(st.trading||st.session==='afternoon'){updateIndices('f',d);renderSectors(d)}if(st.session==='morning'){updateIndices('f',d);renderSectors(d)}})}
 
+
+
 var refreshTimer=null;
-function autoSwitchTab(){var n=new Date(),t=n.getHours()*60+n.getMinutes(),d=n.getDay();if(d===0||d===6)return;if(t<780)return;var tb=document.getElementById('tab-fullday'),tm=document.getElementById('tab-morning'),tg=document.getElementById('tab-guide');if(!tb||tb.classList.contains('active'))return;tb.classList.add('active');if(tm)tm.classList.remove('active');if(tg)tg.classList.remove('active');var btns=document.querySelectorAll('.tab-btn');btns.forEach(function(b){b.classList.remove('active');if(b.textContent.indexOf('鍏ㄦ棩')>=0)b.classList.add('active')})}
-function startRefresh(){var st=getStatus();updateBadges(st);autoSwitchTab();if(st.trading||st.session==='morning')refresh();refreshTimer=setInterval(function(){var st=getStatus();updateBadges(st);if(st.trading||st.session==='morning')refresh()},5000)}
+
+function startRefresh(){var st=getStatus();updateBadges(st);if(st.trading||st.session==='morning')refresh();refreshTimer=setInterval(function(){var st=getStatus();updateBadges(st);if(st.trading||st.session==='morning')refresh()},5000)}
+
 function stopRefresh(){if(refreshTimer){clearInterval(refreshTimer);refreshTimer=null}updateBadges(getStatus())}
 
+
+
 document.addEventListener('DOMContentLoaded',startRefresh);
+
 window.addEventListener('beforeunload',stopRefresh);
+
 })();
+
 </script>
+
 </body>
+
 </html>
+
