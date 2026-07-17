@@ -1,279 +1,556 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 微信缓存禁止：每次打开拉取最新内容 -->
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
 <meta http-equiv="Pragma" content="no-cache">
+
 <meta http-equiv="Expires" content="0">
-<title>2026年7月16日 市场数据看板 | 呆呆</title>
+
+<title>2026年7月17日 市场数据看板 | 呆呆</title>
+
 <style>
+
   :root {
+
     --bg: #f5f6f8;
+
     --card-bg: #ffffff;
+
     --text: #1a1a2e;
+
     --text-secondary: #666;
+
     --red: #e74c3c;
+
     --green: #27ae60;
+
     --blue: #2c3e50;
+
     --border: #e8ecf0;
+
     --accent: #3498db;
+
     --warning: #f39c12;
+
     --tag-bg: #f0f4f8;
+
   }
+
+
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+
+
   body {
+
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+
     background: var(--bg);
+
     color: var(--text);
+
     line-height: 1.6;
+
     padding: 20px;
+
   }
+
+
 
   .container {
+
     max-width: 1400px;
+
     margin: 0 auto;
+
   }
+
+
 
   /* Header */
+
   .header {
+
     text-align: center;
+
     padding: 30px 20px;
+
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
     border-radius: 16px;
+
     color: white;
+
     margin-bottom: 24px;
+
   }
+
   .header h1 {
+
     font-size: 28px;
+
     font-weight: 700;
+
     letter-spacing: 0.5px;
+
   }
+
   .header .subtitle {
+
     font-size: 14px;
+
     opacity: 0.7;
+
     margin-top: 6px;
+
   }
+
   .header .meta {
+
     display: flex;
+
     justify-content: center;
+
     gap: 24px;
+
     margin-top: 16px;
+
     font-size: 13px;
+
     opacity: 0.8;
+
   }
+
+
 
   /* Summary Banner */
+
   .summary-banner {
+
     background: #fff;
+
     border-radius: 12px;
+
     padding: 20px 24px;
+
     margin-bottom: 20px;
+
     border-left: 4px solid var(--accent);
+
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+
   }
+
   .summary-banner .tag {
+
     display: inline-block;
+
     background: var(--red);
+
     color: white;
+
     padding: 2px 10px;
+
     border-radius: 4px;
+
     font-size: 12px;
+
     margin-right: 8px;
+
   }
+
   .summary-banner .summary-text {
+
     font-size: 15px;
+
     font-weight: 600;
+
     color: #1a1a2e;
+
   }
+
   .summary-banner .detail-text {
+
     font-size: 13px;
+
     color: #666;
+
     margin-top: 6px;
+
   }
+
+
 
   /* Section Title */
+
   .section-title {
+
     font-size: 20px;
+
     font-weight: 700;
+
     color: var(--blue);
+
     margin: 32px 0 16px;
+
     padding-bottom: 8px;
+
     border-bottom: 2px solid var(--accent);
+
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
   }
+
   .section-title .icon {
+
     font-size: 22px;
+
   }
+
+
 
   /* Grid Layout */
+
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
 
+
+
   /* Cards */
+
   .card {
+
     background: var(--card-bg);
+
     border-radius: 12px;
+
     padding: 20px;
+
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+
   }
+
   .card h3 {
+
     font-size: 16px;
+
     font-weight: 600;
+
     margin-bottom: 12px;
+
     color: var(--blue);
+
   }
+
+
 
   /* Index Cards */
+
   .index-grid {
+
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 12px;
+
     margin-bottom: 20px;
+
   }
+
   .index-card {
+
     background: white;
+
     border-radius: 10px;
+
     padding: 16px;
+
     text-align: center;
+
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+
     border: 1px solid var(--border);
+
   }
+
   .index-card .index-name {
+
     font-size: 12px;
+
     color: #999;
+
     margin-bottom: 4px;
+
   }
+
   .index-card .index-price {
+
     font-size: 22px;
+
     font-weight: 700;
+
     margin-bottom: 4px;
+
   }
+
   .index-card .index-change {
+
     font-size: 14px;
+
     font-weight: 600;
+
   }
+
   .index-card .index-change.down { color: var(--green); }
+
   .index-card .index-change.up { color: var(--red); }
+
   .market-tag {
+
     display: inline-block;
+
     font-size: 10px;
+
     padding: 1px 6px;
+
     border-radius: 3px;
+
     margin-bottom: 4px;
+
   }
+
   .market-tag.a-share { background: #ffe0e0; color: #c0392b; }
+
   .market-tag.hk-share { background: #e0f0ff; color: #2980b9; }
 
+
+
   /* Sector Table */
+
   table {
+
     width: 100%;
+
     border-collapse: collapse;
+
     font-size: 13px;
+
   }
+
   th {
+
     text-align: left;
+
     padding: 8px 10px;
+
     background: #f8f9fb;
+
     color: #666;
+
     font-weight: 600;
+
     border-bottom: 2px solid #e8ecf0;
+
     font-size: 12px;
+
   }
+
   td {
+
     padding: 8px 10px;
+
     border-bottom: 1px solid #f0f2f5;
+
   }
+
   .sector-up { color: var(--red); font-weight: 600; }
+
   .sector-down { color: var(--green); font-weight: 600; }
 
+
+
   /* Reason Badge */
+
   .reason-badge {
+
     font-size: 11px;
+
     background: var(--tag-bg);
+
     padding: 2px 8px;
+
     border-radius: 4px;
+
     color: #555;
+
     display: inline-block;
+
     max-width: 220px;
+
     line-height: 1.4;
+
   }
+
+
 
   /* Cause List */
+
   .cause-list {
+
     list-style: none;
+
     counter-reset: cause;
+
   }
+
   .cause-list li {
+
     counter-increment: cause;
+
     padding: 10px 14px;
+
     margin-bottom: 8px;
+
     background: #f8f9fb;
+
     border-radius: 8px;
+
     font-size: 13px;
+
     line-height: 1.6;
+
   }
+
   .cause-list li::before {
+
     content: counter(cause);
+
     display: inline-block;
+
     width: 20px;
+
     height: 20px;
+
     background: var(--accent);
+
     color: white;
+
     border-radius: 50%;
+
     text-align: center;
+
     line-height: 20px;
+
     font-size: 11px;
+
     font-weight: 700;
+
     margin-right: 8px;
+
   }
+
+
 
   /* Stats Row */
+
   .stats-row {
+
     display: flex;
+
     gap: 16px;
+
     flex-wrap: wrap;
+
     margin-bottom: 20px;
+
   }
+
   .stat-item {
+
     flex: 1;
+
     min-width: 120px;
+
     background: white;
+
     border-radius: 10px;
+
     padding: 14px 16px;
+
     text-align: center;
+
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+
     border: 1px solid var(--border);
+
   }
+
   .stat-item .stat-value {
+
     font-size: 20px;
+
     font-weight: 700;
+
   }
+
   .stat-item .stat-label {
+
     font-size: 11px;
+
     color: #999;
+
     margin-top: 2px;
+
   }
+
   .stat-item .stat-value.red { color: var(--red); }
+
   .stat-item .stat-value.green { color: var(--green); }
 
+
+
   /* Tabs */
+
   .tabs {
+
     display: flex;
+
     gap: 4px;
+
     margin-bottom: 20px;
+
     background: white;
+
     border-radius: 10px;
+
     padding: 4px;
+
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+
     overflow-x: auto;
+
     -webkit-overflow-scrolling: touch;
+
   }
-  .tab-btn {
+
+    .tab-btn {
     flex: 0 0 auto;
     padding: 10px 14px;
     border: none;
@@ -287,10 +564,15 @@
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
   }
-  .tab-btn.active {
+
+.tab-btn.active {
+
     background: var(--blue);
+
     color: white;
+
   }
+
   .tab-badge {
     font-size: 9px;
     padding: 1px 4px;
@@ -304,8 +586,10 @@
   .tab-badge.close { color: #2c7be5; background: #e0ecff; }
 
   .tab-content { display: none; }
+
   .tab-content.active { display: block; }
 
+  /* 零闪烁：HTML 渲染前由 head 脚本注入 data-active-tab，CSS 据此激活正确 Tab */
   html[data-active-tab="live"] #tab-live,
   html[data-active-tab="midday"] #tab-midday,
   html[data-active-tab="close"] #tab-close { display: block; }
@@ -313,218 +597,447 @@
   html[data-active-tab="midday"] .tab-btn[data-tab="midday"],
   html[data-active-tab="close"] .tab-btn[data-tab="close"] { background: var(--blue); color: white; }
 
-  /* Market breadth bar */
+
+
+  /* Market breadth bar - decorative bar */
+
   .breadth-bar {
+
     display: flex;
+
     height: 20px;
+
     border-radius: 10px;
+
     overflow: hidden;
+
     margin: 8px 0;
+
   }
+
   .breadth-bar .up { background: var(--red); }
+
   .breadth-bar .flat { background: #ccc; }
+
   .breadth-bar .down { background: var(--green); }
 
+
+
   /* Sun donut chart */
+
   .sun-chart-wrap {
+
     display: flex;
+
     align-items: center;
+
     gap: 16px;
+
     margin: 10px 0;
+
   }
+
   .sun-chart {
+
     width: 72px;
+
     height: 72px;
+
     border-radius: 50%;
+
     flex-shrink: 0;
+
     position: relative;
+
   }
+
   .sun-chart-inner {
+
     position: absolute;
+
     inset: 14px;
+
     background: var(--card-bg);
+
     border-radius: 50%;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     font-size: 11px;
+
     font-weight: 700;
+
     color: var(--text-secondary);
+
   }
+
   .sun-legend { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+
   .sun-legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
 
+
+
   /* Fund name in sector tables */
+
   .fund-cell { font-size: 11px; max-width: 160px; }
+
   .fund-sub-row td {
+
     padding: 2px 10px 8px !important;
+
     font-size: 11px !important;
+
     color: var(--text-secondary);
+
     border-bottom: 1px solid #e8ecf0;
+
   }
+
   .fund-sub-row .fund-label {
+
     color: #999;
+
     font-size: 10px;
+
   }
+
   .fund-sub-row .fund-name {
+
     color: var(--accent);
+
     font-weight: 600;
+
   }
+
+
 
   /* Excel-style sector row group */
+
   .sector-row td { border-bottom: none; padding-bottom: 2px; vertical-align: middle; }
+
   .fund-row td { padding-top: 2px !important; padding-bottom: 8px !important; border-bottom: 1px solid #e8ecf0; font-size: 11px; color: var(--text-secondary); }
+
   .fund-row .fund-label { color: #999; font-size: 10px; }
+
   .fund-row .fund-name { color: var(--accent); font-weight: 600; }
 
+  .breadth-bar .flat { background: #ccc; }
+
+  .breadth-bar .down { background: var(--green); }
+
+
+
   .disclaimer {
+
     text-align: center;
+
     font-size: 11px;
+
     color: #aaa;
+
     margin-top: 32px;
+
     padding: 16px;
+
     border-top: 1px solid var(--border);
+
   }
+
+
 
   /* Guide tab styles */
+
   .timeline-item {
+
     display: flex;
+
     gap: 12px;
+
     padding: 14px 0;
+
     border-bottom: 1px solid var(--border);
+
     align-items: flex-start;
-  }
-  .timeline-item:last-child { border-bottom: none; }
-  .time-dot {
-    flex-shrink: 0;
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-  }
-  .time-dot.morning { background: #f0a060; }
-  .time-dot.ashare  { background: #e74c3c; }
-  .time-dot.fullday { background: #3b6df0; }
-  .time-dot.usstock { background: #8e44ad; }
-  .time-info { flex: 1; min-width: 0; }
-  .time-info .time { font-size: 18px; font-weight: 700; }
-  .time-info .label { font-size: 14px; color: var(--text); margin-top: 2px; }
-  .time-info .detail { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
-  .market-badges { display: flex; gap: 4px; margin-top: 6px; }
-  .badge {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-weight: 600;
-  }
-  .badge.a { background: #ffe8e5; color: #c0392b; }
-  .badge.hk { background: #e5f2ff; color: #2471a3; }
-  .badge.us { background: #ede0f5; color: #7d3c98; }
-  .source-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    padding: 8px 0;
-  }
-  .source-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: #eef2ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
+
   }
 
-  @media (max-width: 768px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    .index-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
-    .tab-btn { font-size: 12px; padding: 8px 12px; }
-    .header h1 { font-size: 20px; }
-    .summary-banner .summary-text { font-size: 13px; }
-    body { padding: 12px; }
-    .section-title { font-size: 17px; }
-    table { font-size: 11px; }
-    th, td { padding: 6px 6px; }
-    .reason-badge { max-width: 130px; font-size: 10px; }
-    .index-card { padding: 6px 4px; }
-    .index-card .index-name { font-size: 9px; margin-bottom: 2px; }
-    .index-card .index-price { font-size: 13px; margin-bottom: 2px; }
-    .index-card .index-change { font-size: 11px; }
-    .index-card .market-tag { font-size: 8px; padding: 0 4px; margin-bottom: 2px; }
-    .fund-cell { font-size: 10px; max-width: 110px; }
-    .sun-chart { width: 60px; height: 60px; }
-    .sun-chart-inner { inset: 12px; font-size: 10px; }
-    .stats-row { gap: 6px; margin-bottom: 0; }
-    .stat-item { padding: 6px 4px; min-width: 0; }
-    .stat-item .stat-value { font-size: 12px; }
-    .stat-item .stat-label { font-size: 9px; }
-    .card { padding: 12px; margin-bottom: 12px; }
-    .card h3 { font-size: 13px; margin-bottom: 8px; }
-    .cause-list li { font-size: 12px; padding: 8px 10px; }
-    .cause-list li::before { width: 16px; height: 16px; line-height: 16px; font-size: 9px; margin-right: 6px; }
-    .fund-row td { font-size: 10px !important; padding-top: 1px !important; padding-bottom: 6px !important; }
-    .fund-row .fund-label { font-size: 9px; }
+  .timeline-item:last-child { border-bottom: none; }
+
+  .time-dot {
+
+    flex-shrink: 0;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #fff;
+
   }
+
+  .time-dot.morning { background: #f0a060; }
+
+  .time-dot.ashare  { background: #e74c3c; }
+
+  .time-dot.fullday { background: #3b6df0; }
+
+  .time-dot.usstock { background: #8e44ad; }
+
+  .time-info { flex: 1; min-width: 0; }
+
+  .time-info .time { font-size: 18px; font-weight: 700; }
+
+  .time-info .label { font-size: 14px; color: var(--text); margin-top: 2px; }
+
+  .time-info .detail { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+  .market-badges { display: flex; gap: 4px; margin-top: 6px; }
+
+  .badge {
+
+    font-size: 10px;
+
+    padding: 2px 8px;
+
+    border-radius: 3px;
+
+    font-weight: 600;
+
+  }
+
+  .badge.a { background: #ffe8e5; color: #c0392b; }
+
+  .badge.hk { background: #e5f2ff; color: #2471a3; }
+
+  .badge.us { background: #ede0f5; color: #7d3c98; }
+
+  .source-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 13px;
+
+    color: var(--text-secondary);
+
+    padding: 8px 0;
+
+  }
+
+  .source-icon {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 8px;
+
+    background: #eef2ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 14px;
+
+    flex-shrink: 0;
+
+  }
+
+
+
+  @media (max-width: 768px) {
+
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+    .index-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+
+    .tab-btn { font-size: 12px; padding: 8px 12px; }
+
+    .header h1 { font-size: 20px; }
+
+    .summary-banner .summary-text { font-size: 13px; }
+
+    body { padding: 12px; }
+
+    .section-title { font-size: 17px; }
+
+    table { font-size: 11px; }
+
+    th, td { padding: 6px 6px; }
+
+    .reason-badge { max-width: 130px; font-size: 10px; }
+
+    .index-card { padding: 6px 4px; }
+
+    .index-card .index-name { font-size: 9px; margin-bottom: 2px; }
+
+    .index-card .index-price { font-size: 13px; margin-bottom: 2px; }
+
+    .index-card .index-change { font-size: 11px; }
+
+    .index-card .market-tag { font-size: 8px; padding: 0 4px; margin-bottom: 2px; }
+
+    .fund-cell { font-size: 10px; max-width: 110px; }
+
+    .sun-chart { width: 60px; height: 60px; }
+
+    .sun-chart-inner { inset: 12px; font-size: 10px; }
+
+    .stats-row { gap: 6px; margin-bottom: 0; }
+
+    .stat-item { padding: 6px 4px; min-width: 0; }
+
+    .stat-item .stat-value { font-size: 12px; }
+
+    .stat-item .stat-label { font-size: 9px; }
+
+    .card { padding: 12px; margin-bottom: 12px; }
+
+    .card h3 { font-size: 13px; margin-bottom: 8px; }
+
+    .cause-list li { font-size: 12px; padding: 8px 10px; }
+
+    .cause-list li::before { width: 16px; height: 16px; line-height: 16px; font-size: 9px; margin-right: 6px; }
+
+    .fund-row td { font-size: 10px !important; padding-top: 1px !important; padding-bottom: 6px !important; }
+
+    .fund-row .fund-label { font-size: 9px; }
+
+  }
+
+
+
+
+
+  /* Mobile: header meta wrap */
 
   .header .meta {
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     row-gap: 6px;
+
   }
+
+
+
+  /* Mobile: summary banner tag inline */
 
   .summary-banner .tag {
+
     vertical-align: middle;
+
     margin-bottom: 4px;
+
   }
 
+
+
+  /* Mobile: index grid 2 columns for narrow screens */
+
   @media (max-width: 400px) {
+
     .index-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
     .index-card .index-price { font-size: 11px !important; }
+
     .index-card .index-change { font-size: 10px !important; }
+
   }
 
+
+
+  /* Mobile: stats row 2 columns */
+
   @media (max-width: 400px) {
+
     .stat-item { flex: 0 0 calc(50% - 3px); min-width: 0; }
+
   }
+
+
+
+  /* Mobile: reason badge wider */
 
   @media (max-width: 768px) {
+
     .reason-badge { max-width: 100% !important; white-space: normal !important; }
+
   }
+
+
+
+  /* Mobile: table cells less padding */
 
   @media (max-width: 480px) {
+
     th, td { padding: 5px 4px !important; font-size: 10px !important; }
+
     .fund-row td { font-size: 9px !important; }
+
   }
 
-  /* Status badges */
+
+
+  /* Live indicator */
+
   .status-badge {
+
     display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px;
+
     margin-left: 6px; vertical-align: middle; font-weight: 600;
+
   }
+
   .status-badge.live { background: #ffe8e5; color: #c0392b; animation: livePulse 1.8s infinite; }
+
   .status-badge.frozen { background: #f0f2f5; color: #999; }
+
   .status-badge.pending { background: #fff8e5; color: #b8860b; }
+
   @keyframes livePulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
   .index-time { font-size: 10px; color: #999; margin-top: 2px; }
+
   .index-change { font-size: 14px; font-weight: 600; }
+
   .index-change.up { color: var(--red); }
+
   .index-change.down { color: var(--green); }
+
   .index-change.neutral { color: #999; }
+
   @media (max-width:768px) { .status-badge{font-size:9px;padding:1px 6px} .index-time{font-size:8px} }
+
+
 
 </style>
 <script>
-// 零闪烁 Tab 激活
+// 零闪烁 Tab 激活：在 <body> 渲染前确定默认 Tab
 (function(){
   var n=new Date(),d=n.getDay(),t=n.getHours()*60+n.getMinutes(),s='close';
   if(d!==0&&d!==6){if(t<570)s='preopen';else if(t<=690)s='morning';else if(t<780)s='midday';else if(t<=900)s='afternoon'}
@@ -532,39 +1045,67 @@
   document.documentElement.setAttribute('data-active-tab',active);
 })();
 </script>
+
 </head>
+
 <body>
+
 <div class="container">
 
+
+
   <!-- Header -->
+
   <div class="header">
+
     <h1>📊 市场数据看板</h1>
-    <div class="subtitle" id="header-subtitle">🧊 午间休市 — 午盘分析已更新</div>
+
+    <div class="subtitle" id="header-subtitle">🌅 午间休市 — 午盘分析已更新</div>
+
     <div class="meta">
-      <span>📅 2026年7月16日（星期四）</span>
-      <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 8px;border-radius:4px;margin-left:6px;">🧊 午间休市</span>
+
+      <span>📅 2026年7月17日（星期五）</span>
+      <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 8px;border-radius:4px;margin-left:6px;">🧊 午盘</span>
+
       <span>📈 数据来源：腾讯自选股</span>
+
       <span>🤖 呆呆·智能助理</span>
+
     </div>
+
   </div>
+
+
 
   <!-- Summary Banner -->
-  <div class="summary-banner" id="summary-banner" style="border-left-color:#f39c12;background:#fffbf0;">
-    <span class="tag" style="background:#f39c12;">🟡 结构分化</span>
-    <span class="summary-text">A股四大指数全线下挫但超60%个股上涨：上证-0.82%报3923.02、深证-0.51%、创业板-1.18%、科创50-1.30%——指数与个股严重背离，权重股承压但中小市值普涨。港股逆势大爆发：恒生+2.08%报25195、恒科+3.44%报4903，外资回流中概科技。全市场3328只上涨、2072只下跌（上涨占比60%），成交额约1.62万亿较上日缩量2694亿（-14%）。传媒+2.68%领涨（AI应用+影视爆发），农林牧渔+1.78%/计算机+1.69%/商贸零售+1.61%/房地产+1.56%跟随；建筑材料-2.75%领跌（前期获利回吐），煤炭-2.20%/通信-1.86%/电子-1.43%/机械设备-1.27%跌幅居前。</span>
-    <div class="detail-text">核心驱动：港股强势领涨（恒科+3.44%外资回流中概科技）→ AI应用端爆发（传媒+2.68%/计算机+1.69% vs 硬端电子-1.43%/通信-1.86%出现软硬切换）→ 周期全面退潮（建材-2.75%/煤炭-2.20%/石油石化-1.13%）→ 大票承压小票活跃（6成个股上涨但A指全绿，权重拖累指数）→ 缩量2694亿至1.62万亿（存量博弈特征明显）。典型的"港股带节奏+A股内在结构切换"上午。</div>
+
+      <div class="summary-banner" id="summary-banner" style="border-left-color:#3498db;background:#f0f7ff;">
+    <span class="tag">🟥 深度回调</span>
+    <span class="summary-text">A股全线深度回调，上证-3.29%、深证-5.65%、创业板-7.31%、科创50-7.46%全面走弱；港股恒指▼ 2.56%、恒科▼ 5.07%同步大跌。市场仅407家上涨、5074家下跌，唯一红盘行业仅银行（+0.62%），半日成交20987.66亿（较上日+2561.42亿）。通信-10.51%、电子-8.48%领跌。</span>
+    <div class="detail-text">核心驱动：AI/半导体板块集体暴跌（通信-10.51%、电子-8.48%）→ 科技成长全线溃退（机械设备-6.70%、计算机-5.61%、国防军工-5.49%）→ 仅银行+0.62%唯一收红，高股息防御成资金避风港 → 放量下跌成交20987.66亿（++2561.42亿），恐慌情绪集中释放 → 港股同步承压（恒指▼ 2.56%、恒科▼ 5.07%）。</div>
   </div>
+
+
 
   <!-- Tabs -->
+
   <div class="tabs">
+
     <button class="tab-btn" onclick="switchTab('live', this)" data-tab="live">📊 实时行情 <span class="tab-badge live">⚡实时</span></button>
-    <button class="tab-btn active" onclick="switchTab('midday', this)" data-tab="midday">🌅 午盘分析 <span class="tab-badge live">⚡实时</span></button>
+
+    <button class="tab-btn" onclick="switchTab('midday', this)" data-tab="midday">🌅 午盘分析 <span class="tab-badge live">⚡实时</span></button>
+
     <button class="tab-btn" onclick="switchTab('close', this)" data-tab="close">☀️ 收盘分析 <span class="tab-badge close">📊收盘</span></button>
+
     <button class="tab-btn" onclick="switchTab('guide', this)" data-tab="guide">📋 看板说明</button>
+
   </div>
 
-  <!-- ==================== 实时行情 ==================== -->
+
+
+    <!-- ==================== 实时行情（全天动态） ==================== -->
   <div class="tab-content" id="tab-live">
+
     <div class="card" style="margin-bottom:20px;">
       <h3>📉 主流指数 <span style="font-size:11px;color:#e74c3c;background:#ffe0e0;padding:2px 6px;border-radius:3px;" id="live-idx-badge">⚡ 实时</span></h3>
       <div class="index-grid">
@@ -594,61 +1135,161 @@
       </div>
     </div>
   </div>
-
-  <!-- ==================== 收盘分析 ==================== -->
+<!-- ==================== 收盘分析（15:10 AI快照） ==================== -->
   <div class="tab-content" id="tab-close">
+
+    <!-- 🔍 全日市场驱动因素 -->
     <div class="card" style="margin-bottom:20px;">
       <h3>🔍 全日市场驱动因素</h3>
-      <p style="font-size:13px;color:#999;text-align:center;padding:40px 0;">全日收盘分析将于 15:10 自动更新，敬请期待…</p>
-    </div>
-  </div>
-
-  <!-- ==================== 午盘分析（12:10 AI快照） ==================== -->
-  <div class="tab-content active" id="tab-midday">
-
-    <div class="card" style="margin-bottom:20px;">
-      <h3>🔍 午盘五大驱动因素</h3>
       <ol class="cause-list">
-        <li><strong>港股强势爆发——恒生+2.08% / 恒科+3.44%外资回流中概科技：</strong>恒生指数早盘高开高走报25195.18点（+2.08%），恒生科技更是飙涨+3.44%至4903.35点，日内振幅达3.46%。上一交易日恒指仅24681点，今日跳空高开近144点直接站上24800，午间已突破25200——外资对中国科技资产的估值修复逻辑加速兑现。港股通资金持续流入，中概股回归概念活跃。恒科相较A股科创板表现出碾压级优势（恒科+3.44% vs 科创50-1.30%），说明外资在"港股中概"和"A股科技"之间做出了明确方向选择。</li>
-        <li><strong>AI应用端全线爆发——传媒+2.68%/计算机+1.69%，"软硬切换"信号强化：</strong>传媒板块以+2.68%冠绝31个申万一级行业。影视院线+5.72%、广告营销+3.32%领涨概念板块，AI应用（AI营销+3.47%）和游戏概念全线活跃。计算机+1.69%紧随其后（IT服务+2.39%、软件开发+1.13%），信创和操作系统概念获资金追捧。相比之下，AI硬端电子-1.43%、通信-1.86%大幅下挫——算力芯片/通信设备高位持续调整。这是继7月14日之后，"AI行情从炒算力基建转向炒应用落地"逻辑的进一步强化。传媒-电子日内剪刀差达4.11%，为近期最大。</li>
-        <li><strong>指数与个股严重背离——60%个股上涨但A指全绿，权重股拖累指数：</strong>全市场3328只上涨、2072只下跌，上涨占比高达60%，55只涨停仅9只跌停——表面上看是普涨格局。但上证-0.82%/深证-0.51%/创业板-1.18%/科创50-1.30%，四大A指全线飘绿。这种极端背离说明银行-1.00%/非银金融-0.97%/电力设备-0.87%等大市值权重板块集体承压，而中小市值品种和题材股全面活跃。典型的"大票跌指数跌、小票涨赚钱效应不差"格局，对散户投资者反而有利。</li>
-        <li><strong>周期全线退潮——建材-2.75%/煤炭-2.20%/石油石化-1.13%包揽跌幅前列：</strong>建筑材料-2.75%领跌全市场（昨日+3.68%反弹后的获利回吐），煤炭-2.20%深度回调（昨日+1.20%的强势后反转，单日振幅3.35%），石油石化-1.13%跟随下跌。周期三兄弟集体走弱说明"七月轮动"逻辑正在加速证伪——资金从周期/资源板块撤离并未流入新能源（电力设备-0.87%）和制造（机械设备-1.27%），而是集中涌入了AI应用+农林牧渔等题材方向。</li>
-        <li><strong>缩量2694亿至1.62万亿——存量博弈下"结构切换"快于"方向选择"：</strong>两市半日成交1.62万亿，较昨日同期缩量2694亿（-14.2%）。在缩量环境下，全市场普涨无望，"少数品种领涨+多数品种平淡"成为必然。今日的关键信号是：资金不是简单地从A股撤出，而是在缩量约束下进行极致结构切换——从AI硬端（电子/通信）切换到软端（传媒/计算机），从周期（建材/煤炭）切换到消费题材（农林牧渔/商贸零售），从A股权重切换到港股科技。这种"行业轮动速度加快+成交额回落"的组合，预示着市场即将迎来方向选择。</li>
+        <li><strong>计算机+2.44%逆势爆发——信创+IT服务全线开花：</strong>计算机板块午后持续走强，全天收涨+2.44%冠绝31行业。信创概念全线活跃（操作系统+5.08%/华为欧拉+4.52%），多只个股午后封板。中报业绩预告窗口期叠加政策催化，资金集中涌入科技软端。与硬科技（电子-1.13%）形成鲜明反差——市场对"软件替代"逻辑的认可度显著高于"硬件制造"，AI行情从"炒算力基建"进入"炒应用落地+信创替代"的第二阶段。</li>
+        <li><strong>沪指高开低走失守4000关口——午后从+0.52%翻绿至-0.49%：</strong>上证早盘一度冲高至4016点（+0.65%），午后持续回落至3970.88点收盘，日内振幅1.21%。深证成指-1.87%、创业板-1.70%跌幅更深——存量博弈下中小市值品种失血更严重。两市成交约2.56万亿，较昨日缩量。指数层面的"高开低走"暴露了资金追高意愿不足的核心矛盾，午后抛压主要来自新能源/建材/周期等前期反弹板块的获利了结。</li>
+        <li><strong>旧赛道集体退潮——电力设备-4.15%/建材-3.68%/基础化工-3.44%包揽跌幅前三：</strong>光伏、风电、锂电池全线下挫，电力设备板块成交额达3008亿，放量下跌特征明显。建筑材料延续昨日-3.51%后今日再跌-3.68%，两日累计跌超7%——前期"七月轮动"反弹获利盘集中出清。有色金属-3.17%、汽车-2.87%、机械设备-3.41%同步走弱。周期+新能源的"七月轮动"逻辑遭遇证伪，缺乏盈利改善预期支撑的超跌反弹终归昙花一现。</li>
+        <li><strong>科创50+0.73%逆势翻红——半导体/芯片"冰火两重天"内部极致分化：</strong>科创50早盘冲高至2078.64点（+3.84%），午后回落至2016.23点收盘但仍为正收益，日内振幅5.85%为四大指数之最。国产GPU/半导体设备/存储芯片受产业政策催化低位活跃，但高位算力芯片/外销型标的持续承压。本质上是AI硬件"高低切换"——产业逻辑完好，拥挤筹码需要时间消化。电子板块成交8784亿居全行业首位，大量筹码在高位松动。</li>
+        <li><strong>极致分化格局固化——机构"防御+进攻"哑铃策略成形：</strong>防御端：煤炭+1.20%（两日累计+2.8%）、银行+0.94%（午后逆转翻红两日累计+2.0%），高股息红利资产连续跑赢。进攻端：计算机+2.44%、信创概念批量涨停。全市场仅6个申万行业上涨、24个下跌——"少数品种赚钱、多数品种亏钱"的极端分化格局持续深化。石油石化+0.47%受国际油价支撑、食品饮料+0.35%弱反弹、房地产+0.29%微涨。资金放弃中间地带（周期/消费/新能源），集中押注"高确定性红利+高弹性科技软端"两端。</li>
       </ol>
     </div>
 
+    <!-- 🌸 呆呆投资观察笔记 -->
+    <div class="card" style="margin-bottom:20px;background:#fff5f5;border-left:4px solid #e74c3c;">
+      <h3>🌸 呆呆投资观察笔记</h3>
+      <div style="font-size:14px;line-height:1.8;color:#1a1a2e;">
+        <p style="font-size:16px;font-weight:700;color:#c0392b;margin-bottom:14px;">今日是典型的"高开低走+极致分化"交易日——指数层面温和下跌（上证仅-0.49%），但行业分化剧烈（计算机+2.44% vs 电力设备-4.15%，日内剪刀差6.59%）。本质是存量博弈下的"结构再平衡"：资金从前期热门的周期/新能源/建材流出，集中涌入计算机信创+高股息防御两端，中间地带全线失血。</p>
+        <ol style="padding-left:20px;">
+          <li style="margin-bottom:12px;"><strong>科技主线出现"软硬切换"信号，计算机-电子日内剪刀差达3.57%：</strong>计算机+2.44%与电子-1.13%的日内差为近期最大，说明AI方向内部出现从"硬件算力"到"软件应用+信创"的结构性切换。电子板块成交8784亿（全行业最高），大量筹码在高位松动。<span style="color:#c0392b;font-weight:600;">呆呆判断：AI行情进入第二阶段——从"炒算力基建"转向"炒应用落地+信创替代"，建议关注操作系统/数据库/工业软件等自主可控方向，适当降低纯算力芯片仓位。</span></li>
+          <li style="margin-bottom:12px;"><strong>旧赛道"七月轮动"逻辑基本证伪，建材两日跌超7%是教科书式案例：</strong>上周五（7月3日）建材+4.52%领涨，市场一度期待"周期轮动"开启。但7月6日-5.75%、7月7日-3.51%、今日-3.68%，四日走势证明那只是一次性情绪脉冲，缺乏基本面支撑的反弹终被证伪。电力设备-4.15%今日领跌全市场，光伏/风电自上周高点累计回调超8%。<span style="color:#c0392b;font-weight:600;">呆呆判断：对缺乏盈利改善预期支撑的"超跌反弹"板块应保持警惕，不要在情绪高点追入。周期/建材/新能源等板块需等待基本面拐点确认后再做布局。</span></li>
+          <li style="margin-bottom:12px;"><strong>机构"哑铃策略"成形——一端防御、一端进攻、放弃中间：</strong>煤炭两日累计+2.8%、银行两日累计+2.0%，与科技软端（计算机+2.44%）共同构成今日仅有的正收益方向。资金同时押注"高确定性红利"和"高弹性科技软端"，放弃中间地带的周期/消费/新能源。<span style="color:#c0392b;font-weight:600;">呆呆判断：当前仓位配置应效仿机构"哑铃策略"——一端配置银行/煤炭/公用事业等高股息资产做底仓防御，另一端精选计算机/信创等科技软端做进攻弹性，对周期/新能源/医药等"中间地带"暂时观望，等待右侧信号。</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 📉 主流指数 — 全日收盘 -->
     <div class="card" style="margin-bottom:20px;">
-      <h3>📉 主流指数 — 上午收盘 <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 6px;border-radius:3px;">🧊 截止 A股 11:30 / 港股 12:00</span></h3>
+      <h3>📉 主流指数 — 全日收盘 <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 6px;border-radius:3px;">📌 截止 A股 15:00</span></h3>
       <div class="index-grid">
-        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">上证指数</div><div class="index-price">3,923.02</div><div class="index-change down">▼ 0.82%</div></div>
-        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">深证成指</div><div class="index-price">14,703.30</div><div class="index-change down">▼ 0.51%</div></div>
-        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">创业板指</div><div class="index-price">3,759.78</div><div class="index-change down">▼ 1.18%</div></div>
-        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">科创50</div><div class="index-price">1,899.20</div><div class="index-change down">▼ 1.30%</div></div>
-        <div class="index-card"><span class="market-tag hk-share">港股</span><div class="index-name">恒生指数</div><div class="index-price">25,195.18</div><div class="index-change up">▲ 2.08%</div></div>
-        <div class="index-card"><span class="market-tag hk-share">港股</span><div class="index-name">恒生科技</div><div class="index-price">4,903.35</div><div class="index-change up">▲ 3.44%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">上证指数</div><div class="index-price">3,970.88</div><div class="index-change down">▼ 0.49%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">深证成指</div><div class="index-price">14,939.73</div><div class="index-change down">▼ 1.87%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">创业板指</div><div class="index-price">3,845.35</div><div class="index-change down">▼ 1.70%</div></div>
+        <div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">科创50</div><div class="index-price">2,016.23</div><div class="index-change up">▲ 0.73%</div></div>
+        <div class="index-card"><span class="market-tag hk-share">港股</span><div class="index-name">恒生指数</div><div class="index-price">--</div><div class="index-change">16:10更新</div></div>
+        <div class="index-card"><span class="market-tag hk-share">港股</span><div class="index-name">恒生科技</div><div class="index-price">--</div><div class="index-change">16:10更新</div></div>
+      </div>
+    </div>
+
+    <!-- 🔺🔻 行业TOP5 / BOTTOM5 -->
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <h3>🔺 涨幅 TOP 5 <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 6px;border-radius:3px;">📌 全日收盘</span></h3>
+        <div style="overflow-x:auto;"><table>
+          <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
+          <tr class="sector-row"><td rowspan="2">1</td><td>计算机</td><td class="sector-up">▲ 2.44%</td><td><span class="reason-badge">信创+操作系统全线爆发，午后封板频现</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">天弘中证计算机ETF联接C(001630)</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">2</td><td>煤炭</td><td class="sector-up">▲ 1.20%</td><td><span class="reason-badge">高股息防御两日连涨，机构哑铃策略底仓</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">富国中证煤炭指数(LOF)C(013275)</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">3</td><td>银行</td><td class="sector-up">▲ 0.94%</td><td><span class="reason-badge">午后逆转翻红，农行+2.15%/建行+1.88%</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">天弘中证银行ETF联接C(001595)</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">4</td><td>石油石化</td><td class="sector-up">▲ 0.47%</td><td><span class="reason-badge">国际油价上行支撑，科力股份涨停</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">广发中证全指能源ETF联接C(001460)</span></td></tr>
+          <tr class="sector-row"><td rowspan="2">5</td><td>食品饮料</td><td class="sector-up">▲ 0.35%</td><td><span class="reason-badge">弱反弹，白酒龙头企稳</span></td></tr>
+          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">天弘中证食品饮料ETF联接C(001632)</span></td></tr>
+        </table></div>
+      </div>
+      <div class="card">
+        <h3>🔻 跌幅 BOTTOM 5 <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 6px;border-radius:3px;">📌 全日收盘</span></h3>
+        <div style="overflow-x:auto;"><table>
+          <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
+          <tr><td>1</td><td>电力设备</td><td class="sector-down">▼ 4.15%</td><td><span class="reason-badge">光伏/风电/锂电池全线下挫，TCL中环跌停</span></td></tr>
+          <tr><td>2</td><td>建筑材料</td><td class="sector-down">▼ 3.68%</td><td><span class="reason-badge">两日累跌7.2%，前期反弹获利盘集中出清</span></td></tr>
+          <tr><td>3</td><td>基础化工</td><td class="sector-down">▼ 3.44%</td><td><span class="reason-badge">周期品需求预期走弱，全板块普跌</span></td></tr>
+          <tr><td>4</td><td>机械设备</td><td class="sector-down">▼ 3.41%</td><td><span class="reason-badge">工程机械高位获利回吐，跟跌周期板块</span></td></tr>
+          <tr><td>5</td><td>有色金属</td><td class="sector-down">▼ 3.17%</td><td><span class="reason-badge">贵金属/小金属同步回调，资金撤离</span></td></tr>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- 📊 30行业全日排名 + 涨跌分布 -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3>📊 30行业全日排名 + 涨跌分布</h3>
+      <div style="overflow-x:auto;">
+        <table style="font-size:12px;">
+          <thead><tr><th>#</th><th>行业</th><th>涨跌幅</th><th>成交(亿)</th><th>换手</th><th>PE</th><th>#</th><th>行业</th><th>涨跌幅</th><th>成交(亿)</th><th>换手</th><th>PE</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>计算机</td><td class="sector-up">▲ 2.44%</td><td>1990</td><td>3.27%</td><td>65.7</td><td>16</td><td>社会服务</td><td class="sector-down">▼ 0.94%</td><td>484</td><td>3.14%</td><td>38.7</td></tr>
+            <tr><td>2</td><td>煤炭</td><td class="sector-up">▲ 1.20%</td><td>1052</td><td>1.04%</td><td>19.3</td><td>17</td><td>家用电器</td><td class="sector-down">▼ 1.03%</td><td>771</td><td>1.60%</td><td>14.6</td></tr>
+            <tr><td>3</td><td>银行</td><td class="sector-up">▲ 0.94%</td><td>13302</td><td>0.27%</td><td>5.82</td><td>18</td><td>电子</td><td class="sector-down">▼ 1.13%</td><td>3558</td><td>5.32%</td><td>94.9</td></tr>
+            <tr><td>4</td><td>石油石化</td><td class="sector-up">▲ 0.47%</td><td>3690</td><td>0.62%</td><td>18.1</td><td>19</td><td>钢铁</td><td class="sector-down">▼ 1.29%</td><td>198</td><td>0.88%</td><td>28.4</td></tr>
+            <tr><td>5</td><td>食品饮料</td><td class="sector-up">▲ 0.35%</td><td>923</td><td>1.37%</td><td>18.7</td><td>20</td><td>医药生物</td><td class="sector-down">▼ 1.36%</td><td>3047</td><td>2.02%</td><td>31.7</td></tr>
+            <tr><td>6</td><td>房地产</td><td class="sector-up">▲ 0.29%</td><td>2135</td><td>1.59%</td><td>19.2</td><td>21</td><td>纺织服饰</td><td class="sector-down">▼ 1.48%</td><td>706</td><td>1.78%</td><td>24.2</td></tr>
+            <tr><td>7</td><td>美容护理</td><td class="sector-down">▼ 0.06%</td><td>110</td><td>1.50%</td><td>29.0</td><td>22</td><td>轻工制造</td><td class="sector-down">▼ 1.65%</td><td>866</td><td>1.93%</td><td>31.2</td></tr>
+            <tr><td>8</td><td>商贸零售</td><td class="sector-down">▼ 0.11%</td><td>1282</td><td>1.20%</td><td>32.5</td><td>23</td><td>农林牧渔</td><td class="sector-down">▼ 2.35%</td><td>978</td><td>1.70%</td><td>38.7</td></tr>
+            <tr><td>9</td><td>综合</td><td class="sector-down">▼ 0.15%</td><td>193</td><td>1.90%</td><td>94.9</td><td>24</td><td>国防军工</td><td class="sector-down">▼ 2.37%</td><td>966</td><td>2.25%</td><td>65.7</td></tr>
+            <tr><td>10</td><td>通信</td><td class="sector-down">▼ 0.18%</td><td>1808</td><td>1.76%</td><td>65.9</td><td>25</td><td>汽车</td><td class="sector-down">▼ 2.87%</td><td>2313</td><td>1.61%</td><td>25.8</td></tr>
+            <tr><td>11</td><td>公用事业</td><td class="sector-down">▼ 0.25%</td><td>4467</td><td>1.11%</td><td>20.3</td><td>26</td><td>有色金属</td><td class="sector-down">▼ 3.17%</td><td>2264</td><td>2.47%</td><td>20.9</td></tr>
+            <tr><td>12</td><td>交通运输</td><td class="sector-down">▼ 0.37%</td><td>4371</td><td>0.67%</td><td>16.2</td><td>27</td><td>机械设备</td><td class="sector-down">▼ 3.41%</td><td>3106</td><td>2.55%</td><td>48.5</td></tr>
+            <tr><td>13</td><td>传媒</td><td class="sector-down">▼ 0.41%</td><td>1481</td><td>2.74%</td><td>34.7</td><td>28</td><td>基础化工</td><td class="sector-down">▼ 3.44%</td><td>2879</td><td>2.58%</td><td>30.7</td></tr>
+            <tr><td>14</td><td>建筑装饰</td><td class="sector-down">▼ 0.68%</td><td>2795</td><td>1.14%</td><td>13.4</td><td>29</td><td>建筑材料</td><td class="sector-down">▼ 3.68%</td><td>769</td><td>2.17%</td><td>41.2</td></tr>
+            <tr><td>15</td><td>非银金融</td><td class="sector-down">▼ 0.80%</td><td>4181</td><td>0.89%</td><td>11.4</td><td>30</td><td>电力设备</td><td class="sector-down">▼ 4.15%</td><td>3008</td><td>2.65%</td><td>34.7</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- 涨跌分布 -->
       <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
         <div class="sun-chart-wrap">
-          <div class="sun-chart" style="background: conic-gradient(var(--red) 0deg 216deg, var(--green) 216deg 350deg, #ccc 350deg 360deg);">
+          <div class="sun-chart" style="background: conic-gradient(var(--red) 0deg 78deg, var(--green) 78deg 276deg, #ccc 276deg 360deg);">
             <div class="sun-chart-inner">分布</div>
           </div>
           <div class="sun-legend">
-            <div><span class="dot" style="background:var(--red)"></span> 上涨 3,328 家（60%）</div>
-            <div><span class="dot" style="background:var(--green)"></span> 下跌 2,072 家（38%）</div>
-            <div><span class="dot" style="background:#ccc"></span> 平盘 129 家（2%）</div>
+            <div><span class="dot" style="background:var(--red)"></span> 上涨 ~1,050 家（21%）</div>
+            <div><span class="dot" style="background:var(--green)"></span> 下跌 ~3,850 家（77%）</div>
+            <div><span class="dot" style="background:#ccc"></span> 平盘 ~80 家（2%）</div>
           </div>
         </div>
         <div style="flex:1;min-width:200px;">
-          <div class="breadth-bar"><div class="up" style="width:60%"></div><div class="down" style="width:38%"></div><div class="flat" style="width:2%"></div></div>
+          <div class="breadth-bar"><div class="up" style="width:21%"></div><div class="down" style="width:77%"></div><div class="flat" style="width:2%"></div></div>
           <div style="display:flex;justify-content:space-between;font-size:11px;color:#999;margin-top:10px;">
-            <span>📈 涨停 55</span><span>📉 跌停 9</span><span>💹 成交 1.62万亿</span>
-          </div>
-          <div style="font-size:11px;color:#999;margin-top:4px;text-align:center;">
-            较上日缩量 2,694 亿（-14.2%）
+            <span>📈 涨停 ~42</span><span>📉 跌停 ~30</span><span>💹 成交 ~2.56万亿</span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 📈 市场情绪仪表盘 -->
+    <div class="card">
+      <h3>📈 市场情绪仪表盘</h3>
+      <div class="stats-row">
+        <div class="stat-item"><div class="stat-value" style="color:var(--blue);">6/24</div><div class="stat-label">申万行业上涨/下跌</div></div>
+        <div class="stat-item"><div class="stat-value" style="color:var(--red);">+6.59%</div><div class="stat-label">行业日内最大剪刀差</div></div>
+        <div class="stat-item"><div class="stat-value" style="color:var(--green);">▼ 1.21%</div><div class="stat-label">上证日内振幅</div></div>
+        <div class="stat-item"><div class="stat-value" style="color:var(--red);">5.85%</div><div class="stat-label">科创50日内振幅</div></div>
+      </div>
+    </div>
+
+  </div>
+<!-- ==================== 收盘分析 END ==================== -->
+<!-- ==================== 午盘分析（12:10 AI快照） ==================== -->
+  <div class="tab-content" id="tab-midday">
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>🔍 午盘五大驱动因素</h3>
+      <ol class="cause-list">
+<li><strong>AI/半导体板块集体暴跌，通信-10.51%电子-8.48%领跌全场：</strong>通信板块暴跌10.51%，电子-8.48%，AI算力/光模块/半导体产业链全面溃退。前期涨幅过大+获利盘集中兑现+外部利空共振，科技成长遭遇年内最大单日调整。上证▼ 3.29%、深证▼ 5.65%、创业板▼ 7.31%均深度回调。</li>
+<li><strong>个股普跌，全市场仅407家上涨vs 5074家下跌：</strong>全市场上涨家数仅407家（占比7%），下跌5074家，涨停24家、跌停169家。恐慌情绪集中释放，过去一年仅26%交易日处于该情绪区间。</li>
+<li><strong>恒指▼ 2.56% / 恒科▼ 5.07%同步承压，港股科技大幅回调：</strong>恒生指数跌2.56%，恒生科技跌5.07%。A股下跌情绪波及港股，中概/互联网板块同样遭遇抛压。</li>
+<li><strong>银行+0.62%唯一收红，高股息防御成资金避风港：</strong>银行板块逆势收涨+0.62%，公用事业-0.10%、煤炭-0.29%、石油石化-0.35%，传统高股息防御板块跌幅远小于大盘。资金从科技成长全面切换至低估值防御。</li>
+<li><strong>放量下跌，成交额20987.66亿（较上日++2561.42亿）：</strong>成交额较上日明显放大，恐慌盘/止损盘集中涌出。资金从科技/成长板块大幅流出，高股息/银行/公用事业成为短期避风港。市场需等待恐慌情绪释放后的企稳信号。</li>
+      </ol>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>📉 主流指数 <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 6px;border-radius:3px;">🧊 截止 A股 11:30 / 港股 12:00</span></h3>
+      <div class="index-grid">
+<div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">上证指数</div><div class="index-price">3,754.85</div><div class="index-change down">▼ 3.29%</div></div>
+<div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">深证成指</div><div class="index-price">13,670.61</div><div class="index-change down">▼ 5.65%</div></div>
+<div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">创业板指</div><div class="index-price">3,422.67</div><div class="index-change down">▼ 7.31%</div></div>
+<div class="index-card"><span class="market-tag a-share">A股</span><div class="index-name">科创50</div><div class="index-price">1,709.18</div><div class="index-change down">▼ 7.46%</div></div>
+<div class="index-card"><span class="market-tag hk-share">港股</span><div class="index-name">恒生指数</div><div class="index-price">24,367.58</div><div class="index-change down">▼ 2.56%</div></div>
+<div class="index-card"><span class="market-tag hk-share">港股</span><div class="index-name">恒生科技</div><div class="index-price">4,589.52</div><div class="index-change down">▼ 5.07%</div></div>
       </div>
     </div>
 
@@ -657,163 +1298,298 @@
         <h3>🔺 涨幅 TOP 5 <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 6px;border-radius:3px;">🧊 截止 11:30</span></h3>
         <div style="overflow-x:auto;"><table>
           <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
-          <tr class="sector-row"><td rowspan="2">1</td><td>传媒</td><td class="sector-up">▲ 2.68%</td><td><span class="reason-badge">影视+5.72%/AI营销+3.47%，AI应用端全线爆发</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">广发中证传媒ETF联接C(004857)</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">2</td><td>农林牧渔</td><td class="sector-up">▲ 1.78%</td><td><span class="reason-badge">养殖业+2.74%/饲料+2.60%，温氏股份+4.55%</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">天弘中证畜牧养殖产业指数发起C(027192)</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">3</td><td>计算机</td><td class="sector-up">▲ 1.69%</td><td><span class="reason-badge">IT服务+2.39%/软件开发+1.13%，信创概念活跃</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">天弘中证计算机ETF联接C(001630)</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">4</td><td>商贸零售</td><td class="sector-up">▲ 1.61%</td><td><span class="reason-badge">专业连锁+5.61%/博士眼镜涨停，消费回暖</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">暂无对应行业指数基金</span></td></tr>
-          <tr class="sector-row"><td rowspan="2">5</td><td>房地产</td><td class="sector-up">▲ 1.56%</td><td><span class="reason-badge">低估值修复+政策预期，江南高纤等活跃</span></td></tr>
-          <tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">南方中证房地产ETF发起联接C(004643)</span></td></tr>
+<tr class="sector-row"><td rowspan="2">1</td><td>银行</td><td class="sector-up">▲ 0.62%</td><td><span class="reason-badge">高股息防御属性凸显，资金避险首选</span></td></tr>
+<tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">天弘中证银行ETF联接C(001595)</span></td></tr>
+<tr class="sector-row"><td rowspan="2">2</td><td>公用事业</td><td class="sector-up">▲ -0.1%</td><td><span class="reason-badge">逆周期防御板块，水电燃气刚需支撑</span></td></tr>
+<tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">华夏公用事业ETF联接C(022873)</span></td></tr>
+<tr class="sector-row"><td rowspan="2">3</td><td>煤炭</td><td class="sector-up">▲ -0.29%</td><td><span class="reason-badge">低估值+高股息，资金从成长板块切换</span></td></tr>
+<tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">富国中证煤炭指数(LOF)C(013275)</span></td></tr>
+<tr class="sector-row"><td rowspan="2">4</td><td>石油石化</td><td class="sector-up">▲ -0.35%</td><td><span class="reason-badge">地缘扰动叠加油价企稳，资源股相对抗跌</span></td></tr>
+<tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">广发中证全指能源ETF联接C(001460)</span></td></tr>
+<tr class="sector-row"><td rowspan="2">5</td><td>交通运输</td><td class="sector-up">▲ -0.93%</td><td><span class="reason-badge">物流/航运旺季基本面支撑，跌幅小于大盘</span></td></tr>
+<tr class="fund-row"><td colspan="3"><span class="fund-label">关联基金</span><span class="fund-name">暂无对应指数基金</span></td></tr>
         </table></div>
       </div>
       <div class="card">
         <h3>🔻 跌幅 BOTTOM 5 <span style="font-size:11px;color:#666;background:#f0f2f5;padding:2px 6px;border-radius:3px;">🧊 截止 11:30</span></h3>
         <div style="overflow-x:auto;"><table>
           <tr><th>排名</th><th>行业</th><th>涨跌幅</th><th>异动原因</th></tr>
-          <tr><td>1</td><td>建筑材料</td><td class="sector-down">▼ 2.75%</td><td><span class="reason-badge">前期反弹获利回吐，振幅3.00%</span></td></tr>
-          <tr><td>2</td><td>煤炭</td><td class="sector-down">▼ 2.20%</td><td><span class="reason-badge">周期回调+商品价格走弱，中国神华领跌</span></td></tr>
-          <tr><td>3</td><td>通信</td><td class="sector-down">▼ 1.86%</td><td><span class="reason-badge">AI硬件调整延续，算力概念高位出清</span></td></tr>
-          <tr><td>4</td><td>电子</td><td class="sector-down">▼ 1.43%</td><td><span class="reason-badge">高位算力芯片松动，半导体分化加剧</span></td></tr>
-          <tr><td>5</td><td>机械设备</td><td class="sector-down">▼ 1.27%</td><td><span class="reason-badge">工程机械跟随周期回调，获利盘兑现</span></td></tr>
+<tr><td>1</td><td>通信</td><td class="sector-down">▼ 10.51%</td><td><span class="reason-badge">AI算力/光模块高位踩踏，通信-10.51%领跌</span></td></tr>
+<tr><td>2</td><td>电子</td><td class="sector-down">▼ 8.48%</td><td><span class="reason-badge">半导体+AI硬件获利盘集中出逃，板块深度回调</span></td></tr>
+<tr><td>3</td><td>机械设备</td><td class="sector-down">▼ 6.7%</td><td><span class="reason-badge">制造业景气预期走弱，通用设备板块大幅杀跌</span></td></tr>
+<tr><td>4</td><td>建筑材料</td><td class="sector-down">▼ 5.96%</td><td><span class="reason-badge">地产链悲观预期发酵，建材板块补跌</span></td></tr>
+<tr><td>5</td><td>医药生物</td><td class="sector-down">▼ 5.72%</td><td><span class="reason-badge">CXO/创新药集体下挫，医药板块失守关键位</span></td></tr>
         </table></div>
       </div>
     </div>
-  </div>
+</div><!-- ==================== 看板说明 ==================== -->
 
-  <!-- ==================== 看板说明 ==================== -->
   <div class="tab-content" id="tab-guide">
 
+
+
+    <!-- 概述 -->
+
     <div class="card" style="margin-bottom:20px;">
+
       <h3>📊 市场数据看板 v2.0</h3>
+
       <p style="font-size:13px;line-height:1.8;color:#555;margin-bottom:12px;">
+
         交易日 <strong>5秒级实时</strong> 行情看板，覆盖 <strong>A股 + 港股</strong> 主流指数、申万31行业排名、涨跌分布，<br>
+
         每交易日 12:10 和 15:10 由呆呆 AI 产出深度分析（原因拆解 + 投资笔记）。<br>
+
         <strong>云端 24/7 托管</strong>，关电脑也能看。
+
       </p>
+
       <div style="margin-top:8px;padding:8px 12px;background:#e8f0fe;border-radius:8px;font-size:12px;color:#555;">
+
         🔗 本页链接：<a href="https://xuhaonantiantian.github.io/meirishichanghaha/" style="color:#3498db;">xuhaonantiantian.github.io/meirishichanghaha</a>
+
       </div>
+
     </div>
 
+
+
+    <!-- 实时刷新规则 -->
+
     <div class="card" style="margin-bottom:20px;">
+
       <h3>⚡ 数据刷新规则</h3>
+
       <table style="font-size:12px;">
+
         <tr><th style="width:40%;">内容</th><th style="width:40%;">方式</th><th style="width:20%;">频率</th></tr>
+
         <tr><td>6大指数行情</td><td>腾讯自选股实时接口（qt.gtimg.cn）</td><td>5秒（浏览器）/ 10分钟（云端兜底）</td></tr>
+
         <tr><td>行业TOP5/BOTTOM5排名</td><td>申万31行业实时排序</td><td>同指数同步</td></tr>
+
         <tr><td>涨跌分布统计</td><td>全市场实时截面</td><td>10分钟（云端）</td></tr>
+
         <tr><td>市场原因拆解</td><td>呆呆 AI 智能分析</td><td>12:10 / 15:10</td></tr>
+
         <tr><td>投资观察笔记</td><td>呆呆 AI 智能分析</td><td>15:10</td></tr>
+
         <tr><td>基金关联映射</td><td>天弘基金优先规则</td><td>12:10 / 15:10</td></tr>
+
       </table>
+
       <div style="font-size:11px;color:#999;margin-top:8px;">
+
         交易时段：A股 9:30-11:30 / 13:00-15:00 | 港股 9:30-12:00 / 13:00-16:00<br>
+
         非交易时段自动停止实时刷新，显示最新静态快照。
+
       </div>
+
     </div>
 
+
+
+    <!-- 推送时间线 -->
+
     <div class="card" style="margin-bottom:20px;">
+
       <h3>📋 自动化产出节奏</h3>
+
       <div class="timeline-item">
+
         <div class="time-dot morning">1</div>
+
         <div class="time-info">
+
           <div class="time">12:10</div>
+
           <div class="label">午盘市场总结</div>
+
           <div class="detail">A股 + 港股 上午收盘数据</div>
+
           <div class="market-badges">
+
             <span class="badge a">A股</span>
+
             <span class="badge hk">港股</span>
+
           </div>
+
         </div>
+
       </div>
+
       <div class="timeline-item">
+
         <div class="time-dot ashare">2</div>
+
         <div class="time-info">
+
           <div class="time">15:10</div>
+
           <div class="label">A股收盘总结</div>
+
           <div class="detail">仅A股全日收盘数据（A股 15:00 收市）</div>
+
           <div class="market-badges"><span class="badge a">A股</span></div>
+
         </div>
+
       </div>
+
       <div class="timeline-item">
+
         <div class="time-dot fullday">3</div>
+
         <div class="time-info">
+
           <div class="time">16:10</div>
+
           <div class="label">A股 + 港股全日汇总</div>
+
           <div class="detail">A股 + 港股 合并全日数据（港股 16:00 收市）</div>
+
           <div class="market-badges">
+
             <span class="badge a">A股</span>
+
             <span class="badge hk">港股</span>
+
           </div>
+
         </div>
+
       </div>
+
       <div class="timeline-item">
+
         <div class="time-dot usstock">4</div>
+
         <div class="time-info">
+
           <div class="time">04:10</div>
+
           <div class="label">美股收盘总结</div>
+
           <div class="detail">美股三大指数全日数据（美东 16:00 = 北京时间 04:00 收市）</div>
+
           <div class="market-badges"><span class="badge us">美股</span></div>
+
         </div>
+
       </div>
+
     </div>
+
+
+
+    <!-- 看板内容 -->
 
     <div class="grid-2" style="margin-bottom:20px;">
+
       <div class="card">
+
         <h3>✓ 看板包含内容</h3>
+
         <div style="font-size:13px;line-height:2;color:#555;">
-          • 主流指数行情（上证/深证/创业板/科创50/恒生/恒科）<br>
+
+          • 主流指数行情（上证/深证/创业板/科创50/恒生/恒科/标普500/纳斯达克/道琼斯）<br>
+
           • 申万一级行业涨跌幅 Top 5 &amp; Bottom 5<br>
+
           • 31行业全排名 + 异动原因解读<br>
+
           • 涨跌分布可视化（上涨/下跌/平盘占比）<br>
+
           • 市场估值（PE/PB 分位）与技术面信号<br>
+
+          • 港股成分股异动详情<br>
+
           • 大跌/大涨原因金字塔式拆解<br>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <h3>📡 数据来源</h3>
+
         <div class="source-row">
+
           <div class="source-icon">📈</div>
+
           <div>行情数据 · 腾讯自选股（WeStock Data）</div>
+
         </div>
+
         <div class="source-row">
+
           <div class="source-icon">📰</div>
+
           <div>市场新闻 · 百度/知乎/东方财富 公开资讯</div>
+
         </div>
+
         <div class="source-row">
+
           <div class="source-icon">🤖</div>
+
           <div>分析生成 · 呆呆 AI 智能助理</div>
+
         </div>
+
       </div>
+
     </div>
 
+
+
+    <!-- 当前示例 -->
+
     <div class="card" style="background:linear-gradient(135deg,#f0f4ff,#e8efff);margin-bottom:20px;">
+
       <h3>📌 当前展示</h3>
+
       <p style="font-size:13px;color:#555;line-height:1.8;">
-        本页面向 <strong>2026年7月16日（星期四）</strong> 的A股/港股市场。<br><br>
+
+        本页面向 <strong>2026年7月17日（星期五）</strong> 的A股/港股市场。<br><br>
+
         🕐 <strong>数据时效说明：</strong><br>
-        &nbsp;&nbsp;🌅 午盘Tab → 截止A股11:30 / 港股12:00 上午收盘数据<br>
+        &nbsp;&nbsp;🌅 午盘Tab → 盘中实时行情（⚡标注），前台JS每5秒刷新<br>
         &nbsp;&nbsp;☀️ 全日Tab → A股15:10推送 / 港股16:10推送<br><br>
+
         📅 <strong>日期逻辑：</strong><br>
         &nbsp;&nbsp;① Header「📅 交易日」= 该交易日日期（生成时写入）<br>
         &nbsp;&nbsp;② Tab标题「⚡ 实时」= 当前盘中数据（不需要日期）<br>
         &nbsp;&nbsp;③ 页脚「Generated」= 页面生成时间戳（自动）<br>
         &nbsp;&nbsp;④ 浏览器标题 = 交易日日期<br>
+
       </p>
+
     </div>
+
   </div>
+
+
 
   <div class="disclaimer">
+
     ⚠️ 免责声明：本看板仅供数据参考与学习研究之用，不构成任何投资建议。数据来源为腾讯自选股公开市场数据，可能存在延迟。<br>
+
     投资有风险，决策需谨慎。如需专业投资建议，请咨询持牌证券投资顾问机构。<br>
-    Generated by 呆呆 · 徐浩男的智能助理 · <span class="gen-date">2026-07-16</span>
+
+    Generated by 呆呆 · 徐浩男的智能助理 · <span class="gen-date">2026-07-17</span>
+
   </div>
+
 </div>
 
+
+
 <script>
+
 function switchTab(tab, btn) {
   if (!btn && window.event) btn = window.event.target;
   if (!btn) return;
@@ -826,11 +1602,17 @@ function switchTab(tab, btn) {
 
 // Auto-update footer generation date
 (function(){var d=new Date();var y=d.getFullYear();var m=('0'+(d.getMonth()+1)).slice(-2);var dd=('0'+d.getDate()).slice(-2);var el=document.querySelector('.gen-date');if(el)el.textContent=y+'-'+m+'-'+dd;})();
+
 </script>
 
+
+
 <script>
+
 (function(){
+
 'use strict';
+
 var INDICES={
   'sh000001':{name:'上证指数',market:'a',decimals:2},
   'sz399001':{name:'深证成指',market:'a',decimals:2},
@@ -844,21 +1626,37 @@ var SECTORS={'pt01801010':'农林牧渔','pt01801030':'基础化工','pt01801040
 
 var ALL_CODES=Object.keys(INDICES).concat(Object.keys(SECTORS));
 
+
+
 function isTrading(){var n=new Date(),d=n.getDay(),t=n.getHours()*60+n.getMinutes();if(d===0||d===6)return!1;return t>=570&&t<=900}
 
 function getStatus(){var n=new Date(),d=n.getDay(),t=n.getHours()*60+n.getMinutes(),a=t>=570&&t<=900;if(d===0||d===6)return{trading:!1,session:'closed'};if(t<570)return{trading:!1,session:'preopen'};if(t<=690)return{trading:a,session:'morning'};if(t<780)return{trading:!1,session:'midday'};if(t<=900)return{trading:a,session:'afternoon'};return{trading:!1,session:'closed'}}
 
+
+
 function fmtPrice(v,d){if(v==null||isNaN(v))return'—';return v.toLocaleString('zh-CN',{minimumFractionDigits:d||2,maximumFractionDigits:d||2})}
+
 function fmtPct(v){if(v==null||isNaN(v))return'—';return(v>=0?'+':'')+v.toFixed(2)+'%'}
+
 function pctCls(v){return v>0?'up':(v<0?'down':'neutral')}
+
+
 
 function parseQt(text){var d={};text.split('\n').forEach(function(l){var m=l.match(/v_(\w+)="(.+)"/);if(!m)return;var c=m[1],f=m[2].split('~');if(f.length<35)return;var p=parseFloat(f[3]),pct=parseFloat(f[32]);if(isNaN(p))return;d[c]={name:f[1]||'',price:p,pct:pct,time:f[30]||''}});return d}
 
+
+
 function fetchQtData(cb){var url='https://qt.gtimg.cn/q='+ALL_CODES.join(',')+'&_t='+Date.now(),resolved=!1,timer=null,scr=document.createElement('script');scr.src=url;scr.onload=function(){var l=[];ALL_CODES.forEach(function(c){var v=window['v_'+c];if(v!=null)l.push('v_'+c+'="'+String(v).replace(/"/g,'\\"')+'"')});scr.remove();if(l.length){if(timer)clearTimeout(timer);resolved=!0;cb(parseQt(l.join('\n')))}};scr.onerror=function(){scr.remove();if(!resolved){resolved=!0;if(timer)clearTimeout(timer);cb(null)}};document.head.appendChild(scr);timer=setTimeout(function(){if(!resolved){resolved=!0;cb(null)}},3000)}
+
+
 
 function updateIndices(pref,data){Object.keys(INDICES).forEach(function(c){var it=data[c],pe=document.getElementById(pref+'-price-'+c),ce=document.getElementById(pref+'-pct-'+c),te=document.getElementById(pref+'-time-'+c);if(!pe||!it)return;pe.textContent=fmtPrice(it.price,INDICES[c].decimals);ce.textContent=fmtPct(it.pct);ce.className='index-change '+pctCls(it.pct);if(te)te.textContent=pref==='f'?'实时':''})}
 
+
+
 function renderSectors(data){var s=[];Object.keys(SECTORS).forEach(function(c){var it=data[c];if(it&&!isNaN(it.pct))s.push({name:it.name||SECTORS[c],pct:it.pct})});if(s.length<5)return;s.sort(function(a,b){return b.pct-a.pct});var t5=document.getElementById('live-top5-body'),b5=document.getElementById('live-bot5-body'),h5=document.getElementById('live-top5-hdr'),hb=document.getElementById('live-bot5-hdr'),ts=('0'+new Date().getHours()).slice(-2)+':'+('0'+new Date().getMinutes()).slice(-2)+':'+('0'+new Date().getSeconds()).slice(-2);if(t5){var h='';s.slice(0,5).forEach(function(x,i){var cl=x.pct>=0?'sector-up':'sector-down',si=x.pct>=0?'+':'';h+='<tr><td>'+(i+1)+'</td><td>'+x.name+'</td><td class="'+cl+'">'+si+x.pct.toFixed(2)+'%</td></tr>'});t5.innerHTML=h}if(b5){var h='';s.slice(-5).reverse().forEach(function(x,i){var cl=x.pct>=0?'sector-up':'sector-down',si=x.pct>=0?'+':'';h+='<tr><td>'+(i+1)+'</td><td>'+x.name+'</td><td class="'+cl+'">'+si+x.pct.toFixed(2)+'%</td></tr>'});b5.innerHTML=h}if(h5)h5.textContent='\uD83D\uDD3A \u884C\u4E1A\u6DA8\u5E45 TOP 5\uFF08\u5B9E\u65F6 \u00B7 '+ts+'\uFF09';if(hb)hb.textContent='\uD83D\uDD3B \u884C\u4E1A\u8DCC\u5E45 BOTTOM 5\uFF08\u5B9E\u65F6 \u00B7 '+ts+'\uFF09'}
+
+
 
 function updateLiveBadge(st){
   var lb=document.getElementById('live-idx-badge');
@@ -912,7 +1710,11 @@ function autoActivateTab(){
   if(ct)ct.classList.add('active');
 }
 
+
+
 function refresh(){var st=getStatus();updateAllBadges(st);if(!st.trading)return;fetchQtData(function(d){if(!d)return;if(st.trading){updateIndices('f',d);renderSectors(d)}})}
+
+
 
 var refreshTimer=null;
 
@@ -934,12 +1736,17 @@ function startRefresh(){
 
 function stopRefresh(){if(refreshTimer){clearInterval(refreshTimer);refreshTimer=null}updateAllBadges(getStatus())}
 
+
+
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',startRefresh)}else{startRefresh()};
 
 window.addEventListener('beforeunload',stopRefresh);
 
 })();
+
 </script>
 
 </body>
+
 </html>
+
